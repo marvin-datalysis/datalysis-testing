@@ -13,7 +13,7 @@ interface Periodo {
 }
 
 interface Summary {
-  difference: string;
+  difference: number;
   firstPeriod: Periodo;
   secondPeriod: Periodo;
 }
