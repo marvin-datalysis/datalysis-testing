@@ -10,6 +10,8 @@ interface Periodo {
   year: number;
   week: number;
   ventas: string;
+  margenPorcentual: string; 
+  cantidadClientes: string; 
 }
 
 interface Summary {
