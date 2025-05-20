@@ -7,8 +7,8 @@ dotenv.config();
 
 test.beforeEach(async ({ }) => {})
 
-test.describe('inicio', () => {
-    test('semana-periodo anterior', async ({ request }) => {
+test.describe('tarjetas de inicio', () => {
+    test('', async ({ request }) => {
         test.setTimeout(75000)
         const userDataDir = './context/chromium';
         const context = await chromium.launchPersistentContext(userDataDir, {
