@@ -9,6 +9,9 @@ test.describe('login', () => {
     const userDataDir = './context/chromium';
     const context = await chromium.launchPersistentContext(userDataDir, {
       headless: false,
+      recordVideo:{
+        dir:'./videos/'
+      }
     });
     const page = await context.newPage();
 

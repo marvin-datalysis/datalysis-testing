@@ -1,28 +1,14 @@
-import * as dotenv from 'dotenv';
 import { InicioCardResponse } from './inicio.interface';
 import { test, expect, Page, APIRequestContext } from '@playwright/test'
 import { chromium } from '@playwright/test';
+import * as dotenv from 'dotenv';
+import { getAccessToken } from '../../../utils/getToken';
 dotenv.config();
 
-//USAR COOKIES DESDE JSON LOCAL
-/*const browser = await chromium.launch({ headless: true });
-const context = await browser.newContext({
-    storageState: 'auth.json'
-});
-const page = await context.newPage();
-await page.goto('http://localhost:3000/inicio')*/
-
-test.beforeEach(async ({ /*page */ }) => {
-    /*const page = await getLocalPageObject();
-    await page.goto(`${process.env.APP_URL}`)
-    await page.locator('input#email').waitFor({ state: 'visible', timeout: 5000 })
-    await page.locator('input#email').fill(process.env.EMAIL ?? '')
-    await page.locator('input#password').fill(process.env.PASSWORD ?? '')
-    await page.locator('button#login').click()*/
-})
+test.beforeEach(async ({ }) => {})
 
 test.describe('inicio', () => {
-    test('semana-periodo anterior', async ({ /**page ,*/ request }) => {
+    test('semana-periodo anterior', async ({ request }) => {
         test.setTimeout(75000)
         const userDataDir = './context/chromium';
         const context = await chromium.launchPersistentContext(userDataDir, {
@@ -35,72 +21,60 @@ test.describe('inicio', () => {
         await expect(botonPeriodo).toBeEnabled();
         await page.waitForTimeout(500);
 
-        //week-prior_period
-        /*await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'week', timeComparison: 'prior_period' });
-        await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'week', timeComparison: 'prior_period' });
-        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'week', timeComparison: 'prior_period' });
-*/
-        //month-prior_period
-        //await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'month', timeComparison: 'prior_period' });
-        /*await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'month', timeComparison: 'prior_period' });
-        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'month', timeComparison: 'prior_period' });
-*/
-        //quarter-prior_period
-        //await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'quarter', timeComparison: 'prior_period' });
-        //await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'quarter', timeComparison: 'prior_period' });
-        //await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'quarter', timeComparison: 'prior_period' });
+        //week-same_period_last_year
+        await actualizarDropdown({ page, boton: 'comparacion', opcion: 'time-comparison-same_period_last_year' });
+        await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'week', timeComparison: 'same_period_last_year' });
+        await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'week', timeComparison: 'same_period_last_year' });
+        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'week', timeComparison: 'same_period_last_year' });
+
+        //month-same_period_last_year
+        await actualizarDropdown({ page, boton: 'periodo', opcion: 'date-period-month' });
+        await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'month', timeComparison: 'same_period_last_year' });
+        await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'month', timeComparison: 'same_period_last_year' });
+        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'month', timeComparison: 'same_period_last_year' });
+
+        //quarter-same_period_last_year
+        await actualizarDropdown({ page, boton: 'periodo', opcion: 'date-period-quarter' });
+        await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'quarter', timeComparison: 'same_period_last_year' });
+        await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'quarter', timeComparison: 'same_period_last_year' });
+        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'quarter', timeComparison: 'same_period_last_year' });
 
         //year-prior_period
-        /*await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'year', timeComparison: 'prior_period' });
+        await actualizarDropdown({ page, boton: 'periodo', opcion: 'date-period-year' });
+        await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'year', timeComparison: 'prior_period' });
         await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'year', timeComparison: 'prior_period' });
-        */await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'year', timeComparison: 'prior_period' });
+        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'year', timeComparison: 'prior_period' });
 
-        //week-same_period_last_year
-        await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'week', timeComparison: 'same_period_last_year',waitGraficoMargen:true });
-        /*await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'week', timeComparison: 'same_period_last_year' });
-        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'week', timeComparison: 'same_period_last_year' });
-*/
-        //month-same_period_last_year
-        //await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'month', timeComparison: 'same_period_last_year' });
-        await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'month', timeComparison: 'same_period_last_year' });
-        //await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'month', timeComparison: 'same_period_last_year' });
+        //week-prior_period
+        await actualizarDropdown({ page, boton: 'periodo', opcion: 'date-period-week' });
+        await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'week', timeComparison: 'prior_period' });
+        await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'week', timeComparison: 'prior_period' });
+        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'week', timeComparison: 'prior_period' });
 
-        //month-same_period_last_year
-        //await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'quarter', timeComparison: 'same_period_last_year' });
-        //await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'quarter', timeComparison: 'same_period_last_year' });
-        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'quarter', timeComparison: 'same_period_last_year' });
+        //month-prior_period
+        await actualizarDropdown({ page, boton: 'periodo', opcion: 'date-period-month' });
+        await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'month', timeComparison: 'prior_period' });
+        await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'month', timeComparison: 'prior_period' });
+        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'month', timeComparison: 'prior_period' });
+
+        //quarter-prior_period
+        await actualizarDropdown({ page, boton: 'periodo', opcion: 'date-period-quarter' });
+        await testTarjetaInicio({ page, request, title: 'MARGEN\\%', datePeriod: 'quarter', timeComparison: 'prior_period' });
+        await testTarjetaInicio({ page, request, title: 'VENTAS', datePeriod: 'quarter', timeComparison: 'prior_period' });
+        await testTarjetaInicio({ page, request, title: 'CLIENTES', datePeriod: 'quarter', timeComparison: 'prior_period' });
     })
 })
 
-const actualizarDropdowns = async ({ page, datePeriod, timeComparison,dropdownAUsar }: { page: Page, datePeriod: string, timeComparison: string,dropdownAUsar:string }) => {
-    if (dropdownAUsar==='datePeriod') {
-        await page.locator('button#periodo').click()
-        await page.locator(`li#date-period-${datePeriod}`).click()
-    }
-    if (dropdownAUsar==='same_period_last_year' && datePeriod !== 'year') {
-        await page.locator('button#comparacion').click()
-        await page.locator(`li#time-comparison-${timeComparison}`).click()
-    }
+const actualizarDropdown = async ({ page, boton, opcion }: { page: Page, boton: string, opcion: string }) => {
+    await page.locator(`button#${boton}`).click()
+    await page.locator(`li#${opcion}`).click()
 }
 
 export const testTarjetaInicio = async (
-    { page, request, title, datePeriod, timeComparison,waitGraficoMargen=false }:
-        { page: Page, request: APIRequestContext, title: string, datePeriod: string, timeComparison: string,waitGraficoMargen?:boolean }
+    { page, request, title, datePeriod, timeComparison }:
+        { page: Page, request: APIRequestContext, title: string, datePeriod: string, timeComparison: string }
 ) => {
     console.log(`Probando. Tarjeta: ${title}, datePeriod: ${datePeriod}, timeComparison: ${timeComparison}`);
-
-    const botonPeriodo = await page.locator('button#periodo');
-    await expect(botonPeriodo).toBeEnabled();
-    await page.waitForTimeout(500);
-    await page.locator('button#periodo').click()
-    await page.locator(`li#date-period-${datePeriod}`).click()
-    if (datePeriod !== 'year') {
-        if(waitGraficoMargen){
-            await page.locator(`div.apexchartscomparacion-margen-porcentual`).waitFor({ state: 'visible', timeout: 75000 });
-        }
-        await page.locator('button#comparacion').click()
-        await page.locator(`li#time-comparison-${timeComparison}`).click()
-    }
 
     let queryId = '';
     let graficoId = '';
@@ -126,7 +100,7 @@ export const testTarjetaInicio = async (
     const monedaPeriodoActual = await page.locator(`span#${title}-periodo-actual-moneda`).innerHTML();
     const valorComparativoHTML = await page.locator(`span#${title}-comparativo`).innerHTML();
 
-    const accessToken = process.env.TOKEN ?? '';
+    const accessToken = await getAccessToken();
     const response = await request.post(`${process.env.API_URL}/api/queries/exec/${queryId}`, {
         headers: {
             accessToken,
@@ -158,9 +132,8 @@ export const testTarjetaInicio = async (
     const valorComparativoApi = data.data.summary.difference;
     const monedaApi = data.data.moneda.simbolo;
 
-    //if (title !== 'MARGEN\\%') 
-    await expect(valorPeriodoAnteriorHTML.replaceAll(',', '')).toBe(valorPeriodoAnteriorApi.replace('.00', ''));
-    await expect(valorPeriodoActualHTML.replaceAll(',', '')).toBe(valorPeriodoActualApi.replace('.00', ''));
+    await expect(Number(valorPeriodoAnteriorHTML.replaceAll(',', ''))).toBe(Number(valorPeriodoAnteriorApi));
+    await expect(Number(valorPeriodoActualHTML.replaceAll(',', ''))).toBe(Number(valorPeriodoActualApi));
     if (title === 'VENTAS') {
         await expect(monedaPeriodoAnterior).toBe(monedaApi);
         await expect(monedaPeriodoActual).toBe(monedaApi);
