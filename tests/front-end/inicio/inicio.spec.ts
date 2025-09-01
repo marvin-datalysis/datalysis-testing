@@ -3,9 +3,10 @@ import { test, expect, Page, APIRequestContext } from '@playwright/test'
 import { chromium } from '@playwright/test';
 import * as dotenv from 'dotenv';
 import { getAccessToken } from '../../../utils/getToken';
+import { login } from '../../../utils/login';
 dotenv.config();
 
-test.beforeEach(async ({ }) => {})
+test.beforeEach(async ({ }) => { })
 
 test.describe('tarjetas de inicio', () => {
     test('', async ({ request }) => {
@@ -16,6 +17,10 @@ test.describe('tarjetas de inicio', () => {
         });
         const page = await context.newPage();
         await page.goto(`${process.env.APP_URL}`);
+
+        if (page.url().includes('sign-in')) {
+            login(page);
+        }
 
         const botonPeriodo = await page.locator('button#periodo');
         await expect(botonPeriodo).toBeEnabled();
