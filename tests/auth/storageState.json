@@ -1,0 +1,125 @@
+{
+  "cookies": [
+    {
+      "name": "email",
+      "value": "TesinaQA%40datalysisgroup.com",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.054842,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "displayName",
+      "value": "Tesina%20QA",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.055239,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "nombreCompleto",
+      "value": "Tesina%20QA",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.055355,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "photoURL",
+      "value": "",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.055426,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "uid",
+      "value": "105",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.055469,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "logoId",
+      "value": "4",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.055537,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "logoUrl",
+      "value": "logos%2Fdatalysis.jpeg",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.0556,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "logoAlt",
+      "value": "No%20se%20encontr%C3%B3%20la%20imagen",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.055701,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "empresaId",
+      "value": "3",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.055779,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "empresaNombre",
+      "value": "Datalysis%20Demo",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602454.055849,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "permisos",
+      "value": "%5B%22ver-resumen-ejecutivo%22%2C%22ver-detalle-resumen-ejecutivo%22%2C%22ver-reporte-ventas%22%2C%22ver-inicio%22%2C%22ver-noticias%22%2C%22ver-metrica-ventas%22%2C%22ver-metrica-margen-porcentual%22%2C%22ver-metrica-clientes%22%2C%22ver-daisy-ai%22%5D",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602460.454728,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "csrfToken",
+      "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImtJTVNPdyJ9.eyJpc3MiOiJodHRwczovL3Nlc3Npb24uZmlyZWJhc2UuZ29vZ2xlLmNvbS9kYXRhbHlzaXMtYXBwLWRldiIsIm5hbWUiOiJUZXNpbmEgUUEiLCJhdWQiOiJkYXRhbHlzaXMtYXBwLWRldiIsImF1dGhfdGltZSI6MTc1Nzk5NzY1NCwidXNlcl9pZCI6IjEwNSIsInN1YiI6IjEwNSIsImlhdCI6MTc1Nzk5NzY1NCwiZXhwIjoxNzU4NjAyNDU0LCJlbWFpbCI6InRlc2luYXFhQGRhdGFseXNpc2dyb3VwLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ0ZXNpbmFxYUBkYXRhbHlzaXNncm91cC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.D6Hz3cEmuV6yxWYsYRJyxpU1QUbEkNmNyOWQMRbDN04ttAcPD1ZeJCkRJvoF2DwbS4D4rPmfbQjx4HJT0S7rx4XmW5K3EIWt8zq7QUHhvnvjnQY7poznSz-FPWHsNkZRzcMvAh-dqHLEgk8MqcHt19CnXQKZrGPcSYia-Af3RGtjzX-d_riBAyJcZjzG2mck6cq7uWAVjj_ZCNvvPj1xah30rM5Gire_q2gu1kdAroNgfAls5tNrKwBihPSFvYPUVQM_HiWTa4p3dluQRHceLSuKOiycKMKkhHeJkSsjFK2VpPdRNhIiGC6RHwwv4xyewaz2TPqZK-uNNjstqmPcsw",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1758602455.055987,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": []
+}
