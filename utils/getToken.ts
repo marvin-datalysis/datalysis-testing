@@ -1,81 +1,73 @@
+// utils/getToken.ts
 import fs from 'fs/promises';
 import path from 'path';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
 interface TokenData {
   data: {
     accessToken: string;
-    expirationTime: number;
-  }
+    expirationTime: number; // epoch ms
+  };
 }
 
 const TOKEN_PATH = path.resolve(__dirname, 'token.json');
-
-// 1) Usa API_URL del .env
-const API_URL = process.env.API_URL; // p.ej. http://localhost:8080
-if (!API_URL) {
-  throw new Error('API_URL no está definido en .env');
-}
-
-// 2) Fallback: si no hay EMAIL/PASSWORD, usa USUARIO_QA/PASSWORD_QA
-const EMAIL = process.env.EMAIL ?? process.env.USUARIO_QA ?? '';
-const PASSWORD = process.env.PASSWORD ?? process.env.PASSWORD_QA ?? '';
-
+const API_URL = process.env.API_URL!;
 const LOGIN_URL = `${API_URL}/api/usuarios/auth/sign-in`;
-const LOGIN_BODY = { email: EMAIL, password: PASSWORD };
+const EXCHANGE_URL = `${API_URL}/api/usuarios/auth/exchange-token`;
 
-export const getAccessToken = async (): Promise<string> => {
-  if (!EMAIL || !PASSWORD) {
-    throw new Error('Credenciales de API no definidas: faltan EMAIL/PASSWORD (o USUARIO_QA/PASSWORD_QA) en .env');
-  }
+const LOGIN_BODY = {
+  email: process.env.EMAIL,
+  password: process.env.PASSWORD,
+  rememberMe: true,
+};
 
-  let tokenData: TokenData;
-
+async function readCached(): Promise<TokenData | null> {
   try {
     const raw = await fs.readFile(TOKEN_PATH, 'utf-8');
-    tokenData = JSON.parse(raw);
+    return JSON.parse(raw);
   } catch {
-    tokenData = { data: { accessToken: '', expirationTime: 0 } };
+    return null;
+  }
+}
+
+async function writeCached(token: string, exp: number) {
+  const data: TokenData = { data: { accessToken: token, expirationTime: exp } };
+  await fs.writeFile(TOKEN_PATH, JSON.stringify(data, null, 2), 'utf-8');
+}
+
+/**
+ * Flujo real: sign-in → exchange-token → usar ese accessToken.
+ */
+export const getAccessToken = async (): Promise<string> => {
+  // 1) Si hay token cacheado y no expiró, úsalo
+  const cached = await readCached();
+  if (cached && cached.data.expirationTime > Date.now() && cached.data.accessToken) {
+    return cached.data.accessToken;
   }
 
-  const now = Date.now();
-  const isExpired = tokenData.data.expirationTime <= now;
+  // 2) Login
+  const signIn = await axios.post(LOGIN_URL, LOGIN_BODY);
+  const loginToken: string = signIn.data?.data?.accessToken;
+  const loginExp: number = signIn.data?.data?.expirationTime;
 
-  if (!isExpired && tokenData.data.accessToken) {
-    return tokenData.data.accessToken;
+  if (!loginToken) {
+    throw new Error(`Login no devolvió accessToken. Respuesta: ${JSON.stringify(signIn.data).slice(0, 500)}`);
   }
 
-  try {
-    const response = await axios.post(LOGIN_URL, LOGIN_BODY, {
-      headers: { 'Content-Type': 'application/json' },
-      // timeout opcional:
-      timeout: 15000,
-    });
+  // 3) Exchange (muchos backends emiten un token distinto para API)
+  const exchange = await axios.post(
+    EXCHANGE_URL,
+    undefined,
+    { headers: { Authorization: `Bearer ${loginToken}` } }
+  );
 
-    const newAccessToken = response.data?.data?.accessToken;
-    const expiresIn = response.data?.data?.expirationTime;
+  const apiToken: string = exchange.data?.data?.accessToken ?? loginToken;
+  const apiExp: number = exchange.data?.data?.expirationTime ?? loginExp ?? (Date.now() + 30 * 60 * 1000);
 
-    if (!newAccessToken || !expiresIn) {
-      throw new Error(`Respuesta inesperada del login: ${JSON.stringify(response.data)}`);
-    }
+  // 4) Guardar cache
+  await writeCached(apiToken, apiExp);
 
-    const newTokenData: TokenData = {
-      data: { accessToken: newAccessToken, expirationTime: expiresIn }
-    };
-
-    await fs.writeFile(TOKEN_PATH, JSON.stringify(newTokenData, null, 2), 'utf-8');
-    return newTokenData.data.accessToken;
-  } catch (err) {
-    // Diagnóstico detallado
-    const axerr = err as AxiosError<any>;
-    const status = axerr.response?.status;
-    const data = axerr.response?.data;
-    throw new Error(
-      `Fallo al obtener token (${status ?? 'sin status'}). URL=${LOGIN_URL}. ` +
-      `BodyEnviado=${JSON.stringify(LOGIN_BODY)}. ` +
-      `Respuesta=${typeof data === 'object' ? JSON.stringify(data) : data}`
-    );
-  }
+  return apiToken;
 };

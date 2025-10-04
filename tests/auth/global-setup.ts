@@ -15,7 +15,7 @@ export default async function globalSetup(_config: FullConfig) {
     throw new Error('Faltan credenciales en .env (USUARIO_QA/EMAIL y/o PASSWORD_QA/PASSWORD).');
   }
 
-  // Deja visible mientras estabilizamos. Luego puedes poner headless: true
+  // Deja visible mientras estabiliza, despues poner headless: true
   const browser = await chromium.launch({ headless: false, slowMo: 50 });
   const context = await browser.newContext();
   const page = await context.newPage();
