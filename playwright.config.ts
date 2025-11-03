@@ -46,7 +46,7 @@ export default defineConfig({
       name: 'chromium',
       use: { 
         ...devices['Desktop Chrome'],
-        headless: false,
+        headless: false,      //  Cambiar a TRUE si no se requiere visualizar UI
       },
     },
 

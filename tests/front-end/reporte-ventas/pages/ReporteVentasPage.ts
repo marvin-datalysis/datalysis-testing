@@ -32,7 +32,7 @@ export default class ReporteVentasPage {
 
   // ========================= Filtros de fecha =========================
   async setRangoFechas(desdeISO: string, hastaISO: string) {
-    // 1) Preferimos abrir popover y rellenar ambos extremos en una sola pasada
+    // 1) Preferible abrir popover y rellenar ambos extremos en una sola pasada
     const opened = await this.abrirDatePopover();
     if (opened) {
       const okStart = await this._fillRangeSegments(0, desdeISO);
@@ -40,7 +40,6 @@ export default class ReporteVentasPage {
       await this._clickOkSiExiste(); // si hay botón "Ok", confírmalo
       if (okStart && okEnd) return;
     }
-
     // 2) Fallback: intentos por label (por si el control no es de segmentos)
     await this.setFechaDesde(desdeISO);
     await this.setFechaHasta(hastaISO);
@@ -99,12 +98,12 @@ export default class ReporteVentasPage {
    */
   private async _fillRangeSegments(index: number, iso: string): Promise<boolean> {
     const { y, m, d } = this._splitISO(iso);
-
     const segYear = this.page.locator('[data-type="year"][role="spinbutton"]').nth(index);
     const segMonth = this.page.locator('[data-type="month"][role="spinbutton"]').nth(index);
     const segDay = this.page.locator('[data-type="day"][role="spinbutton"]').nth(index);
 
-    const exists = (await segYear.count()) > 0 && (await segMonth.count()) > 0 && (await segDay.count()) > 0;
+    const exists =
+      (await segYear.count()) > 0 && (await segMonth.count()) > 0 && (await segDay.count()) > 0;
     if (!exists) return false;
 
     const fill = async (seg: Locator, v: string) => {
@@ -183,7 +182,6 @@ export default class ReporteVentasPage {
   async waitForTabla() {
     const rows = this.page.locator(".tabulator .tabulator-row");
     const pager = this.page.locator('text=/Mostrando\\s+\\d+\\s+de\\s+\\d+\\s+p(ág|ag)inas/i').first();
-
     const deadline = Date.now() + 120_000;
     while (Date.now() < deadline) {
       if ((await rows.count()) > 0 || (await pager.count()) > 0) return;
@@ -227,6 +225,7 @@ export default class ReporteVentasPage {
       }
       suma += valorTomado;
     }
+
     return suma;
   }
 
@@ -236,7 +235,10 @@ export default class ReporteVentasPage {
       this.page.getByTestId("sum-global"),
       this.page.locator('[data-qa="sum-global"]').first(),
       this.page.locator(".total-global").first(),
-      this.page.locator('div:has-text("Mostrando"):below(:text("Mostrando"))').locator("text=/[0-9][0-9 .,-]+/").last(),
+      this.page
+        .locator('div:has-text("Mostrando"):below(:text("Mostrando"))')
+        .locator("text=/[0-9][0-9 .,-]+/")
+        .last(),
     ];
 
     for (const loc of probes) {
@@ -247,15 +249,21 @@ export default class ReporteVentasPage {
       }
     }
     return 0;
-  }
+    }
 
   async getContadorResultados(): Promise<{ paginaActual: number; totalPaginas: number }> {
-    const counter = this.page.locator('text=/Mostrando\\s+(\\d+)\\s+de\\s+(\\d+)\\s+p(ág|ag)inas/i').first();
+    const counter = this.page
+      .locator('text=/Mostrando\\s+(\\d+)\\s+de\\s+(\\d+)\\s+p(ág|ag)inas/i')
+      .first();
+
     if (await counter.count()) {
       const txt = await counter.innerText();
       const m = txt.match(/Mostrando\s+(\d+)\s+de\s+(\d+)\s+p(ág|ag)inas/i);
       if (m) {
-        return { paginaActual: parseInt(m[1], 10), totalPaginas: parseInt(m[2], 10) };
+        return {
+          paginaActual: parseInt(m[1], 10),
+          totalPaginas: parseInt(m[2], 10),
+        };
       }
     }
     return { paginaActual: 1, totalPaginas: 1 };
@@ -264,6 +272,7 @@ export default class ReporteVentasPage {
   btnSiguiente() {
     return this.page.getByRole("button", { name: /^Siguiente$/i }).first();
   }
+
   btnAnterior() {
     return this.page.getByRole("button", { name: /^Anterior$/i }).first();
   }
@@ -272,6 +281,7 @@ export default class ReporteVentasPage {
     const btn = this.btnSiguiente();
     if (await btn.count()) await btn.click({ timeout: 30_000 }).catch(() => {});
   }
+
   async goToPaginaAnterior() {
     const btn = this.btnAnterior();
     if (await btn.count()) await btn.click({ timeout: 30_000 }).catch(() => {});

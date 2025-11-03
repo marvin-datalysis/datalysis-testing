@@ -5,7 +5,7 @@
       "value": "TesinaQA%40datalysisgroup.com",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.165725,
+      "expires": 1761022500.624872,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -15,7 +15,7 @@
       "value": "Tesina%20QA",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.165954,
+      "expires": 1761022500.624922,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -25,7 +25,7 @@
       "value": "Tesina%20QA",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.166063,
+      "expires": 1761022500.624938,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -35,7 +35,7 @@
       "value": "",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.166134,
+      "expires": 1761022500.624964,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -45,7 +45,7 @@
       "value": "105",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.166159,
+      "expires": 1761022500.624972,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -55,7 +55,7 @@
       "value": "4",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.166197,
+      "expires": 1761022500.624986,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -65,7 +65,7 @@
       "value": "logos%2Fdatalysis.jpeg",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.16624,
+      "expires": 1761022500.624999,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -75,7 +75,7 @@
       "value": "No%20se%20encontr%C3%B3%20la%20imagen",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.166311,
+      "expires": 1761022500.625023,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -85,7 +85,7 @@
       "value": "3",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.166356,
+      "expires": 1761022500.62504,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -95,7 +95,7 @@
       "value": "Datalysis%20Demo",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.166395,
+      "expires": 1761022500.625054,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
@@ -105,17 +105,17 @@
       "value": "%5B%22ver-resumen-ejecutivo%22%2C%22ver-detalle-resumen-ejecutivo%22%2C%22ver-reporte-ventas%22%2C%22ver-inicio%22%2C%22ver-noticias%22%2C%22ver-metrica-ventas%22%2C%22ver-metrica-margen-porcentual%22%2C%22ver-metrica-clientes%22%2C%22ver-daisy-ai%22%5D",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224100.166433,
+      "expires": 1761022505.97652,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
     },
     {
       "name": "csrfToken",
-      "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImtJTVNPdyJ9.eyJpc3MiOiJodHRwczovL3Nlc3Npb24uZmlyZWJhc2UuZ29vZ2xlLmNvbS9kYXRhbHlzaXMtYXBwLWRldiIsIm5hbWUiOiJUZXNpbmEgUUEiLCJhdWQiOiJkYXRhbHlzaXMtYXBwLWRldiIsImF1dGhfdGltZSI6MTc1OTYxOTMwMCwidXNlcl9pZCI6IjEwNSIsInN1YiI6IjEwNSIsImlhdCI6MTc1OTYxOTMwMSwiZXhwIjoxNzYwMjI0MTAxLCJlbWFpbCI6InRlc2luYXFhQGRhdGFseXNpc2dyb3VwLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ0ZXNpbmFxYUBkYXRhbHlzaXNncm91cC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.hSATZDY2thW3bUetVn_I3wslFjVWKsPAQAdwR8y2tN_cWxXZHgyT5XzQDJi4eEGhSAqnsLP-9PV4KZ1f7WPSg7TX3o85PmVU8R5-NFK8FMjA33nHsC4yshEteMmgxUF_mIFdMBQtBXrp9qthJNMlZQ21Vx_6GvNrhyE3gNfbOW5RRI_r-9_V8vHZFq2x2qE-OStCB7rVjdPrerumHlq-1E1anGrTVSjXbsjHQP-BweM_xSOWR3loP__HL57o2TTafvZstlFNxIf-IGtG7NzjvOho1Ls9oqsxu3TkfioCuIPO3TdIEHo8TlK0v7raqF6L_B6wjzpPFuDEUqjhT3p-HQ",
+      "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImtJTVNPdyJ9.eyJpc3MiOiJodHRwczovL3Nlc3Npb24uZmlyZWJhc2UuZ29vZ2xlLmNvbS9kYXRhbHlzaXMtYXBwLWRldiIsIm5hbWUiOiJUZXNpbmEgUUEiLCJhdWQiOiJkYXRhbHlzaXMtYXBwLWRldiIsImF1dGhfdGltZSI6MTc2MDQxNzY5OSwidXNlcl9pZCI6IjEwNSIsInN1YiI6IjEwNSIsImlhdCI6MTc2MDQxNzcwMCwiZXhwIjoxNzYxMDIyNTAwLCJlbWFpbCI6InRlc2luYXFhQGRhdGFseXNpc2dyb3VwLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ0ZXNpbmFxYUBkYXRhbHlzaXNncm91cC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.tGODKoAZNWpf0trs4Sr-uTMe25gOYynoo2N2H1MvzXJ0FO1BuFL5669PlViuc2HBKvz1okIR053UZp2806qfmueDcLkgnNO2jJmE74t8nqEFl6mK3Qn4LsGsy-qjWraBp0q59GJvXfZHByhNaO-hB2Z7QrAg8CGTvF-jAjn8WJ7u7i656PNQWHBKWfg75rrK7PcDzfOQ0Isc4o2_FUtTgPxLUKq7R-5Lrq_rCQ3pCgmOwAOkmJUiB2Ba2cOE3ebD_HI4cUwvC_RDbc5njx5yfhSBu4eexrLEoW4fBxHOAQRzUf77aHyWuFqcD4kihQLMNnzZcpnW8NVAAx_qmGMMSA",
       "domain": "localhost",
       "path": "/",
-      "expires": 1760224101.166482,
+      "expires": 1761022500.625091,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Strict"
