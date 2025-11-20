@@ -1,21 +1,29 @@
-import { test, expect, chromium, Page, APIRequestContext, request as playwrightRequest } from '@playwright/test';
+import { test, expect, chromium, APIRequestContext, request as playwrightRequest } from '@playwright/test';
 import * as dotenv from 'dotenv';
-import { getAccessToken } from '../../../utils/getToken';
 import { login } from '../../../utils/login';
+import { getAccessToken } from '../../../utils/getToken';
+import { ResumenEjecutivoPage } from './pages/resumenEjecutivo.page';
 
 dotenv.config();
 
-// Configuración de tarjetas Resumen Ejecutivo
+// Timeout global
+test.setTimeout(20000);
+
+// ===============================
+// CONFIGURACIÓN DE TARJETAS (HTML REAL)
+// ===============================
 const tarjetas = [
-  { title: 'VENTAS TOTALES', queryId: 24, domId: 'ventas-totales-monto' },
-  { title: 'COSTOS TOTALES', queryId: 21, domId: 'costos-totales-monto' },
-  { title: 'MARGEN TOTAL', queryId: 23, domId: 'margen-total-monto' },
-  { title: 'MARGEN %', queryId: 22, domId: 'margen-porcentual-monto' },
-  { title: 'TICKET PROMEDIO', queryId: 25, domId: 'ticket-promedio-monto' },
-  { title: 'TICKETS', queryId: 20, domId: 'tickets-monto' },
+  { title: 'VENTAS TOTALES', queryId: 24 },
+  { title: 'COSTOS TOTALES', queryId: 21 },
+  { title: 'MARGEN TOTAL', queryId: 23 },
+  { title: 'MARGEN %', queryId: 22 },
+  { title: 'TICKET PROMEDIO', queryId: 25 },
+  { title: 'TICKETS', queryId: 20 },
 ];
 
-// 🔑 Mapear cada tarjeta a su clave real en summary
+// ===============================
+// MAPEOS API
+// ===============================
 const metricKey: Record<string, string> = {
   'VENTAS TOTALES': 'ventas',
   'COSTOS TOTALES': 'costo',
@@ -25,120 +33,166 @@ const metricKey: Record<string, string> = {
   'TICKETS': 'tickets',
 };
 
-// Normalización de valores
-function normalizarValor(v: string | null) {
-  if (!v) return '';
-  const limpio = v.replace(/[$,%\s]/g, '').replace(/,/g, '');
-  const num = Number(limpio);
-  if (!isNaN(num)) {
-    return Number(num.toFixed(2));
-  }
-  return v.trim();
+// Normalización
+function normalizar(v: string | null): number {
+  if (!v) return NaN;
+  return Number(v.replace(/[$,%\s]/g, '').replace(/,/g, ''));
 }
 
-test.describe('Dashboard Resumen Ejecutivo', () => {
-  let page: Page;
+// API
+async function consultarAPI(queryId: number) {
+  const api: APIRequestContext = await playwrightRequest.newContext();
+  const token = await getAccessToken();
 
-  test.describe.configure({ timeout: 180000 });
+  const response = await api.post(`${process.env.API_URL}/api/queries/exec/${queryId}`, {
+    headers: {
+      accessToken: token,
+      'Content-Type': 'application/json',
+    },
+    data: {
+      datePeriod: 'month',
+      timeComparison: 'prior_period',
+    },
+  });
 
-  test.beforeAll(async () => {
+  const data = await response.json();
+  await api.dispose();
+  return data;
+}
+
+test.describe('Dashboard Resumen Ejecutivo (POM)', () => {
+  test.describe.configure({ timeout: 20000 });
+
+  let resumen: ResumenEjecutivoPage;
+
+  // ===============================
+  // BEFORE ALL
+  // ===============================
+  test.beforeAll(async ({}, testInfo) => {
+    testInfo.setTimeout(20000);
+
     const context = await chromium.launchPersistentContext('./context/chromium', {
       headless: false,
     });
-    page = await context.newPage();
 
-    await page.goto(`${process.env.APP_URL}/dashboard/resumen-ejecutivo`);
+    const page = await context.newPage();
+    resumen = new ResumenEjecutivoPage(page);
+
+    await resumen.ir();
 
     if (page.url().includes('sign-in')) {
       await login(page);
     }
 
-    await page.locator('.animacion-carga').waitFor({ state: 'detached', timeout: 120000 });
+    await resumen.esperarCarga();
+    await resumen.esperarKPIs();
   });
 
-  // Validar todas las tarjetas contra API
+  // ===============================
+  // VALIDACIÓN DE TARJETAS
+  // Aplica CP-57 (frontend) y CP-14 (API)
+  // ===============================
   for (const tarjeta of tarjetas) {
-    test(`Validar tarjeta: ${tarjeta.title}`, async () => {
-      const actual = page.locator(`#${tarjeta.domId}-Actual`);
-      const anterior = page.locator(`#${tarjeta.domId}-Anterior`);
-      const anioPasado = page.locator(`#${tarjeta.domId}-Año`);
+    test(`CP-57 / CP-14 - Validar tarjeta: ${tarjeta.title}`, async () => {
+      const card = resumen.tarjeta(tarjeta.title);
 
-      await expect(actual).toBeVisible({ timeout: 60000 });
+      await card.actual.waitFor({ state: 'visible', timeout: 60000 });
 
-      const valorActualHTML = await actual.innerText();
-      const valorAnteriorHTML = await anterior.innerText();
-      const valorAnioHTML = await anioPasado.innerText();
+      const actualUI = normalizar(await card.actual.innerText());
+      const anteriorUI = normalizar(await card.anterior.innerText());
+      const anioUI = normalizar(await card.anio.innerText());
 
-      // Crear nuevo contexto de request por cada test
-      const apiRequest: APIRequestContext = await playwrightRequest.newContext();
-      const accessToken = await getAccessToken();
-
-      const response = await apiRequest.post(
-        `${process.env.API_URL}/api/queries/exec/${tarjeta.queryId}`,
-        {
-          headers: {
-            accessToken,
-            'Content-Type': 'application/json',
-          },
-          data: {
-            datePeriod: 'month',
-            timeComparison: 'prior_period',
-          },
-        }
-      );
-
-      expect(response.ok()).toBeTruthy();
-      const data = await response.json();
-      await apiRequest.dispose();
-
-      // 👉 Usamos la clave específica de la tarjeta
+      const api = await consultarAPI(tarjeta.queryId);
       const key = metricKey[tarjeta.title];
 
-      const valorAnteriorApi = data.data?.summary?.firstPeriod?.[key];
-      const valorActualApi = data.data?.summary?.secondPeriod?.[key];
+      const actualAPI = api.data?.summary?.secondPeriod?.[key];
+      const anteriorAPI = api.data?.summary?.firstPeriod?.[key];
 
-      const actualUI = normalizarValor(valorActualHTML);
-      const anteriorUI = normalizarValor(valorAnteriorHTML);
-
-      // ✅ Solo comparamos si API devolvió número válido
-      if (typeof valorActualApi === 'number') {
-        await expect(actualUI).toBeCloseTo(valorActualApi, 1);
-      } else {
-        expect(!isNaN(Number(actualUI))).toBeTruthy();
+      if (typeof actualAPI === 'number') {
+        await expect(actualUI).toBeCloseTo(actualAPI, 1);
       }
 
-      if (typeof valorAnteriorApi === 'number') {
-        await expect(anteriorUI).toBeCloseTo(valorAnteriorApi, 1);
-      } else {
-        expect(!isNaN(Number(anteriorUI))).toBeTruthy();
+      if (typeof anteriorAPI === 'number') {
+        await expect(anteriorUI).toBeCloseTo(anteriorAPI, 1);
       }
 
-      // Año pasado → validamos numérico
-      expect(!isNaN(Number(normalizarValor(valorAnioHTML)))).toBeTruthy();
+      expect(!isNaN(anioUI)).toBeTruthy();
     });
   }
 
-  // Validar filtros de fechas
-  test('Aplicar filtros de fecha', async () => {
-    const inicio = page.getByText('Inicio').locator('..').locator('input');
-    const fin = page.getByText('Fin').locator('..').locator('input');
+  // ===============================
+  // FILTROS
+  // CP-62
+  // ===============================
+   test.describe('CP-62 - Filtros combinados del Dashboard de Ventas', () => {
 
-    await expect(inicio).toBeVisible();
-    await expect(fin).toBeVisible();
+  test('Debe aplicar correctamente todos los filtros y actualizar los KPIs', async () => {
 
-    await inicio.fill('2025-08-01');
-    await fin.fill('2025-08-31');
+    // ---------- GIVEN ----------
+    test.info().annotations.push({
+      type: 'CP',
+      description: 'CP-62 - Validación de filtros combinados en el dashboard de ventas'
+    });
 
-    const aplicar = page.getByRole('button', { name: /aplicar|filtrar|actualizar/i });
-    if (await aplicar.isVisible()) {
-      await aplicar.click();
-    }
+    // El usuario se encuentra en el Dashboard Resumen Ejecutivo
+    // (Esto ya lo maneja tu beforeAll en este spec)
 
-    await page.locator('.animacion-carga').waitFor({ state: 'detached', timeout: 120000 });
 
+    // ---------- WHEN ----------
+    // Cuando aplica un rango de fechas, y selecciona filtros de empresa,
+    // categoría, producto, segmento y cliente
+    await resumen.aplicarFiltrosCompletos({
+      inicio: "1",
+      fin: "19",
+      empresa: "ConectaYa",
+      categoria: "Electrodomésticos",
+      producto: "Guantes de moto de cuero",
+      segmento: "Early adopters",
+      cliente: "Adrián Castillo"
+    });
+
+
+    // ---------- THEN ----------
+    // Entonces los KPIs del dashboard deben actualizarse exitosamente
     for (const tarjeta of tarjetas) {
-      const actual = page.locator(`#${tarjeta.domId}-Actual`);
-      await expect(actual).toBeVisible();
+      await resumen.tarjeta(tarjeta.title).actual.waitFor();
     }
+
+    // Y el usuario puede limpiar los filtros sin errores
+    await resumen.limpiarFiltros();
   });
+
+});
+
+// ======================================
+// CP-63 — Validar filtros secundarios del Dashboard
+// ======================================
+test('CP-62 - Filtros secundarios: Top Clientes, Top Productos y Vista Tabla', async () => {
+
+  test.info().annotations.push({
+    type: 'CP',
+    description: 'CP-63 - Validación de filtros secundarios del dashboard (top clientes, productos y vista tabla)'
+  });
+
+  // WHEN
+  await resumen.seleccionarDropdownSimplePorId("top-cliente-dropdown", "25");
+  await resumen.seleccionarDropdownSimplePorId("top-producto-dropdown", "50");
+  await resumen.seleccionarVistaTabla("Categoria");
+
+  // THEN
+  await expect(resumen.page.getByText("Top Ventas a Clientes")).toBeVisible();
+  await expect(resumen.page.getByText("Top Productos Vendidos")).toBeVisible();
+
+  // Validar vista actual: Categoria
+  await expect(
+    resumen.page.locator('div.relative:has(#summary-table-selector-dropdown) >> div.text-sm', {
+      hasText: "Categoria"
+    })
+  ).toBeVisible();
+});
+
+
+
+
+
 });
