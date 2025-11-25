@@ -1,6 +1,6 @@
 import { test, expect, chromium, APIRequestContext, request as playwrightRequest } from '@playwright/test';
 import * as dotenv from 'dotenv';
-import { login } from '../../../utils/login';
+import { LoginPage } from '../Seguridad/Login/pages/login.page';
 import { getAccessToken } from '../../../utils/getToken';
 import { ResumenEjecutivoPage } from './pages/resumenEjecutivo.page';
 
@@ -77,24 +77,36 @@ test.describe('Dashboard Resumen Ejecutivo (POM)', () => {
    * CP-57
    */
   test.beforeAll(async ({}, testInfo) => {
-    testInfo.setTimeout(20000);
+    testInfo.setTimeout(60000);
 
-    const context = await chromium.launchPersistentContext('./context/chromium', {
-      headless: false,
-    });
+    const browser = await chromium.launch({ headless: false });
+    const page = await browser.newPage();
 
-    const page = await context.newPage();
+    const loginPage = new LoginPage(page);
     resumen = new ResumenEjecutivoPage(page);
 
+    // 1. Ir al login primero (NO al dashboard)
+    await loginPage.goto();
+
+    // 2. Login correcto
+    await loginPage.login(
+      "tesinaqa@datalysisgroup.com",
+      "Tesina#2025"
+    );
+
+    // 3. Esperar navegación real
+    await page.waitForURL(/(dashboard|resumen-ejecutivo|inicio)/, {
+      timeout: 15000
+    });
+
+    // 4. Ahora sí ir al dashboard
     await resumen.ir();
 
-    if (page.url().includes('sign-in')) {
-      await login(page);
-    }
-
+    // 5. Esperar UI del dashboard
     await resumen.esperarCarga();
     await resumen.esperarKPIs();
   });
+
 
   /**
    * CP-57 (validación visual en UI)

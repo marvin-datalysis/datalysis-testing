@@ -1,0 +1,1851 @@
+{
+  "config": {
+    "configFile": "C:\\xampp\\htdocs\\datalysis-testing\\playwright.config.ts",
+    "rootDir": "C:/xampp/htdocs/datalysis-testing/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reporte-playwright.json"
+        }
+      ],
+      [
+        "C:\\xampp\\htdocs\\datalysis-testing\\node_modules\\allure-playwright\\dist\\cjs\\index.js",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/xampp/htdocs/datalysis-testing/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/xampp/htdocs/datalysis-testing/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "api\\seguridad\\seguridad.spec.ts",
+      "file": "api/seguridad/seguridad.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SEGURIDAD - API Funcional (CP-01 al CP-13)",
+          "file": "api/seguridad/seguridad.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-01 - Login correcto debe devolver token",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 816,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:37.723Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-72a03de2d896da91b28a",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 26,
+              "column": 9
+            },
+            {
+              "title": "CP-02 - Login incorrecto debe ser rechazado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 138,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:38.663Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-a19f7fffa2cd7bc4c017",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 50,
+              "column": 9
+            },
+            {
+              "title": "CP-03 - Password inválido debe fallar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 131,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:38.818Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-33d427698984e637dd05",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 84,
+              "column": 9
+            },
+            {
+              "title": "CP-04 - Token expirado debe rechazar acceso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:38.969Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-31f5007e1e9d58887f5c",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 112,
+              "column": 7
+            },
+            {
+              "title": "CP-05 - Crear usuario válido",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 693,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:39.001Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-e97559321623803e98dc",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 121,
+              "column": 9
+            },
+            {
+              "title": "CP-06 - Crear usuario incompleto debe fallar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 116,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:39.714Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-4bef6f9720509b79ff4b",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 146,
+              "column": 7
+            },
+            {
+              "title": "CP-07 - Email duplicado debe ser rechazado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 125,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:39.846Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-445bfdb180e464a63f3f",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 161,
+              "column": 7
+            },
+            {
+              "title": "CP-08 - Contraseña débil debe ser permitida (según comportamiento real)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 598,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:39.984Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-2f52a858723943a9d4df",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 178,
+              "column": 9
+            },
+            {
+              "title": "CP-09 - Inactivar usuario debe ser exitoso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 114,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:40.598Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-9f606701ba6ec501bc98",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 201,
+              "column": 9
+            },
+            {
+              "title": "CP-10 - Crear rol válido",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 172,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:40.725Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-0fc71826fa13ba1314ec",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 213,
+              "column": 7
+            },
+            {
+              "title": "CP-11 - Crear rol sin nombre debe fallar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 107,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:40.908Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-3f85f56c2efd410a947d",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 223,
+              "column": 7
+            },
+            {
+              "title": "CP-12 - Eliminar rol existente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 259,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:41.025Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-bb0fd717293ebbedc51d",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 232,
+              "column": 7
+            },
+            {
+              "title": "CP-13 - API de métricas debe devolver datos válidos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 947,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:41.298Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-4af0362504ef54225d6a",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 245,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\inicio\\inicio.spec.ts",
+      "file": "front-end/inicio/inicio.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "tarjetas de inicio",
+          "file": "front-end/inicio/inicio.spec.ts",
+          "line": 11,
+          "column": 6,
+          "specs": [
+            {
+              "title": "",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 75000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 49357,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: week, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: week, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: week, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: month, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: month, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: month, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: quarter, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: quarter, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: quarter, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: year, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: year, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: year, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: week, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: week, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: week, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: month, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: month, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: month, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: quarter, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: quarter, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: quarter, timeComparison: prior_period\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:58:42.300Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5033338a7789e02dd8f4-5dbebd8dba5d2d66efca",
+              "file": "front-end/inicio/inicio.spec.ts",
+              "line": 12,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\reporte-ventas\\reporte-ventas.spec.ts",
+      "file": "front-end/reporte-ventas/reporte-ventas.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reporte de ventas",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 765,
+                  "error": {
+                    "message": "Error: browserType.launchPersistentContext: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> C:\\Users\\ravem\\AppData\\Local\\ms-playwright\\chromium-1194\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --no-sandbox --user-data-dir=C:\\xampp\\htdocs\\datalysis-testing\\context\\chromium --remote-debugging-pipe about:blank\n<launched> pid=30020\nCall log:\n\u001b[2m  - <launching> C:\\Users\\ravem\\AppData\\Local\\ms-playwright\\chromium-1194\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --no-sandbox --user-data-dir=C:\\xampp\\htdocs\\datalysis-testing\\context\\chromium --remote-debugging-pipe about:blank\u001b[22m\n\u001b[2m  - <launched> pid=30020\u001b[22m\n\u001b[2m  - [pid=30020] <gracefully close start>\u001b[22m\n\u001b[2m  - [pid=30020] <kill>\u001b[22m\n\u001b[2m  - [pid=30020] <will force kill>\u001b[22m\n\u001b[2m  - [pid=30020] taskkill stderr: ERROR: no se encontr� el proceso \"30020\".\u001b[22m\n\u001b[2m  - [pid=30020] <process did exit: exitCode=21, signal=null>\u001b[22m\n\u001b[2m  - [pid=30020] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=30020] finished temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=30020] <gracefully close end>\u001b[22m\n",
+                    "stack": "Error: browserType.launchPersistentContext: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> C:\\Users\\ravem\\AppData\\Local\\ms-playwright\\chromium-1194\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --no-sandbox --user-data-dir=C:\\xampp\\htdocs\\datalysis-testing\\context\\chromium --remote-debugging-pipe about:blank\n<launched> pid=30020\nCall log:\n\u001b[2m  - <launching> C:\\Users\\ravem\\AppData\\Local\\ms-playwright\\chromium-1194\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --no-sandbox --user-data-dir=C:\\xampp\\htdocs\\datalysis-testing\\context\\chromium --remote-debugging-pipe about:blank\u001b[22m\n\u001b[2m  - <launched> pid=30020\u001b[22m\n\u001b[2m  - [pid=30020] <gracefully close start>\u001b[22m\n\u001b[2m  - [pid=30020] <kill>\u001b[22m\n\u001b[2m  - [pid=30020] <will force kill>\u001b[22m\n\u001b[2m  - [pid=30020] taskkill stderr: ERROR: no se encontr� el proceso \"30020\".\u001b[22m\n\u001b[2m  - [pid=30020] <process did exit: exitCode=21, signal=null>\u001b[22m\n\u001b[2m  - [pid=30020] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=30020] finished temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=30020] <gracefully close end>\u001b[22m\n\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\reporte-ventas\\reporte-ventas.spec.ts:7:21",
+                    "location": {
+                      "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\reporte-ventas\\reporte-ventas.spec.ts",
+                      "column": 21,
+                      "line": 7
+                    },
+                    "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m test(\u001b[32m'reporte de ventas'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m  6 |\u001b[39m     \u001b[36mconst\u001b[39m userDataDir \u001b[33m=\u001b[39m \u001b[32m'./context/chromium'\u001b[39m\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mconst\u001b[39m context \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m chromium\u001b[33m.\u001b[39mlaunchPersistentContext(userDataDir\u001b[33m,\u001b[39m {\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m         headless\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m  9 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 10 |\u001b[39m     \u001b[36mconst\u001b[39m page \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m context\u001b[33m.\u001b[39mnewPage()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\reporte-ventas\\reporte-ventas.spec.ts",
+                        "column": 21,
+                        "line": 7
+                      },
+                      "message": "Error: browserType.launchPersistentContext: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> C:\\Users\\ravem\\AppData\\Local\\ms-playwright\\chromium-1194\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --no-sandbox --user-data-dir=C:\\xampp\\htdocs\\datalysis-testing\\context\\chromium --remote-debugging-pipe about:blank\n<launched> pid=30020\nCall log:\n\u001b[2m  - <launching> C:\\Users\\ravem\\AppData\\Local\\ms-playwright\\chromium-1194\\chrome-win\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --no-sandbox --user-data-dir=C:\\xampp\\htdocs\\datalysis-testing\\context\\chromium --remote-debugging-pipe about:blank\u001b[22m\n\u001b[2m  - <launched> pid=30020\u001b[22m\n\u001b[2m  - [pid=30020] <gracefully close start>\u001b[22m\n\u001b[2m  - [pid=30020] <kill>\u001b[22m\n\u001b[2m  - [pid=30020] <will force kill>\u001b[22m\n\u001b[2m  - [pid=30020] taskkill stderr: ERROR: no se encontr� el proceso \"30020\".\u001b[22m\n\u001b[2m  - [pid=30020] <process did exit: exitCode=21, signal=null>\u001b[22m\n\u001b[2m  - [pid=30020] starting temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=30020] finished temporary directories cleanup\u001b[22m\n\u001b[2m  - [pid=30020] <gracefully close end>\u001b[22m\n\n\n\u001b[0m \u001b[90m  5 |\u001b[39m test(\u001b[32m'reporte de ventas'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m  6 |\u001b[39m     \u001b[36mconst\u001b[39m userDataDir \u001b[33m=\u001b[39m \u001b[32m'./context/chromium'\u001b[39m\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mconst\u001b[39m context \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m chromium\u001b[33m.\u001b[39mlaunchPersistentContext(userDataDir\u001b[33m,\u001b[39m {\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m         headless\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m  9 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 10 |\u001b[39m     \u001b[36mconst\u001b[39m page \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m context\u001b[33m.\u001b[39mnewPage()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\reporte-ventas\\reporte-ventas.spec.ts:7:21\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-11-25T01:59:31.695Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-reporte-ventas-reporte-ventas-reporte-de-ventas-chromium\\test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-reporte-ventas-reporte-ventas-reporte-de-ventas-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-reporte-ventas-reporte-ventas-reporte-de-ventas-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\reporte-ventas\\reporte-ventas.spec.ts",
+                    "column": 21,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c4f16f35b06e8d6d1533-7ca13e25a70af9329896",
+          "file": "front-end/reporte-ventas/reporte-ventas.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "front-end\\resumen-ejecutivo\\resumen-ejecutivo.spec.ts",
+      "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Dashboard Resumen Ejecutivo (POM)",
+          "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+          "line": 66,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: VENTAS TOTALES",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1364,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:59:34.778Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-192cf36ba9f49db35a30",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 117,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: COSTOS TOTALES",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1340,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:59:58.212Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-3eacf64353a002f6af5f",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 117,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: MARGEN TOTAL",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1405,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T01:59:59.582Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-87e99fff1397235aa909",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 117,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: MARGEN %",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2298,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:01.015Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-8a8abd20e34dda188bdc",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 117,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: TICKET PROMEDIO",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2637,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:03.345Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-5fe3f728250381dc988e",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 117,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: TICKETS",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1416,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:06.083Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-b89b3e2c1bb31701bf0c",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 117,
+              "column": 9
+            },
+            {
+              "title": "CP-63 - Filtros secundarios: Top Clientes, Top Productos y Vista Tabla",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "CP",
+                      "description": "CP-63 - Validación de filtros secundarios del dashboard"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1195,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:18.453Z",
+                      "annotations": [
+                        {
+                          "type": "CP",
+                          "description": "CP-63 - Validación de filtros secundarios del dashboard"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-d443507a239261889bfd",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 188,
+              "column": 7
+            },
+            {
+              "title": "Fecha fin menor que inicio no debe generar errores en UI",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1439,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:21.299Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-9eedb74ad5aaf511c1b4",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 246,
+              "column": 6
+            },
+            {
+              "title": "Esquema de API del gráfico es válido",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 40000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 697,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:22.760Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-e3c14e89fe3a01afb1a0",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 270,
+              "column": 7
+            }
+          ],
+          "suites": [
+            {
+              "title": "CP-62 - Filtros combinados del Dashboard de Ventas",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 154,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Debe aplicar correctamente todos los filtros y actualizar los KPIs",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 20000,
+                      "annotations": [
+                        {
+                          "type": "CP",
+                          "description": "CP-62 - Validación de filtros combinados en el dashboard de ventas"
+                        }
+                      ],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 10878,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-25T02:00:07.541Z",
+                          "annotations": [
+                            {
+                              "type": "CP",
+                              "description": "CP-62 - Validación de filtros combinados en el dashboard de ventas"
+                            }
+                          ],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-aec40ff535eb921ae31f",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 156,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Filtros de periodo",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 218,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Filtro Día",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 20000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 328,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-25T02:00:19.723Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-2dceeac1012ac4c0f5b7",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 220,
+                  "column": 9
+                },
+                {
+                  "title": "Filtro Semana",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 20000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 282,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-25T02:00:20.074Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-88a29e2e1f1e513e08dc",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 224,
+                  "column": 9
+                },
+                {
+                  "title": "Filtro Mes",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 20000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 259,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-25T02:00:20.380Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-0b12f1ff516fc4ce1491",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 228,
+                  "column": 9
+                },
+                {
+                  "title": "Filtro Trimestre",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 20000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 287,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-25T02:00:20.658Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-807617e3d606b26f7dbc",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 232,
+                  "column": 9
+                },
+                {
+                  "title": "Filtro Año",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 20000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 1,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 303,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-25T02:00:20.967Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-7819cf6033b5c67b9100",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 236,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\Seguridad\\Login\\seguridad-login.spec.ts",
+      "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Pruebas de Login (CP-44 y CP-45)",
+          "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-44 - El usuario debe ingresar exitosamente al sistema",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10746,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:23.500Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "34de9c37e369b45bd5da-3bb2ae4f99c8a7a3b89f",
+              "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+              "line": 9,
+              "column": 7
+            },
+            {
+              "title": "CP-45 - Login incorrecto debe mostrar mensaje de error",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4725,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:34.277Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "34de9c37e369b45bd5da-70b477c7e2449be61871",
+              "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+              "line": 36,
+              "column": 7
+            },
+            {
+              "title": "CP-46 - Bloqueo tras múltiples intentos fallidos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 20436,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:39.026Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "34de9c37e369b45bd5da-47e3cfd000dd0aaeb363",
+              "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+              "line": 63,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\Seguridad\\Roles\\roles.spec.ts",
+      "file": "front-end/Seguridad/Roles/roles.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SEGURIDAD - CRUD Roles",
+          "file": "front-end/Seguridad/Roles/roles.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-53 - Crear rol correctamente",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30205,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:00:59.509Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--2ee25-3---Crear-rol-correctamente-chromium\\test-failed-2.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--2ee25-3---Crear-rol-correctamente-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--2ee25-3---Crear-rol-correctamente-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--2ee25-3---Crear-rol-correctamente-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d960874b23110db711e2-1f7bd9a7d0713c76473f",
+              "file": "front-end/Seguridad/Roles/roles.spec.ts",
+              "line": 7,
+              "column": 9
+            },
+            {
+              "title": "CP-54 - Validación de campos requeridos al crear rol",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 22624,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:01:36.898Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d960874b23110db711e2-42d0487c0620efdb206b",
+              "file": "front-end/Seguridad/Roles/roles.spec.ts",
+              "line": 30,
+              "column": 9
+            },
+            {
+              "title": "CP-55 - Eliminar rol correctamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "Backend no permite eliminar este rol (500).",
+                      "location": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                        "line": 116,
+                        "column": 18
+                      }
+                    }
+                  ],
+                  "expectedStatus": "failed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 13609,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/eliminado|éxito|correctamente/\u001b[39m\nReceived string:  \u001b[31m\"error interno del servidor\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/eliminado|éxito|correctamente/\u001b[39m\nReceived string:  \u001b[31m\"error interno del servidor\"\u001b[39m\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts:119:27",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                          "column": 27,
+                          "line": 119
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 117 |\u001b[39m         }\n \u001b[90m 118 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 119 |\u001b[39m         expect(textToast)\u001b[33m.\u001b[39mtoMatch(\u001b[35m/eliminado|éxito|correctamente/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 120 |\u001b[39m\n \u001b[90m 121 |\u001b[39m         \u001b[90m// 7. Validar que ya no aparece en tabla\u001b[39m\n \u001b[90m 122 |\u001b[39m         \u001b[36mawait\u001b[39m roles\u001b[33m.\u001b[39mvalidarRolEliminado(nombreRol)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                            "column": 27,
+                            "line": 119
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/eliminado|éxito|correctamente/\u001b[39m\nReceived string:  \u001b[31m\"error interno del servidor\"\u001b[39m\n\n\u001b[0m \u001b[90m 117 |\u001b[39m         }\n \u001b[90m 118 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 119 |\u001b[39m         expect(textToast)\u001b[33m.\u001b[39mtoMatch(\u001b[35m/eliminado|éxito|correctamente/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 120 |\u001b[39m\n \u001b[90m 121 |\u001b[39m         \u001b[90m// 7. Validar que ya no aparece en tabla\u001b[39m\n \u001b[90m 122 |\u001b[39m         \u001b[36mawait\u001b[39m roles\u001b[33m.\u001b[39mvalidarRolEliminado(nombreRol)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts:119:27\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:01:59.551Z",
+                      "annotations": [
+                        {
+                          "type": "fail",
+                          "description": "Backend no permite eliminar este rol (500).",
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                            "line": 116,
+                            "column": 18
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--61224--Eliminar-rol-correctamente-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                        "column": 27,
+                        "line": 119
+                      }
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d960874b23110db711e2-6efa061c8d55a6e140d7",
+              "file": "front-end/Seguridad/Roles/roles.spec.ts",
+              "line": 68,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\Seguridad\\Usuario\\usuarios.spec.ts",
+      "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SEGURIDAD - CRUD Usuarios",
+          "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-48 - Crear usuario exitosamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 28887,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:02:13.295Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-9bc6f362ab35e2c36ce1",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "CP-49 - Campos obligatorios faltantes deben mostrar error y no guardar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 22259,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:02:42.215Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-7efabdb3058d08254b69",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 57,
+              "column": 7
+            },
+            {
+              "title": "CP-50 - Crear usuario con email ya registrado debe mostrar error y no guardar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 23126,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:03:04.506Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-c1bde4c88fe3f623bfc0",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 123,
+              "column": 9
+            },
+            {
+              "title": "CP-51 - Validación de contraseña debe mostrarse y no permitir guardar",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8148,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).not.\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: not \u001b[32m/sign-in/\u001b[39m\nReceived string: \u001b[31m\"http://localhost:3000/es/auth/\u001b[7msign-in\u001b[27m\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:3000/es/auth/sign-in\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).not.\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: not \u001b[32m/sign-in/\u001b[39m\nReceived string: \u001b[31m\"http://localhost:3000/es/auth/\u001b[7msign-in\u001b[27m\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:3000/es/auth/sign-in\"\u001b[22m\n\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Usuario\\usuarios.spec.ts:221:32",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Usuario\\usuarios.spec.ts",
+                          "column": 32,
+                          "line": 221
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 219 |\u001b[39m         \u001b[36mawait\u001b[39m login\u001b[33m.\u001b[39mgoto()\u001b[33m;\u001b[39m\n \u001b[90m 220 |\u001b[39m         \u001b[36mawait\u001b[39m login\u001b[33m.\u001b[39mlogin(\u001b[32m\"tesinaqa@datalysisgroup.com\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"Tesina#2025\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 221 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/sign-in/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 222 |\u001b[39m\n \u001b[90m 223 |\u001b[39m         \u001b[90m// 2. Ir a Usuarios\u001b[39m\n \u001b[90m 224 |\u001b[39m         \u001b[36mawait\u001b[39m users\u001b[33m.\u001b[39mirAUsuarios()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Usuario\\usuarios.spec.ts",
+                            "column": 32,
+                            "line": 221
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).not.\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: not \u001b[32m/sign-in/\u001b[39m\nReceived string: \u001b[31m\"http://localhost:3000/es/auth/\u001b[7msign-in\u001b[27m\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:3000/es/auth/sign-in\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 219 |\u001b[39m         \u001b[36mawait\u001b[39m login\u001b[33m.\u001b[39mgoto()\u001b[33m;\u001b[39m\n \u001b[90m 220 |\u001b[39m         \u001b[36mawait\u001b[39m login\u001b[33m.\u001b[39mlogin(\u001b[32m\"tesinaqa@datalysisgroup.com\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"Tesina#2025\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 221 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/sign-in/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 222 |\u001b[39m\n \u001b[90m 223 |\u001b[39m         \u001b[90m// 2. Ir a Usuarios\u001b[39m\n \u001b[90m 224 |\u001b[39m         \u001b[36mawait\u001b[39m users\u001b[33m.\u001b[39mirAUsuarios()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Usuario\\usuarios.spec.ts:221:32\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:03:27.663Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Usuari-9f968-rarse-y-no-permitir-guardar-chromium\\test-failed-3.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Usuari-9f968-rarse-y-no-permitir-guardar-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Usuari-9f968-rarse-y-no-permitir-guardar-chromium\\test-failed-2.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Usuari-9f968-rarse-y-no-permitir-guardar-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Usuari-9f968-rarse-y-no-permitir-guardar-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Usuario\\usuarios.spec.ts",
+                        "column": 32,
+                        "line": 221
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-34b772de486f8d7bc7fa",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 211,
+              "column": 9
+            },
+            {
+              "title": "CP-52 - Inactivar/eliminar usuario correctamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 15079,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-25T02:03:40.434Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-aca97d5c1f77c6e34e9d",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 274,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-25T01:58:36.426Z",
+    "duration": 319168.956,
+    "expected": 38,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}
