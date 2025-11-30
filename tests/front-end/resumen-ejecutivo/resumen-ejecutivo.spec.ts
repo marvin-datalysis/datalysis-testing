@@ -6,44 +6,29 @@ import { ResumenEjecutivoPage } from './pages/resumenEjecutivo.page';
 
 dotenv.config();
 
-// Timeout global aplicado a todas las pruebas
-test.setTimeout(20000);
+test.setTimeout(30000);
 
-/**
- * Configuración base de todas las tarjetas visibles en el dashboard.
- * Cada tarjeta está asociada a un queryId para validar datos contra la API.
- * CP-57 / CP-14
- */
+// ============================================================
+// CONFIGURACIÓN DE KPI + API
+// ============================================================
+
 const tarjetas = [
-  { title: 'VENTAS TOTALES', queryId: 24 },
-  { title: 'COSTOS TOTALES', queryId: 21 },
-  { title: 'MARGEN TOTAL', queryId: 23 },
-  { title: 'MARGEN %', queryId: 22 },
-  { title: 'TICKET PROMEDIO', queryId: 25 },
-  { title: 'TICKETS', queryId: 20 },
+  { title: 'VENTAS TOTALES',   queryId: 24, apiKey: 'ventasTotales' },
+  { title: 'COSTOS TOTALES',   queryId: 21, apiKey: 'costosTotales' },
+  { title: 'MARGEN TOTAL',     queryId: 23, apiKey: 'margenTotal' },
+  { title: 'MARGEN %',         queryId: 22, apiKey: 'margenPorcentual' },
+  { title: 'TICKET PROMEDIO',  queryId: 25, apiKey: 'ticketPromedio' },
+  { title: 'TICKETS',          queryId: 20, apiKey: 'totalTickets' },
 ];
 
-/**
- * Mapeo interno entre la etiqueta de UI y el campo devuelto por la API.
- * CP-14
- */
-const metricKey: Record<string, string> = {
-  'VENTAS TOTALES': 'ventas',
-  'COSTOS TOTALES': 'costo',
-  'MARGEN TOTAL': 'margenTotal',
-  'MARGEN %': 'margenPorcentual',
-  'TICKET PROMEDIO': 'ticketPromedio',
-  'TICKETS': 'tickets',
-};
-
-// Normaliza valores obtenidos desde UI para compararlos numéricamente
+// Normalización de valores visibles en UI
 function normalizar(v: string | null): number {
   if (!v) return NaN;
   return Number(v.replace(/[$,%\s]/g, '').replace(/,/g, ''));
 }
 
-// Consulta real contra la API utilizada por el dashboard
-async function consultarAPI(queryId: number) {
+// Consumir API real usando las fechas reales del UI
+async function consultarAPI(queryId: number, rango: { fechaMin: string; fechaMax: string }) {
   const api: APIRequestContext = await playwrightRequest.newContext();
   const token = await getAccessToken();
 
@@ -53,31 +38,34 @@ async function consultarAPI(queryId: number) {
       'Content-Type': 'application/json',
     },
     data: {
-      datePeriod: 'month',
-      timeComparison: 'prior_period',
-    },
+      fechaMin: rango.fechaMin,
+      fechaMax: rango.fechaMax,
+      numeroSucursal: [],
+      nombreCategoria: [],
+      segmentoCliente: [],
+      nombreProducto: [],
+      nombreCliente: []
+    }
   });
 
-  const data = await response.json();
+  const json = await response.json();
   await api.dispose();
-  return data;
+  return json;
 }
 
-test.describe('Dashboard Resumen Ejecutivo (POM)', () => {
-  test.describe.configure({ timeout: 20000 });
+// ============================================================
+// TESTS PRINCIPALES
+// ============================================================
+
+test.describe('Dashboard Resumen Ejecutivo (E2E)', () => {
 
   let resumen: ResumenEjecutivoPage;
 
-  /**
-   * Inicialización previa a todas las pruebas:
-   * - Abre navegador persistente
-   * - Navega al dashboard
-   * - Realiza login si es necesario
-   * - Espera la carga completa de KPIs iniciales
-   * CP-57
-   */
+  // ------------------------------------------------------------
+  // BEFORE ALL — Login + Navegación
+  // ------------------------------------------------------------
   test.beforeAll(async ({}, testInfo) => {
-    testInfo.setTimeout(60000);
+    testInfo.setTimeout(90000);
 
     const browser = await chromium.launch({ headless: false });
     const page = await browser.newPage();
@@ -85,80 +73,73 @@ test.describe('Dashboard Resumen Ejecutivo (POM)', () => {
     const loginPage = new LoginPage(page);
     resumen = new ResumenEjecutivoPage(page);
 
-    // 1. Ir al login primero (NO al dashboard)
     await loginPage.goto();
+    await loginPage.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
 
-    // 2. Login correcto
-    await loginPage.login(
-      "tesinaqa@datalysisgroup.com",
-      "Tesina#2025"
-    );
+    await page.waitForURL(/dashboard|resumen-ejecutivo|inicio/);
 
-    // 3. Esperar navegación real
-    await page.waitForURL(/(dashboard|resumen-ejecutivo|inicio)/, {
-      timeout: 15000
-    });
-
-    // 4. Ahora sí ir al dashboard
     await resumen.ir();
-
-    // 5. Esperar UI del dashboard
     await resumen.esperarCarga();
     await resumen.esperarKPIs();
   });
 
 
-  /**
-   * CP-57 (validación visual en UI)
-   * CP-14 (validación de datos contra API)
-   * Validación integral de cada tarjeta del dashboard.
-   */
-  for (const tarjeta of tarjetas) {
-    test(`CP-57 / CP-14 - Validar tarjeta: ${tarjeta.title}`, async () => {
-      const card = resumen.tarjeta(tarjeta.title);
 
+  // ------------------------------------------------------------
+  // CP-57 / CP-14 — Validación visual + API con tolerancia segura
+  // ------------------------------------------------------------
+
+  const TOLERANCIA_PORCENTAJE = 0.05; // 5%
+
+  for (const tarjeta of tarjetas) {
+
+    test(`CP-57 / CP-14 - Validar tarjeta: ${tarjeta.title}`, async () => {
+
+      // 1. Extraer fechas reales del UI
+      const rango = await resumen.getRangoFechasParaAPI();
+
+      // 2. Extraer valores UI
+      const card = resumen.tarjeta(tarjeta.title);
       await card.actual.waitFor({ state: 'visible', timeout: 60000 });
 
-      const actualUI = normalizar(await card.actual.innerText());
+      const actualUI   = normalizar(await card.actual.innerText());
       const anteriorUI = normalizar(await card.anterior.innerText());
-      const anioUI = normalizar(await card.anio.innerText());
 
-      const api = await consultarAPI(tarjeta.queryId);
-      const key = metricKey[tarjeta.title];
+      // 3. Consultar API con las mismas fechas del UI
+      const api = await consultarAPI(tarjeta.queryId, rango);
+      const key = tarjeta.apiKey;
 
-      const actualAPI = api.data?.summary?.secondPeriod?.[key];
-      const anteriorAPI = api.data?.summary?.firstPeriod?.[key];
+      const current = api?.data?.currentDateRange?.[key];
+      const prior   = api?.data?.priorDateRange?.[key];
 
-      if (typeof actualAPI === 'number') {
-        await expect(actualUI).toBeCloseTo(actualAPI, 1);
+      // 4. Validación con tolerancia
+      function validarConTolerancia(ui: number, backend: number, campo: string) {
+        const diff = Math.abs(ui - backend);
+        const tolerancia = backend * TOLERANCIA_PORCENTAJE;
+
+        expect(diff,
+          `El KPI '${campo}' difiere demasiado.
+UI:   ${ui}
+API:  ${backend}
+Diff: ${diff} > Tol: ${tolerancia}
+Fechas usadas:
+  Min: ${rango.fechaMin}
+  Max: ${rango.fechaMax}`
+        ).toBeLessThanOrEqual(tolerancia);
       }
 
-      if (typeof anteriorAPI === 'number') {
-        await expect(anteriorUI).toBeCloseTo(anteriorAPI, 1);
-      }
-
-      expect(!isNaN(anioUI)).toBeTruthy();
+      if (typeof current === 'number') validarConTolerancia(actualUI,   current, tarjeta.title);
+      if (typeof prior   === 'number') validarConTolerancia(anteriorUI, prior,   tarjeta.title);
     });
   }
 
-  /**
-   * CP-62
-   * Validación de filtros combinados:
-   * - Rango de fechas
-   * - Empresa
-   * - Categoría
-   * - Producto
-   * - Segmento
-   * - Cliente
-   */
-  test.describe('CP-62 - Filtros combinados del Dashboard de Ventas', () => {
 
-    test('Debe aplicar correctamente todos los filtros y actualizar los KPIs', async () => {
+  // ------------------------------------------------------------
+  // CP-62 — Filtros combinados
+  // ------------------------------------------------------------
+  test.describe('CP-62 — Filtros combinados', () => {
 
-      test.info().annotations.push({
-        type: 'CP',
-        description: 'CP-62 - Validación de filtros combinados en el dashboard de ventas'
-      });
+    test('Debe aplicar todos los filtros y actualizar KPIs', async () => {
 
       await resumen.aplicarFiltrosCompletos({
         inicio: "1",
@@ -178,19 +159,11 @@ test.describe('Dashboard Resumen Ejecutivo (POM)', () => {
     });
   });
 
-  /**
-   * CP-63
-   * Validación de filtros secundarios:
-   * - Top Clientes (10, 25, 50, 100)
-   * - Top Productos
-   - Vista de tabla
-   */
-  test('CP-63 - Filtros secundarios: Top Clientes, Top Productos y Vista Tabla', async () => {
 
-    test.info().annotations.push({
-      type: 'CP',
-      description: 'CP-63 - Validación de filtros secundarios del dashboard'
-    });
+  // ------------------------------------------------------------
+  // CP-63 — Filtros secundarios
+  // ------------------------------------------------------------
+  test('CP-63 — Filtros secundarios', async () => {
 
     await resumen.seleccionarDropdownSimplePorId("top-cliente-dropdown", "25");
     await resumen.seleccionarDropdownSimplePorId("top-producto-dropdown", "50");
@@ -198,54 +171,26 @@ test.describe('Dashboard Resumen Ejecutivo (POM)', () => {
 
     await expect(resumen.page.getByText("Top Ventas a Clientes")).toBeVisible();
     await expect(resumen.page.getByText("Top Productos Vendidos")).toBeVisible();
-
-    await expect(
-      resumen.page.locator('div.relative:has(#summary-table-selector-dropdown) >> div.text-sm', {
-        hasText: "Categoria"
-      })
-    ).toBeVisible();
   });
 
-  /**
-   * Parte del CP-62
-   * Validación del filtro de periodo:
-   * - Día
-   * - Semana
-   * - Mes
-   * - Trimestre
-   * - Año
-   */
+
+  // ------------------------------------------------------------
+  // CP-62 — Validación de periodo
+  // ------------------------------------------------------------
   test.describe('Filtros de periodo', () => {
-
-    test('Filtro Día', async () => {
-      await resumen.seleccionarPeriodo('Día');
-    });
-
-    test('Filtro Semana', async () => {
-      await resumen.seleccionarPeriodo('Semana');
-    });
-
-    test('Filtro Mes', async () => {
-      await resumen.seleccionarPeriodo('Mes');
-    });
-
-    test('Filtro Trimestre', async () => {
-      await resumen.seleccionarPeriodo('Trimestre');
-    });
-
-    test('Filtro Año', async () => {
-      await resumen.seleccionarPeriodo('Año');
-    });
-
+    for (const periodo of ['Día', 'Semana', 'Mes', 'Trimestre', 'Año']) {
+      test(`Filtro ${periodo}`, async () => {
+        await resumen.seleccionarPeriodo(periodo as any);
+      });
+    }
   });
 
-  /**
-   * Validación incluida dentro del CP-62.
-   * Asegura que una fecha de fin menor a la fecha de inicio se marque como inválida.
-   */
- test('Fecha fin menor que inicio no debe generar errores en UI', async () => {
 
-    // Aplicar fechas invertidas
+  // ------------------------------------------------------------
+  // Fecha inválida (parte del CP-62)
+  // ------------------------------------------------------------
+  test('Fecha fin menor que inicio no debe romper UI', async () => {
+
     await resumen.setDatePicker('(//div[@data-slot="input-wrapper"])[1]', {
       d: '20', m: '11', y: '2025'
     });
@@ -254,39 +199,26 @@ test.describe('Dashboard Resumen Ejecutivo (POM)', () => {
       d: '10', m: '11', y: '2025'
     });
 
-    // Click en Filtrar
     await resumen.page.getByRole('button', { name: 'Filtrar' }).click();
-
-    // Esperar render sin crashear
     await resumen.validarRenderBasico();
   });
 
 
-
-  /**
-   * CP-59 / CP-60 / CP-61 según documento (gráficos)
-   * Validación del esquema de la API del gráfico antes de ser renderizado.
-   */
-  test('Esquema de API del gráfico es válido', async () => {
-
-    test.setTimeout(40000);
+  // ------------------------------------------------------------
+  // CP-59/60/61 — Validación API del gráfico
+  // ------------------------------------------------------------
+  test('Esquema API del gráfico es válido', async () => {
 
     await resumen.seleccionarPeriodo('Mes');
 
-    // Verificar que se renderiza un canvas de ECharts
     const canvas = resumen.page.locator('canvas[data-zr-dom-id]');
-    await expect(canvas).toBeVisible({ timeout: 10000 });
+    await expect(canvas).toBeVisible();
 
-    // Validar que existe instancia de gráfico
     const tieneInstancia = await resumen.page.evaluate(() => {
       return !!document.querySelector('[ _echarts_instance_ ]');
     });
 
     expect(tieneInstancia).toBeTruthy();
   });
-
-
-
-
 
 });

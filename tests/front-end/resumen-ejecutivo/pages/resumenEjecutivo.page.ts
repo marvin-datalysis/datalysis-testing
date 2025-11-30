@@ -1,12 +1,8 @@
 import { Page } from '@playwright/test';
 
 /**
- * Page Object Model para el Dashboard “Resumen Ejecutivo”.
- * Incluye únicamente los métodos requeridos por los CP documentados oficialmente:
- *  - CP-57 / CP-14: tarjetas KPI y validación contra API
- *  - CP-62: filtros combinados, rango de fechas y filtros por periodo
- *  - CP-63: filtros secundarios (Top Clientes, Top Productos, Vista de Tabla)
- *  - CP-59 / CP-60 / CP-61: validación de estructura de gráficos
+ * Page Object Model para el Dashboard Resumen Ejecutivo.
+ * Cumple con los CP: CP-57, CP-14, CP-62, CP-63, CP-59/60/61.
  */
 export class ResumenEjecutivoPage {
   readonly page: Page;
@@ -15,32 +11,28 @@ export class ResumenEjecutivoPage {
     this.page = page;
   }
 
-  /**
-   * Navega al dashboard.
-   * Base de todos los CP que requieren cargar la vista.
-   */
+  // ============================================================
+  // NAVEGACIÓN
+  // ============================================================
+
   async ir() {
     await this.page.goto(`${process.env.APP_URL}/dashboard/resumen-ejecutivo`, {
       waitUntil: 'domcontentloaded',
     });
   }
 
-  /**
-   * Espera a que desaparezca el loader global.
-   * Aplicado antes de leer cualquier KPI.
-   */
+  // ============================================================
+  // LOADERS Y KPIs
+  // ============================================================
+
   async esperarCarga() {
     const loader = this.page.locator('.animacion-carga');
 
-    if (await loader.isVisible({ timeout: 2000 })) {
+    if (await loader.isVisible({ timeout: 2000 }).catch(() => false)) {
       await loader.waitFor({ state: 'detached', timeout: 120000 });
     }
   }
 
-  /**
-   * Espera a que todos los KPIs iniciales estén visibles.
-   * CP-57
-   */
   async esperarKPIs() {
     await this.esperarCarga();
 
@@ -56,22 +48,22 @@ export class ResumenEjecutivoPage {
     for (const titulo of titulos) {
       await this.page.getByText(titulo, { exact: true }).waitFor({
         state: 'visible',
-        timeout: 60000
+        timeout: 60000,
       });
     }
 
     await this.page.locator('span.text-4xl').first().waitFor({
       state: 'visible',
-      timeout: 60000
+      timeout: 60000,
     });
 
     await this.page.waitForTimeout(300);
   }
 
-  /**
-   * Devuelve los selectores de una tarjeta KPI según su título.
-   * CP-57 / CP-14
-   */
+  // ============================================================
+  // TARJETAS KPI (CP-57 / CP-14)
+  // ============================================================
+
   tarjeta(titulo: string) {
     const card = this.page
       .getByText(titulo, { exact: true })
@@ -85,41 +77,65 @@ export class ResumenEjecutivoPage {
   }
 
   // ============================================================
-  // CP-62 — Gestión de filtros combinados
+  // *** NUEVO — RANGO REAL PARA API (SOLUCIÓN AL ERROR CP-57) ***
   // ============================================================
 
   /**
-   * Rellena un DatePicker basado en su estructura HTML real.
+   * Extrae las fechas tal como aparecen en el datepicker (dd/mm/yyyy)
+   * y las convierte a ISO (yyyy-mm-dd) para la API.
    */
-  async setDatePicker(baseSelector: string, fecha: { d: string, m: string, y: string }) {
+  async extraerRangoFecha() {
+    const inicioRaw = await this.page
+      .locator('(//input[@type="text"])[1]')
+      .inputValue();
+
+    const finRaw = await this.page
+      .locator('(//input[@type="text"])[2]')
+      .inputValue();
+
+    function convertirAISO(fecha: string) {
+      const [d, m, y] = fecha.split('/');
+      return `${y}-${m}-${d}`;
+    }
+
+    return {
+      fechaMin: convertirAISO(inicioRaw),
+      fechaMax: convertirAISO(finRaw),
+    };
+  }
+
+  /**
+   * Wrapper final para enviar el rango ISO a la API desde los tests.
+   */
+  async getRangoFechasParaAPI() {
+    return await this.extraerRangoFecha();
+  }
+
+  // ============================================================
+  // CP-62 — Filtros combinados
+  // ============================================================
+
+  async setDatePicker(baseSelector: string, fecha: { d: string; m: string; y: string }) {
     const campos = this.page.locator(`${baseSelector}//div[@role="spinbutton"]`);
     await campos.nth(0).fill(fecha.d);
     await campos.nth(1).fill(fecha.m);
     await campos.nth(2).fill(fecha.y);
   }
 
-  /**
-   * Establece un rango completo de fechas (inicio y fin).
-   * CP-62
-   */
   async seleccionarRangoFechas(desde: string, hasta: string) {
     await this.setDatePicker('(//div[@data-slot="input-wrapper"])[1]', {
-      d: desde.padStart(2, "0"),
-      m: "11",
-      y: "2025"
+      d: desde.padStart(2, '0'),
+      m: '11',
+      y: '2025',
     });
 
     await this.setDatePicker('(//div[@data-slot="input-wrapper"])[2]', {
-      d: hasta.padStart(2, "0"),
-      m: "11",
-      y: "2025"
+      d: hasta.padStart(2, '0'),
+      m: '11',
+      y: '2025',
     });
   }
 
-  /**
-   * Selecciona un valor dentro de un dropdown con buscador (Empresa, Producto, etc.).
-   * CP-62
-   */
   async seleccionarFiltroLista(label: string, valor: string) {
     const trigger = this.page.locator(`div.flex:has(div.text-sm:has-text("${label}"))`);
     await trigger.click();
@@ -127,16 +143,14 @@ export class ResumenEjecutivoPage {
     const dropdown = this.page.locator('div[id^="dropdown-"]:visible');
 
     const buscador = dropdown.getByPlaceholder('Buscar');
-    if (await buscador.isVisible()) await buscador.fill(valor);
+    if (await buscador.isVisible().catch(() => false)) {
+      await buscador.fill(valor);
+    }
 
     await dropdown.getByText(valor, { exact: true }).click();
     await dropdown.getByRole('button', { name: /^Ok$/ }).click();
   }
 
-  /**
-   * Aplica todos los filtros disponibles.
-   * CP-62
-   */
   async aplicarFiltrosCompletos(filtros: {
     inicio?: string;
     fin?: string;
@@ -148,40 +162,28 @@ export class ResumenEjecutivoPage {
   }) {
     const valorAntes = await this.page.locator('span.text-4xl').first().innerText();
 
-    if (filtros.inicio && filtros.fin)
+    if (filtros.inicio && filtros.fin) {
       await this.seleccionarRangoFechas(filtros.inicio, filtros.fin);
+    }
 
-    if (filtros.empresa)
-      await this.seleccionarFiltroLista("Empresa", filtros.empresa);
-
-    if (filtros.categoria)
-      await this.seleccionarFiltroLista("Categoria", filtros.categoria);
-
-    if (filtros.producto)
-      await this.seleccionarFiltroLista("Producto", filtros.producto);
-
-    if (filtros.segmento)
-      await this.seleccionarFiltroLista("Segmento", filtros.segmento);
-
-    if (filtros.cliente)
-      await this.seleccionarFiltroLista("Cliente", filtros.cliente);
+    if (filtros.empresa) await this.seleccionarFiltroLista('Empresa', filtros.empresa);
+    if (filtros.categoria) await this.seleccionarFiltroLista('Categoria', filtros.categoria);
+    if (filtros.producto) await this.seleccionarFiltroLista('Producto', filtros.producto);
+    if (filtros.segmento) await this.seleccionarFiltroLista('Segmento', filtros.segmento);
+    if (filtros.cliente) await this.seleccionarFiltroLista('Cliente', filtros.cliente);
 
     await this.page.getByRole('button', { name: 'Filtrar' }).click();
 
     await this.page.waitForFunction(
       (oldValue) => {
         const spans = [...document.querySelectorAll('span.text-4xl')];
-        return spans.some(s => s.textContent.trim() !== oldValue.trim());
+        return spans.some((s) => s.textContent.trim() !== oldValue.trim());
       },
       valorAntes,
       { timeout: 60000 }
     );
   }
 
-  /**
-   * Limpia todos los filtros aplicados.
-   * CP-62
-   */
   async limpiarFiltros() {
     await this.page.getByRole('button', { name: 'Limpiar' }).click();
   }
@@ -190,10 +192,6 @@ export class ResumenEjecutivoPage {
   // CP-63 — Filtros secundarios
   // ============================================================
 
-  /**
-   * Selecciona una opción simple dentro de un dropdown por ID.
-   * CP-63
-   */
   async seleccionarDropdownSimplePorId(dropdownId: string, nuevoValor: string) {
     const button = this.page.locator(`div.relative:has(#${dropdownId}) >> button`);
     await button.click();
@@ -202,10 +200,6 @@ export class ResumenEjecutivoPage {
     await dropdown.getByText(nuevoValor, { exact: true }).click();
   }
 
-  /**
-   * Selecciona la vista de tabla (Categoria, Producto, Cliente).
-   * CP-63
-   */
   async seleccionarVistaTabla(vista: string) {
     const button = this.page.locator(`div.relative:has(#summary-table-selector-dropdown) >> button`);
     await button.click();
@@ -215,7 +209,7 @@ export class ResumenEjecutivoPage {
   }
 
   // ============================================================
-  // CP-62 — Filtro de periodo (día, semana, mes, trimestre, año)
+  // CP-62 — Filtro por periodo
   // ============================================================
 
   async seleccionarPeriodo(periodo: 'Día' | 'Semana' | 'Mes' | 'Trimestre' | 'Año') {
@@ -227,7 +221,7 @@ export class ResumenEjecutivoPage {
 
     await this.page
       .locator(`#grafico-ventas-dropdown-dropdown li`, {
-        hasText: new RegExp(`^${periodo}$`)
+        hasText: new RegExp(`^${periodo}$`),
       })
       .first()
       .click();
@@ -237,7 +231,7 @@ export class ResumenEjecutivoPage {
     await this.page.waitForFunction(
       (old) => {
         const spans = [...document.querySelectorAll('span.text-4xl')];
-        return spans.some(s => s.textContent.trim() !== old.trim());
+        return spans.some((s) => s.textContent.trim() !== old.trim());
       },
       valorAntes,
       { timeout: 60000 }
@@ -245,52 +239,34 @@ export class ResumenEjecutivoPage {
   }
 
   // ============================================================
-  // Validación de fecha inválida (parte del CP-62)
+  // CP-62 — Validación de fecha inválida
   // ============================================================
 
   async datePickerEsInvalido(index: number) {
-    const contenedor = this.page.locator(`(//div[@data-slot="input-wrapper"])[${index}]`);
+    const cont = this.page.locator(`(//div[@data-slot="input-wrapper"])[${index}]`);
 
-    // Intento 1: atributo aria-invalid
-    if (await contenedor.locator('[aria-invalid="true"]').isVisible().catch(() => false)) {
-      return true;
-    }
+    if (await cont.locator('[aria-invalid="true"]').isVisible().catch(() => false)) return true;
 
-    // Intento 2: clases de error conocidas
-    if (await contenedor.locator('.text-red-500, .border-red-500').isVisible().catch(() => false)) {
+    if (await cont.locator('.text-red-500, .border-red-500').isVisible().catch(() => false))
       return true;
-    }
 
-    // Intento 3: texto de error cercano
-    if (await this.page.locator('text=/fecha inválida|fecha incorrecta/i').isVisible().catch(() => false)) {
+    if (await this.page.locator('text=/fecha inválida|fecha incorrecta/i').isVisible().catch(() => false))
       return true;
-    }
 
     return false;
   }
 
-
   // ============================================================
-  // CP-59 / CP-60 / CP-61 — API del gráfico
+  // CP-59 / CP-60 / CP-61 — Validación API gráfico
   // ============================================================
 
-  /**
-   * Captura la petición del gráfico para validar estructura.
-   * Aplicado en CP-59, CP-60 y CP-61 según tu documento.
-   */
-    async capturarUltimaPeticionExec() {
-      return await this.page.waitForResponse(res =>
-        /exec|chart|grafico|time|series/i.test(res.url()) &&
-        res.request().method() === 'POST'
-      );
-    }
+  async capturarUltimaPeticionExec() {
+    return await this.page.waitForResponse(
+      (res) =>
+        /exec|chart|grafico|time|series/i.test(res.url()) && res.request().method() === 'POST'
+    );
+  }
 
-
-
-  /**
-   * Valida el esquema mínimo del JSON devuelto por la API del gráfico.
-   * CP-59 / CP-60 / CP-61
-   */
   async validarEsquemaChart(response: any) {
     const json = await response.json();
     const chart = json?.data?.chart;
@@ -305,9 +281,8 @@ export class ResumenEjecutivoPage {
     );
   }
 
-
   // ============================================================
-  // Render mínimo del dashboard (usado en pruebas de estabilidad)
+  // Estabilidad general
   // ============================================================
 
   async validarRenderBasico() {
