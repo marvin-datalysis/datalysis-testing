@@ -71,8 +71,21 @@ export class RolesPage {
     }
 
     async guardar() {
-        await this.page.getByRole('button', { name: /crear rol/i }).click();
+        const boton = this.page.getByRole('button', { name: /crear|guardar/i });
+
+        await Promise.all([
+            this.page.waitForResponse(res =>
+            res.request().method() === 'POST' &&
+            res.url().includes('/rol') &&
+            res.status() === 200
+            ),
+            boton.click()
+        ]);
+
+        await this.validarToastExito();
     }
+
+
 
     // Toast (mismo patrón que usuarios)
     get toastStatus() {

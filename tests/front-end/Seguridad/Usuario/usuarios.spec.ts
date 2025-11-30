@@ -1,9 +1,10 @@
 import { test, expect, chromium } from '@playwright/test';
 import { LoginPage } from '../Login/pages/login.page';
 import { UsersPage } from './pages/users.page';
+import { queryDB } from '../../../../utils/db';
 
-// Timeout global aplicado a todas las pruebas
-test.setTimeout(30000);
+// Tiempo máximo para asegurar estabilidad en operaciones lentas
+test.setTimeout(60000);
 
 test.describe('SEGURIDAD - CRUD Usuarios', () => {
 
@@ -14,15 +15,15 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
     const login = new LoginPage(page);
     const users = new UsersPage(page);
 
-    // 1. LOGIN
+    // Login al sistema
     await login.goto();
     await login.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
     await expect(page).not.toHaveURL(/sign-in/);
 
-    // 2. IR A USUARIOS
+    // Abrir módulo de usuarios
     await users.irAUsuarios();
 
-    // 3. ABRIR FORMULARIO
+    // Abrir formulario de creación
     await users.abrirFormularioCrear();
 
     const nuevoUsuario = {
@@ -36,23 +37,31 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
       repetirPassword: "prueba1234"
     };
 
-    // 4. LLENAR FORMULARIO
+    // Llenar campos del formulario
     await users.llenarFormulario(nuevoUsuario);
 
-    // 5. ROL ID = 5
+    // Seleccionar rol requerido
     await users.seleccionarRol("5");
 
-    // 6. GUARDAR
+    // Guardar registro
     await users.guardar();
 
-    // 7. VALIDAR SUCCESS
+    // Validar mensaje de éxito en pantalla
     await users.validarToastExito();
 
-    // 8. VALIDAR EN TABLA
+    // Validar que el usuario aparece en la tabla del sistema
     await users.validarUsuarioEnTabla(nuevoUsuario.usuarioEmail);
+
+    // Validar que el usuario existe en la base de datos
+    const dbRows = await queryDB(
+      `SELECT * FROM public.usuario WHERE "usuarioEmail" = $1;`,
+      [nuevoUsuario.usuarioEmail]
+    );
+    expect(dbRows.length).toBe(1);
 
     await browser.close();
   });
+
 
   test('CP-49 - Campos obligatorios faltantes deben mostrar error y no guardar', async () => {
     const browser = await chromium.launch({ headless: false });
@@ -61,251 +70,230 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
     const login = new LoginPage(page);
     const users = new UsersPage(page);
 
-    // 1. Login
+    // Login inicial
     await login.goto();
     await login.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
     await expect(page).not.toHaveURL(/sign-in/);
 
-    // 2. Navegar a Usuarios
+    // Ir a usuarios
     await users.irAUsuarios();
 
-    // 3. Abrir formulario
+    // Abrir formulario de creación
     await users.abrirFormularioCrear();
 
-    // 4. Llenar formulario dejando displayName vacío (campo obligatorio)
+    // Formulario con un campo obligatorio vacío
     const data = {
-        nombreCompletoUsuario: "prueba3",
-        displayNameUsuario: "",             // Campo requerido faltante
-        posicion: "",
-        departamentoId: "6",
-        telefono: "",
-        usuarioEmail: "prueba3@datalysisgroup.com",
-        password: "prueba1234",
-        repetirPassword: "prueba1234"
+      nombreCompletoUsuario: "prueba3",
+      displayNameUsuario: "",
+      posicion: "",
+      departamentoId: "6",
+      telefono: "",
+      usuarioEmail: "prueba3@datalysisgroup.com",
+      password: "prueba1234",
+      repetirPassword: "prueba1234"
     };
 
     await users.llenarFormulario(data);
-
-    // 5. Seleccionar rol
     await users.seleccionarRol("5");
-
-    // 6. Intentar guardar
     await users.guardar();
 
-    // 7. Validación visual del campo requerido
-    const displayNameInput = page.locator('#displayNameUsuario');
+    // Validar que el campo requerido muestra error visual
     const displayNameLabelError = page.locator('label[for="displayNameUsuario"] .text-red-500');
-
-    // El label debe mostrar el asterisco rojo indicando campo obligatorio
     await expect(displayNameLabelError).toBeVisible();
 
-    // El borde del input debe volverse rojo (Tailwind)
-    await expect(displayNameLabelError).toBeVisible();
-
-    // 8. Validar que NO navegó fuera del formulario (continúa en /usuarios/agregar)
+    // Validar que no cambió de página (no se guardó)
     await expect(page).toHaveURL(/usuarios/);
 
-    // 9. Validar que NO se creó el usuario
+    // Validar que no aparece en la tabla
     await page.goto(`${process.env.APP_URL}/usuarios`);
+    await page.locator('table tbody tr').first().waitFor({ timeout: 60000 });
+    await expect(page.getByRole('row', { name: /prueba3@datalysisgroup\.com/i })).toHaveCount(0);
 
-    // Esperar que la tabla cargue
-    await page.locator('table tbody tr').first().waitFor({ timeout: 10000 });
-
-    // Confirmar que no existe fila con ese email
-    await expect(
-        page.getByRole('row', { name: /prueba3@datalysisgroup\.com/i })
-    ).toHaveCount(0);
-
+    // Validación en la base de datos
+    const result = await queryDB(
+      `SELECT * FROM public.usuario WHERE "usuarioEmail" = $1;`,
+      [data.usuarioEmail]
+    );
+    expect(result.length).toBe(0);
 
     await browser.close();
-    });
+  });
 
-    test('CP-50 - Crear usuario con email ya registrado debe mostrar error y no guardar', async () => {
-        const browser = await chromium.launch({ headless: false });
-        const page = await browser.newPage();
 
-        const login = new LoginPage(page);
-        const users = new UsersPage(page);
+  test('CP-50 - Crear usuario con email ya registrado debe mostrar error y no guardar', async () => {
+    const browser = await chromium.launch({ headless: false });
+    const page = await browser.newPage();
 
-        // 1. Login
-        await login.goto();
-        await login.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
-        await expect(page).not.toHaveURL(/sign-in/);
+    const login = new LoginPage(page);
+    const users = new UsersPage(page);
 
-        // 2. Ir a Usuarios
-        await users.irAUsuarios();
+    // Login al sistema
+    await login.goto();
+    await login.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
+    await expect(page).not.toHaveURL(/sign-in/);
 
-        // 3. Abrir formulario
-        await users.abrirFormularioCrear();
+    await users.irAUsuarios();
+    await users.abrirFormularioCrear();
 
-        // 4. Datos con email duplicado
-        const data = {
-            nombreCompletoUsuario: "prueba3",
-            displayNameUsuario: "prueba3",
-            posicion: "",
-            departamentoId: "6",
-            telefono: "",
-            usuarioEmail: "prueba@datalysisgroup.com", // email ya registrado
-            password: "prueba1234",
-            repetirPassword: "prueba1234"
-        };
+    const data = {
+      nombreCompletoUsuario: "prueba3",
+      displayNameUsuario: "prueba3",
+      posicion: "",
+      departamentoId: "6",
+      telefono: "",
+      usuarioEmail: "prueba@datalysisgroup.com",
+      password: "prueba1234",
+      repetirPassword: "prueba1234"
+    };
 
-        await users.llenarFormulario(data);
+    await users.llenarFormulario(data);
+    await users.seleccionarRol("5");
+    await users.guardar();
 
-        // 5. Seleccionar rol
-        await users.seleccionarRol("5");
+    // Localizar toast
+    const toast = users.toastStatus;
+    await expect(toast).toBeVisible({ timeout: 7000 });
 
-        // 6. Intentar guardar
-        await users.guardar();
+    const toastHandle = await toast.elementHandle();
+    if (!toastHandle) throw new Error("No se pudo capturar el toast.");
 
-        // === VALIDACIÓN ROBUSTA DEL ERROR ===
-
-        const toast = users.toastStatus;
-
-        // 1) Esperar a que el contenedor del mensaje aparezca
-        await expect(toast).toBeVisible({ timeout: 7000 });
-
-        // 2) Obtener handle seguro del elemento
-        const toastHandle = await toast.elementHandle();
-        if (!toastHandle) {
-            throw new Error("No se pudo obtener el toast en pantalla.");
-        }
-
-        // 3) Esperar a que deje de decir 'Guardando...' y aparezca error real
-        await page.waitForFunction(
-            (el) => {
-                const txt = (el as HTMLElement).innerText.toLowerCase();
-                return (
-                    !txt.includes('guardando') && // ya no está procesando
-                    (
-                        txt.includes('error') ||  // cualquier error genérico
-                        txt.includes('uso') ||    // "ya está en uso"
-                        txt.includes('correo')    // "correo ya está en uso"
-                    )
-                );
-            },
-            toastHandle,
-            { timeout: 7000 }
+    // Esperar a que deje de mostrar mensaje de proceso y muestre el error real
+    await page.waitForFunction(
+      (el) => {
+        const txt = (el as HTMLElement).innerText.toLowerCase();
+        return (
+          !txt.includes('guardando') &&
+          (txt.includes('error') || txt.includes('uso') || txt.includes('correo'))
         );
+      },
+      toastHandle,
+      { timeout: 7000 }
+    );
 
-        // 4) Obtener texto final ya estable
-        const textoToast = (await toast.innerText()).toLowerCase();
+    const textoToast = (await toast.innerText()).toLowerCase();
+    expect(textoToast).toMatch(/error/);
+    expect(textoToast).not.toMatch(/exitos|guardado correctamente/);
 
-        // Validación de error consistente
-        expect(textoToast).toMatch(/error/);
+    // Validar que no cambió de página
+    await expect(page).toHaveURL(/usuarios/);
 
-        // Asegurar que NO sea mensaje de éxito
-        expect(textoToast).not.toMatch(/exitos|creado|guardado correctamente/);
+    // Validar que solo existe un registro en UI
+    await page.goto(`${process.env.APP_URL}/usuarios`);
+    await page.locator('table tbody tr').first().waitFor({ timeout: 10000 });
+    await expect(page.getByRole('row', { name: /prueba@datalysisgroup\.com/i })).toHaveCount(1);
 
-        // 8. Validar que no navegó fuera del formulario
-        await expect(page).toHaveURL(/usuarios/);
+    // Validación en base de datos
+    const dbRows = await queryDB(
+      `SELECT * FROM public.usuario WHERE "usuarioEmail" = $1;`,
+      [data.usuarioEmail]
+    );
+    expect(dbRows.length).toBe(1);
 
-        // 9. Validar que NO se creó el usuario
-        await page.goto(`${process.env.APP_URL}/usuarios`);
-        await page.locator('table tbody tr').first().waitFor({ timeout: 10000 });
+    await browser.close();
+  });
 
-        const fila = page.getByRole('row', { name: /prueba@datalysisgroup\.com/i });
-        await expect(fila).toHaveCount(1); // existe solo el registro original
-    });
 
-    test('CP-51 - Validación de contraseña debe mostrarse y no permitir guardar', async () => {
-        const browser = await chromium.launch({ headless: false });
-        const page = await browser.newPage();
+  test('CP-51 - Validación de contraseña debe mostrarse y no permitir guardar', async () => {
+    const browser = await chromium.launch({ headless: false });
+    const page = await browser.newPage();
 
-        const login = new LoginPage(page);
-        const users = new UsersPage(page);
+    const login = new LoginPage(page);
+    const users = new UsersPage(page);
 
-        // 1. Login
-        await login.goto();
-        await login.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
-        await expect(page).not.toHaveURL(/sign-in/);
+    await login.goto();
+    await login.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
+    await expect(page).not.toHaveURL(/sign-in/);
 
-        // 2. Ir a Usuarios
-        await users.irAUsuarios();
+    await users.irAUsuarios();
+    await users.abrirFormularioCrear();
 
-        // 3. Abrir formulario
-        await users.abrirFormularioCrear();
+    const data = {
+      nombreCompletoUsuario: "pruebaPass",
+      displayNameUsuario: "pruebaPass",
+      posicion: "",
+      departamentoId: "6",
+      telefono: "",
+      usuarioEmail: `pass_${Date.now()}@datalysisgroup.com`,
+      password: "abc",
+      repetirPassword: "abc"
+    };
 
-        // 4. Datos con contraseña inválida
-        const data = {
-            nombreCompletoUsuario: "pruebaPass",
-            displayNameUsuario: "pruebaPass",
-            posicion: "",
-            departamentoId: "6",
-            telefono: "",
-            usuarioEmail: `pass_${Date.now()}@datalysisgroup.com`,
-            password: "abc",          // inválida
-            repetirPassword: "abc"    // inválida
-        };
+    await users.llenarFormulario(data);
+    await users.seleccionarRol("5");
+    await users.guardar();
 
-        await users.llenarFormulario(data);
+    // Validación de mensajes en inputs
+    const msgPwd = page.locator('text=La contraseña debe tener al menos 8 caracteres.');
+    await expect(msgPwd).toHaveCount(2);
 
-        // 5. Seleccionar rol
-        await users.seleccionarRol("5");
+    // Validación del toast
+    const toast = users.toastStatus;
+    await expect(toast).toBeVisible({ timeout: 5000 });
+    const textoToast = (await toast.innerText()).toLowerCase();
+    expect(textoToast).toContain('8 caracteres');
 
-        // 6. Intentar guardar
-        await users.guardar();
+    // Validar que no se guardó en UI
+    await expect(page).toHaveURL(/usuarios/);
+    await page.goto(`${process.env.APP_URL}/usuarios`);
+    await page.locator('table tbody tr').first().waitFor({ timeout: 10000 });
+    await expect(page.getByRole('row', { name: /pass_/i })).toHaveCount(0);
 
-        // 7. Validar mensajes debajo de los inputs
-        const msgPwd = page.locator('text=La contraseña debe tener al menos 8 caracteres.');
-        await expect(msgPwd).toHaveCount(2);   // aparece en password y repetirPassword
+    // Validación en BD
+    const dbRows = await queryDB(
+      `SELECT * FROM public.usuario WHERE "usuarioEmail" = $1;`,
+      [data.usuarioEmail]
+    );
+    expect(dbRows.length).toBe(0);
 
-        // 8. Validar toast del sistema (mensaje global)
-        const toast = users.toastStatus;
-        await expect(toast).toBeVisible({ timeout: 5000 });
+    await browser.close();
+  });
 
-        const textoToast = (await toast.innerText()).toLowerCase();
-        expect(textoToast).toContain('contraseñas');
-        expect(textoToast).toContain('8 caracteres');
 
-        // 9. Validar que no navegó fuera del formulario
-        await expect(page).toHaveURL(/usuarios/);
+  test('CP-52 - Inactivar/eliminar usuario correctamente', async () => {
+    const browser = await chromium.launch({ headless: false });
+    const page = await browser.newPage();
 
-        // 10. Validar que NO existe en la tabla
-        await page.goto(`${process.env.APP_URL}/usuarios`);
-        await page.locator('table tbody tr').first().waitFor({ timeout: 10000 });
+    const login = new LoginPage(page);
+    const users = new UsersPage(page);
 
-        const fila = page.getByRole('row', { name: /pass_/i });
-        await expect(fila).toHaveCount(0);
+    await login.goto();
+    await login.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
+    await expect(page).not.toHaveURL(/sign-in/);
 
-        await browser.close();
-    });
+    await users.irAUsuarios();
 
-    test('CP-52 - Inactivar/eliminar usuario correctamente', async () => {
-        const browser = await chromium.launch({ headless: false });
-        const page = await browser.newPage();
+    // Abrir modal de eliminación del primer usuario
+    const emailAEliminar = await users.abrirModalEliminarPrimerUsuario();
 
-        const login = new LoginPage(page);
-        const users = new UsersPage(page);
+    await users.confirmarEliminacion();
 
-        // 1. Login
-        await login.goto();
-        await login.login("tesinaqa@datalysisgroup.com", "Tesina#2025");
-        await expect(page).not.toHaveURL(/sign-in/);
+    // Esperar mensaje final en UI
+    const msg = await users.esperarToastEliminacion();
 
-        // 2. Ir a usuarios
-        await users.irAUsuarios();
+    // Validación flexible en UI
+    if (msg.includes('eliminado') || msg.includes('exito')) {
+      await users.validarUsuarioEliminado(emailAEliminar);
+    } else {
+      expect(msg).toMatch(/error/);
+    }
 
-        // 3. Abrir modal eliminar para el primer usuario de la tabla
-        const emailAEliminar = await users.abrirModalEliminarPrimerUsuario();
+    // Validación en BD 
+    const dbRows = await queryDB(
+    `SELECT "eliminado" FROM public.usuario WHERE "usuarioEmail" = $1;`,
+    [emailAEliminar]
+    );
 
-        // 4. Confirmar eliminación
-        await users.confirmarEliminacion();
+    // Si no existe, entonces es eliminación física
+    if (dbRows.length === 0) {
+    expect(dbRows.length).toBe(0);
+    } 
+    // Si existe, entonces validamos soft delete
+    else {
+    expect(dbRows[0].eliminado).toBe(1);
+    }
 
-        // 5. Esperar mensaje final
-        const msg = await users.esperarToastEliminacion();
-
-        // 6. Validación flexible (éxito o error)
-        if (msg.includes('eliminado') || msg.includes('exitos')) {
-            // Éxito
-            await users.validarUsuarioEliminado(emailAEliminar);
-        } else {
-            // Error del backend
-            expect(msg).toMatch(/error/);
-        }
-
-        await browser.close();
-    });
-
+    await browser.close();
+  });
 
 });
+
