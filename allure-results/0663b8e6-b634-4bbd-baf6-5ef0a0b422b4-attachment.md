@@ -1,0 +1,239 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - banner [ref=e3]:
+        - navigation [ref=e5]:
+          - generic [ref=e6]:
+            - list [ref=e7]:
+              - link "Datalysis Brand" [ref=e9] [cursor=pointer]:
+                - /url: /inicio
+                - img "Datalysis Brand" [ref=e10]
+            - list [ref=e11]
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - button "Ayuda" [ref=e14] [cursor=pointer]:
+                  - img [ref=e15]
+                  - text: Ayuda
+              - listitem [ref=e27]:
+                - button "Notificaciones" [ref=e28] [cursor=pointer]:
+                  - img [ref=e30]
+              - listitem [ref=e43]:
+                - button "avatar Tesina QA Analista" [ref=e45] [cursor=pointer]:
+                  - img "avatar" [ref=e47]
+                  - generic [ref=e48]:
+                    - generic [ref=e49]: Tesina QA
+                    - generic [ref=e50]: Analista
+      - generic [ref=e51]:
+        - button "open drawer" [ref=e54] [cursor=pointer]:
+          - img [ref=e55]
+        - list [ref=e57]:
+          - listitem [ref=e58]:
+            - button "Inicio" [ref=e59] [cursor=pointer]:
+              - img [ref=e61]
+              - generic [ref=e70]: Inicio
+          - listitem [ref=e71]:
+            - button "Dashboards" [ref=e72] [cursor=pointer]:
+              - img [ref=e74]
+              - generic [ref=e80]: Dashboards
+          - listitem [ref=e81]:
+            - button "Reportes" [ref=e82] [cursor=pointer]:
+              - img [ref=e84]
+              - generic [ref=e89]: Reportes
+          - listitem [ref=e90]:
+            - button "Configuración" [ref=e91] [cursor=pointer]:
+              - img [ref=e93]
+              - generic [ref=e97]: Configuración
+          - listitem [ref=e98]:
+            - button "Daisy" [ref=e99] [cursor=pointer]:
+              - img [ref=e101]
+              - generic [ref=e110]: Daisy
+    - generic [ref=e112]:
+      - banner [ref=e113]:
+        - heading "Listado de roles" [level=1] [ref=e114]
+        - paragraph [ref=e115]: Consulta los roles registrados y sus permisos.
+      - generic [ref=e116]:
+        - banner [ref=e117]:
+          - generic [ref=e118]:
+            - generic:
+              - img
+            - textbox "Buscar..." [ref=e119]
+          - button "Agregar rol" [ref=e120] [cursor=pointer]:
+            - img [ref=e121]
+            - text: Agregar rol
+        - generic [ref=e123]:
+          - table [ref=e124]:
+            - rowgroup [ref=e125]:
+              - row "ID Nombre Permisos Usuarios Acciones" [ref=e126]:
+                - cell "ID" [ref=e127]
+                - cell "Nombre" [ref=e128]
+                - cell "Permisos" [ref=e129]
+                - cell "Usuarios" [ref=e130]
+                - cell "Acciones" [ref=e131]
+            - rowgroup [ref=e132]:
+              - row "41 RolTest_1764182350291 Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e133]:
+                - cell "41" [ref=e134]
+                - cell "RolTest_1764182350291" [ref=e135]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e136]:
+                  - generic [ref=e137]:
+                    - generic [ref=e138]: Ver Dashboard Client...
+                    - generic [ref=e139]: Ver Dashboard Client...
+                - cell "0" [ref=e140]
+                - cell [ref=e141]:
+                  - generic [ref=e142]:
+                    - button [ref=e143] [cursor=pointer]:
+                      - img [ref=e144]
+                    - button [ref=e146] [cursor=pointer]:
+                      - img [ref=e147]
+              - row "40 RolTest_1764182228243 Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e149]:
+                - cell "40" [ref=e150]
+                - cell "RolTest_1764182228243" [ref=e151]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e152]:
+                  - generic [ref=e153]:
+                    - generic [ref=e154]: Ver Dashboard Client...
+                    - generic [ref=e155]: Ver Dashboard Client...
+                - cell "0" [ref=e156]
+                - cell [ref=e157]:
+                  - generic [ref=e158]:
+                    - button [ref=e159] [cursor=pointer]:
+                      - img [ref=e160]
+                    - button [ref=e162] [cursor=pointer]:
+                      - img [ref=e163]
+              - row "39 RolTest_1764036082421 Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e165]:
+                - cell "39" [ref=e166]
+                - cell "RolTest_1764036082421" [ref=e167]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e168]:
+                  - generic [ref=e169]:
+                    - generic [ref=e170]: Ver Dashboard Client...
+                    - generic [ref=e171]: Ver Dashboard Client...
+                - cell "0" [ref=e172]
+                - cell [ref=e173]:
+                  - generic [ref=e174]:
+                    - button [ref=e175] [cursor=pointer]:
+                      - img [ref=e176]
+                    - button [ref=e178] [cursor=pointer]:
+                      - img [ref=e179]
+              - row "34 RolTest_1764035346806 Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e181]:
+                - cell "34" [ref=e182]
+                - cell "RolTest_1764035346806" [ref=e183]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e184]:
+                  - generic [ref=e185]:
+                    - generic [ref=e186]: Ver Dashboard Client...
+                    - generic [ref=e187]: Ver Dashboard Client...
+                - cell "0" [ref=e188]
+                - cell [ref=e189]:
+                  - generic [ref=e190]:
+                    - button [ref=e191] [cursor=pointer]:
+                      - img [ref=e192]
+                    - button [ref=e194] [cursor=pointer]:
+                      - img [ref=e195]
+              - row "31 RolTest_1764031810139 Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e197]:
+                - cell "31" [ref=e198]
+                - cell "RolTest_1764031810139" [ref=e199]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e200]:
+                  - generic [ref=e201]:
+                    - generic [ref=e202]: Ver Dashboard Client...
+                    - generic [ref=e203]: Ver Dashboard Client...
+                - cell "0" [ref=e204]
+                - cell [ref=e205]:
+                  - generic [ref=e206]:
+                    - button [ref=e207] [cursor=pointer]:
+                      - img [ref=e208]
+                    - button [ref=e210] [cursor=pointer]:
+                      - img [ref=e211]
+              - row "30 RolTest_1764031764075 Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e213]:
+                - cell "30" [ref=e214]
+                - cell "RolTest_1764031764075" [ref=e215]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e216]:
+                  - generic [ref=e217]:
+                    - generic [ref=e218]: Ver Dashboard Client...
+                    - generic [ref=e219]: Ver Dashboard Client...
+                - cell "0" [ref=e220]
+                - cell [ref=e221]:
+                  - generic [ref=e222]:
+                    - button [ref=e223] [cursor=pointer]:
+                      - img [ref=e224]
+                    - button [ref=e226] [cursor=pointer]:
+                      - img [ref=e227]
+              - row "29 RolTest_1764031706053 Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e229]:
+                - cell "29" [ref=e230]
+                - cell "RolTest_1764031706053" [ref=e231]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e232]:
+                  - generic [ref=e233]:
+                    - generic [ref=e234]: Ver Dashboard Client...
+                    - generic [ref=e235]: Ver Dashboard Client...
+                - cell "0" [ref=e236]
+                - cell [ref=e237]:
+                  - generic [ref=e238]:
+                    - button [ref=e239] [cursor=pointer]:
+                      - img [ref=e240]
+                    - button [ref=e242] [cursor=pointer]:
+                      - img [ref=e243]
+              - row "28 RolTest_1764031577174 Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e245]:
+                - cell "28" [ref=e246]
+                - cell "RolTest_1764031577174" [ref=e247]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e248]:
+                  - generic [ref=e249]:
+                    - generic [ref=e250]: Ver Dashboard Client...
+                    - generic [ref=e251]: Ver Dashboard Client...
+                - cell "0" [ref=e252]
+                - cell [ref=e253]:
+                  - generic [ref=e254]:
+                    - button [ref=e255] [cursor=pointer]:
+                      - img [ref=e256]
+                    - button [ref=e258] [cursor=pointer]:
+                      - img [ref=e259]
+              - row "6 Vendedor Ver Dashboard Client... Ver Dashboard Client... 0" [ref=e261]:
+                - cell "6" [ref=e262]
+                - cell "Vendedor" [ref=e263]
+                - cell "Ver Dashboard Client... Ver Dashboard Client..." [ref=e264]:
+                  - generic [ref=e265]:
+                    - generic [ref=e266]: Ver Dashboard Client...
+                    - generic [ref=e267]: Ver Dashboard Client...
+                - cell "0" [ref=e268]
+                - cell [ref=e269]:
+                  - generic [ref=e270]:
+                    - button [ref=e271] [cursor=pointer]:
+                      - img [ref=e272]
+                    - button [ref=e274] [cursor=pointer]:
+                      - img [ref=e275]
+              - row "5 Analista Ver Resumen Ejecutiv... Ver Detalle Resumen ... + 22 5" [ref=e277]:
+                - cell "5" [ref=e278]
+                - cell "Analista" [ref=e279]
+                - cell "Ver Resumen Ejecutiv... Ver Detalle Resumen ... + 22" [ref=e280]:
+                  - generic [ref=e281]:
+                    - generic [ref=e282]: Ver Resumen Ejecutiv...
+                    - generic [ref=e283]: Ver Detalle Resumen ...
+                    - generic [ref=e284]: + 22
+                - cell "5" [ref=e285]
+                - cell [ref=e286]:
+                  - generic [ref=e287]:
+                    - button [ref=e288] [cursor=pointer]:
+                      - img [ref=e289]
+                    - button [ref=e291] [cursor=pointer]:
+                      - img [ref=e292]
+          - contentinfo [ref=e294]:
+            - generic [ref=e295]:
+              - list [ref=e296]:
+                - listitem [ref=e297]:
+                  - button "Anterior" [ref=e298] [cursor=pointer]:
+                    - generic [ref=e299]: Anterior
+                    - img [ref=e300]
+                - listitem [ref=e302]:
+                  - button "1" [disabled] [ref=e303]
+                - listitem [ref=e304]:
+                  - button "2" [ref=e305] [cursor=pointer]
+                - listitem [ref=e306]:
+                  - button "Siguiente" [ref=e307] [cursor=pointer]:
+                    - generic [ref=e308]: Siguiente
+                    - img [ref=e309]
+              - combobox [ref=e311]:
+                - option "5"
+                - option "10" [selected]
+                - option "20"
+                - option "50"
+            - generic [ref=e312]: Mostrando 1 - 10 de 14 registros
+  - alert [ref=e313]
+```

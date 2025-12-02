@@ -1,56 +1,89 @@
-import { defineConfig, devices } from '@playwright/test'
-
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
+import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
+
+// Carga las variables del archivo .env de forma segura.
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
- * See https://playwright.dev/docs/test-configuration.
+ * Archivo de configuración principal para Playwright.
+ * Incluye:
+ * - Reporte HTML
+ * - Reporte JSON para métricas
+ * - Reporte Allure para defensa
+ * - Evidencia (screenshots, videos, trazas)
+ * - Configuración de CI/CD
  */
 export default defineConfig({
+  // Carpeta donde se ubican todos los tests.
   testDir: './tests',
 
-  // 👇 NUEVO: corre login automático antes de iniciar los tests
-  globalSetup: path.resolve(__dirname, 'tests/auth/global-setup.ts'),
-
-  /* Run tests in files in parallel */
+  // Ejecuta tests en paralelo para reducir el tiempo total de ejecución.
   fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+
+  // Previene que tests con ".only" se ejecuten accidentalmente en CI.
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
+
+  // Configura reintentos exclusivamente para CI.
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
+
+  // Número de workers para paralelismo. En CI se usa uno para estabilidad.
   workers: process.env.CI ? 1 : 1,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+
+  /**
+   * Reporters utilizados para generar resultados.
+   * Incluye:
+   * - HTML (para revisar evidencias visualmente)
+   * - JSON (para métricas y estadísticas)
+   * - Allure (para reportes profesionales)
+   */
+  reporter: [
+    ['html', { open: 'never' }],
+    ['json', { outputFile: 'reporte-playwright.json' }],
+    ['allure-playwright']
+  ],
+
+  /**
+   * Configuración aplicable a todos los navegadores y proyectos.
+   * Aquí se definen:
+   * - Screenshots
+   * - Videos
+   * - Trazas (trace viewer)
+   */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. 
-       Toma de .env y, si no existe, usa tu valor actual */
-    baseURL: process.env.BASE_URL ?? 'http://127.0.0.1:3000',
+    // Captura screenshots solo cuando un test falla.
+    screenshot: 'only-on-failure',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    // Guarda un video de cada test fallido (útil para defensa).
+    video: 'retain-on-failure',
 
-    // 👇 NUEVO: todos los tests arrancan con sesión guardada
-    storageState: 'tests/auth/storageState.json',
+    // Almacena trazas completas si un test falla y se reintenta.
+    trace: 'retain-on-failure',
+
+    // Tiempo máximo por cada acción (clic, fill, etc.).
+    actionTimeout: 15000,
+
+    // Tiempo máximo por cada test individual.
+    navigationTimeout: 30000
   },
 
-  /* Configure projects for major browsers */
+  /**
+   * Navegadores donde se ejecutarán los tests.
+   * Para defensa, lo recomendable es Chromium con UI visible.
+   */
   projects: [
     {
       name: 'chromium',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
-        headless: false,      //  Cambiar a TRUE si no se requiere visualizar UI
-      },
-    },
+        headless: false // Modo visible para observar la ejecución real.
+      }
+    }
 
-    /*{
+    /*
+    Se pueden habilitar otros navegadores si se requiere comparar compatibilidad:
+
+    {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
@@ -58,33 +91,20 @@ export default defineConfig({
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-    },*/
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    },
+    */
   ],
 
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  /**
+   * Permite iniciar un servidor antes de comenzar los tests.
+   * Usado en proyectos donde la app se levanta con "npm start".
+   * Está comentado porque no aplica a tu arquitectura actual.
+   */
+  /*
+  webServer: {
+    command: 'npm run start',
+    url: 'http://localhost:3000',
+    reuseExistingServer: !process.env.CI
+  },
+  */
 });

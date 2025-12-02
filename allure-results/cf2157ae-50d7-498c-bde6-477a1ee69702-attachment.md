@@ -1,0 +1,371 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - banner [ref=e3]:
+        - navigation [ref=e5]:
+          - generic [ref=e6]:
+            - list [ref=e7]:
+              - link "Datalysis Brand" [ref=e9] [cursor=pointer]:
+                - /url: /inicio
+                - img "Datalysis Brand" [ref=e10]
+            - list [ref=e11]
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - button "Ayuda" [ref=e14] [cursor=pointer]:
+                  - img [ref=e15]
+                  - text: Ayuda
+              - listitem [ref=e27]:
+                - button "Notificaciones" [ref=e28] [cursor=pointer]:
+                  - img [ref=e30]
+              - listitem [ref=e43]:
+                - button "avatar Tesina QA Analista" [ref=e45] [cursor=pointer]:
+                  - img "avatar" [ref=e47]
+                  - generic [ref=e48]:
+                    - generic [ref=e49]: Tesina QA
+                    - generic [ref=e50]: Analista
+      - generic [ref=e51]:
+        - button "open drawer" [ref=e54] [cursor=pointer]:
+          - img [ref=e55]
+        - list [ref=e57]:
+          - listitem [ref=e58]:
+            - button "Inicio" [ref=e59] [cursor=pointer]:
+              - img [ref=e61]
+              - generic [ref=e70]: Inicio
+          - listitem [ref=e71]:
+            - button "Dashboards" [ref=e72] [cursor=pointer]:
+              - img [ref=e74]
+              - generic [ref=e80]: Dashboards
+          - listitem [ref=e81]:
+            - button "Reportes" [ref=e82] [cursor=pointer]:
+              - img [ref=e84]
+              - generic [ref=e89]: Reportes
+          - listitem [ref=e90]:
+            - button "Configuración" [ref=e91] [cursor=pointer]:
+              - img [ref=e93]
+              - generic [ref=e97]: Configuración
+          - listitem [ref=e98]:
+            - button "Daisy" [ref=e99] [cursor=pointer]:
+              - img [ref=e101]
+              - generic [ref=e110]: Daisy
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - navigation "Breadcrumbs" [ref=e115]:
+          - list [ref=e116]:
+            - listitem [ref=e117]:
+              - link "Inicio" [ref=e118] [cursor=pointer]:
+                - /url: /inicio
+              - img [ref=e120]
+            - listitem [ref=e122]:
+              - link "Dashboard" [disabled]:
+                - /url: /es
+              - img [ref=e124]
+            - listitem [ref=e126]:
+              - link "Resumen Ejecutivo" [ref=e127] [cursor=pointer]:
+                - /url: /es/dashboard
+        - generic [ref=e128]: Dashboard Resumen Ejecutivo
+      - generic [ref=e129]:
+        - generic [ref=e131]:
+          - generic [ref=e134]:
+            - group [ref=e138]:
+              - spinbutton "día," [ref=e139]: "01"
+              - generic [ref=e140]: /
+              - spinbutton "mes," [ref=e141]: "11"
+              - generic [ref=e142]: /
+              - spinbutton "año," [ref=e143]: "2025"
+            - generic [ref=e144]: "-"
+            - group [ref=e148]:
+              - spinbutton "día," [ref=e149]: "29"
+              - generic [ref=e150]: /
+              - spinbutton "mes," [ref=e151]: "11"
+              - generic [ref=e152]: /
+              - spinbutton "año," [ref=e153]: "2025"
+            - button [ref=e154] [cursor=pointer]:
+              - img [ref=e155]
+          - generic [ref=e159]:
+            - generic [ref=e160]: Empresa
+            - button [ref=e161] [cursor=pointer]:
+              - img [ref=e162]
+          - generic [ref=e166]:
+            - generic [ref=e167]: Categoria
+            - button [ref=e168] [cursor=pointer]:
+              - img [ref=e169]
+          - generic [ref=e173]:
+            - generic [ref=e174]: Producto
+            - button [ref=e175] [cursor=pointer]:
+              - img [ref=e176]
+          - generic [ref=e180]:
+            - generic [ref=e181]: Segmento
+            - button [ref=e182] [cursor=pointer]:
+              - img [ref=e183]
+          - generic [ref=e187]:
+            - generic [ref=e188]: Cliente
+            - button [ref=e189] [cursor=pointer]:
+              - img [ref=e190]
+          - button "Filtrar" [ref=e192] [cursor=pointer]:
+            - generic [ref=e193]: Filtrar
+            - img [ref=e194]
+          - button "Limpiar" [ref=e196] [cursor=pointer]:
+            - generic [ref=e197]: Limpiar
+            - img [ref=e198]
+        - generic [ref=e200]:
+          - generic [ref=e202]:
+            - generic [ref=e204]:
+              - generic [ref=e205]: VENTAS TOTALES
+              - generic [ref=e206]:
+                - generic [ref=e207]: Período Actual
+                - generic [ref=e208]:
+                  - generic [ref=e209]: $
+                  - generic [ref=e210]: 3,452,934
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - generic [ref=e213]: Período Anterior
+                - generic [ref=e215]: $3,652,685
+              - generic [ref=e216]:
+                - generic [ref=e217]: Período Año Pasado
+                - generic [ref=e219]: $3,240,466
+          - generic [ref=e221]:
+            - generic [ref=e223]:
+              - generic [ref=e224]: COSTOS TOTALES
+              - generic [ref=e225]:
+                - generic [ref=e226]: Período Actual
+                - generic [ref=e227]:
+                  - generic [ref=e228]: $
+                  - generic [ref=e229]: 2,713,110
+            - generic [ref=e230]:
+              - generic [ref=e231]:
+                - generic [ref=e232]: Período Anterior
+                - generic [ref=e234]: $2,868,587
+              - generic [ref=e235]:
+                - generic [ref=e236]: Período Año Pasado
+                - generic [ref=e238]: $2,537,313
+          - generic [ref=e240]:
+            - generic [ref=e242]:
+              - generic [ref=e243]: MARGEN TOTAL
+              - generic [ref=e244]:
+                - generic [ref=e245]: Período Actual
+                - generic [ref=e246]:
+                  - generic [ref=e247]: $
+                  - generic [ref=e248]: 1,015,070
+            - generic [ref=e249]:
+              - generic [ref=e250]:
+                - generic [ref=e251]: Período Anterior
+                - generic [ref=e253]: $1,081,352
+              - generic [ref=e254]:
+                - generic [ref=e255]: Período Año Pasado
+                - generic [ref=e257]: $968,364
+          - generic [ref=e259]:
+            - generic [ref=e261]:
+              - generic [ref=e262]: MARGEN %
+              - generic [ref=e263]:
+                - generic [ref=e264]: Período Actual
+                - generic [ref=e265]:
+                  - generic [ref=e266]: "35.02"
+                  - generic [ref=e267]: "%"
+            - generic [ref=e268]:
+              - generic [ref=e269]:
+                - generic [ref=e270]: Período Anterior
+                - generic [ref=e272]: 35.13%
+              - generic [ref=e273]:
+                - generic [ref=e274]: Período Año Pasado
+                - generic [ref=e276]: 35.11%
+        - generic [ref=e279]:
+          - generic [ref=e280]: Ventas
+          - button "Día" [ref=e283] [cursor=pointer]:
+            - generic [ref=e284]: Día
+            - img [ref=e285]
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - generic [ref=e296]:
+              - generic [ref=e297]:
+                - generic [ref=e298]: TICKET PROMEDIO
+                - generic [ref=e299]:
+                  - generic [ref=e300]: Período Actual
+                  - generic [ref=e301]:
+                    - generic [ref=e302]: $
+                    - generic [ref=e303]: 2,982
+              - generic [ref=e304]:
+                - generic [ref=e305]:
+                  - generic [ref=e306]: Período Anterior
+                  - generic [ref=e308]: $3,039
+                - generic [ref=e309]:
+                  - generic [ref=e310]: Período Año Pasado
+                  - generic [ref=e312]: $2,835
+            - generic [ref=e314]:
+              - generic [ref=e315]:
+                - generic [ref=e316]: TICKETS
+                - generic [ref=e317]:
+                  - generic [ref=e318]: Período Actual
+                  - generic [ref=e320]: "615"
+              - generic [ref=e321]:
+                - generic [ref=e322]:
+                  - generic [ref=e323]: Período Anterior
+                  - generic [ref=e325]: "608"
+                - generic [ref=e326]:
+                  - generic [ref=e327]: Período Año Pasado
+                  - generic [ref=e329]: "600"
+          - generic [ref=e330]:
+            - generic [ref=e332]:
+              - generic [ref=e333]: Condiciones de Pago
+              - img [ref=e338]:
+                - generic [ref=e340]:
+                  - generic [ref=e341] [cursor=pointer]:
+                    - generic [ref=e342]:
+                      - img
+                    - generic [ref=e343]: A 0 días
+                  - generic [ref=e344] [cursor=pointer]:
+                    - generic [ref=e345]:
+                      - img
+                    - generic [ref=e346]: A 15 días
+                  - generic [ref=e347] [cursor=pointer]:
+                    - generic [ref=e348]:
+                      - img
+                    - generic [ref=e349]: A 30 días
+                  - generic [ref=e350] [cursor=pointer]:
+                    - generic [ref=e351]:
+                      - img
+                    - generic [ref=e352]: A 45 días
+                  - generic [ref=e353] [cursor=pointer]:
+                    - generic [ref=e354]:
+                      - img
+                    - generic [ref=e355]: A 60 días
+                  - generic [ref=e356] [cursor=pointer]:
+                    - generic [ref=e357]:
+                      - img
+                    - generic [ref=e358]: A 90 días
+                  - generic [ref=e359] [cursor=pointer]:
+                    - generic [ref=e360]:
+                      - img
+                    - generic [ref=e361]: A 120 días
+                  - generic [ref=e362] [cursor=pointer]:
+                    - generic [ref=e363]:
+                      - img
+                    - generic [ref=e364]: A 180 días
+                - generic [ref=e369]:
+                  - generic:
+                    - generic: 12.4%
+                  - generic:
+                    - generic: 12.0%
+                  - generic:
+                    - generic: 15.1%
+                  - generic:
+                    - generic: 11.5%
+                  - generic:
+                    - generic: 10.2%
+                  - generic:
+                    - generic: 13.4%
+                  - generic:
+                    - generic: 12.0%
+                  - generic:
+                    - generic: 13.4%
+            - generic [ref=e388]: Categorias
+        - generic [ref=e391]:
+          - generic [ref=e393]:
+            - generic [ref=e394]:
+              - generic [ref=e395]: Top Ventas a Clientes
+              - button "10" [ref=e398] [cursor=pointer]:
+                - generic [ref=e399]: "10"
+                - img [ref=e400]
+            - generic [ref=e404]:
+              - navigation "pagination navigation":
+                - list:
+                  - button "previous page button":
+                    - img
+                  - button "next page button":
+                    - img
+          - generic [ref=e406]:
+            - generic [ref=e407]:
+              - generic [ref=e408]: Top Productos Vendidos
+              - button "10" [ref=e411] [cursor=pointer]:
+                - generic [ref=e412]: "10"
+                - img [ref=e413]
+            - generic [ref=e417]:
+              - navigation "pagination navigation":
+                - list:
+                  - button "previous page button":
+                    - img
+                  - button "next page button":
+                    - img
+        - generic [ref=e419]:
+          - generic [ref=e420]:
+            - generic [ref=e421]: Tabla Resumen Financiero
+            - button "Empleado" [ref=e424] [cursor=pointer]:
+              - generic [ref=e425]: Empleado
+              - img [ref=e426]
+          - table [ref=e430]:
+            - rowgroup [ref=e431]:
+              - row "Ordenar por filtro Ordenar por filtro Ordenar por filtro Ordenar por filtro Ordenar por filtro" [ref=e432]:
+                - cell "Ordenar por filtro" [ref=e433]:
+                  - button "Ordenar por filtro" [ref=e434] [cursor=pointer]:
+                    - generic [ref=e435]: Empleado
+                    - img [ref=e436]
+                - cell "Ordenar por filtro" [ref=e438]:
+                  - button "Ordenar por filtro" [ref=e439] [cursor=pointer]:
+                    - generic [ref=e440]: Ventas (Q)
+                    - img [ref=e441]
+                - cell "Ordenar por filtro" [ref=e443]:
+                  - button "Ordenar por filtro" [ref=e444] [cursor=pointer]:
+                    - generic [ref=e445]: Costos (Q)
+                    - img [ref=e446]
+                - cell "Ordenar por filtro" [ref=e448]:
+                  - button "Ordenar por filtro" [ref=e449] [cursor=pointer]:
+                    - generic [ref=e450]: Margen (Q)
+                    - img [ref=e451]
+                - cell "Ordenar por filtro" [ref=e453]:
+                  - button "Ordenar por filtro" [ref=e454] [cursor=pointer]:
+                    - generic [ref=e455]: Margen %
+                    - img [ref=e456]
+            - rowgroup [ref=e458]:
+              - row [ref=e459]:
+                - cell [ref=e460]
+                - cell [ref=e462]
+                - cell [ref=e464]
+                - cell [ref=e466]
+                - cell [ref=e468]
+              - row [ref=e470]:
+                - cell [ref=e471]
+                - cell [ref=e473]
+                - cell [ref=e475]
+                - cell [ref=e477]
+                - cell [ref=e479]
+              - row [ref=e481]:
+                - cell [ref=e482]
+                - cell [ref=e484]
+                - cell [ref=e486]
+                - cell [ref=e491]
+                - cell [ref=e493]
+              - row [ref=e495]:
+                - cell [ref=e496]
+                - cell [ref=e498]
+                - cell [ref=e500]
+                - cell [ref=e502]
+                - cell [ref=e504]
+              - row [ref=e506]:
+                - cell [ref=e507]
+                - cell [ref=e509]
+                - cell [ref=e511]
+                - cell [ref=e513]
+                - cell [ref=e515]
+              - row [ref=e517]:
+                - cell [ref=e518]
+                - cell [ref=e520]
+                - cell [ref=e522]
+                - cell [ref=e524]
+                - cell [ref=e526]
+              - row [ref=e528]:
+                - cell [ref=e529]
+                - cell [ref=e531]
+                - cell [ref=e533]
+                - cell [ref=e535]
+                - cell [ref=e537]
+              - row [ref=e539]:
+                - cell [ref=e540]
+                - cell [ref=e542]
+                - cell [ref=e544]
+                - cell [ref=e546]
+                - cell [ref=e548]
+  - alert [ref=e550]
+  - img
+```

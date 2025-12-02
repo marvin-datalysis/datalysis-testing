@@ -1,0 +1,155 @@
+{
+  "cookies": [
+    {
+      "name": "_ga",
+      "value": "GA1.1.474351585.1764093284",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1798653284.140013,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NEXT_LOCALE",
+      "value": "en",
+      "domain": "localhost",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "email",
+      "value": "tesinaQA%40datalysisgroup.com",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798336,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "displayName",
+      "value": "Tesina%20QA",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798423,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "nombreCompleto",
+      "value": "Tesina%20QA",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798489,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "photoURL",
+      "value": "",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798534,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "uid",
+      "value": "108",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798561,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "logoId",
+      "value": "4",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798604,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "logoUrl",
+      "value": "logos%2Fdatalysis.jpeg",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798653,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "logoAlt",
+      "value": "No%20se%20encontr%C3%B3%20la%20imagen",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798706,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "empresaId",
+      "value": "3",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798758,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "empresaNombre",
+      "value": "Datalysis%20Demo",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798821,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "permisos",
+      "value": "%5B%22ver-resumen-ejecutivo%22%2C%22ver-detalle-resumen-ejecutivo%22%2C%22ver-reporte-ventas%22%2C%22ver-inicio%22%2C%22ver-noticias%22%2C%22ver-metrica-ventas%22%2C%22ver-metrica-clientes%22%2C%22ver-metrica-margen-porcentual%22%2C%22ver-daisy-ai%22%2C%22ver-usuarios%22%2C%22gestionar-usuarios%22%2C%22ver-roles-permisos%22%2C%22gestionar-roles-permisos%22%2C%22ver-dashboard-clientes%22%2C%22ver-dashboard-clientes-detalle%22%2C%22ver-consolidado-pedidos%22%2C%22editar-consolidado-pedidos%22%2C%22editar-requisicion-pedidos%22%2C%22ver-requisicion-pedidos%22%2C%22editar-requisicion-pedidos%22%2C%22editar-pedidos-anteriores%22%2C%22editar-consolidado-pedidos-futuros%22%2C%22editar-consolidado-pedidos-pasados%22%2C%22cambiar-sucursal-req-pedidos%22%5D",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698108.546174,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "csrfToken",
+      "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6Il9FcFMtUSJ9.eyJpc3MiOiJodHRwczovL3Nlc3Npb24uZmlyZWJhc2UuZ29vZ2xlLmNvbS90ZXN0LTFlNWQ1IiwibmFtZSI6IlRlc2luYSBRQSIsImF1ZCI6InRlc3QtMWU1ZDUiLCJhdXRoX3RpbWUiOjE3NjQwOTMyOTksInVzZXJfaWQiOiIxMDgiLCJzdWIiOiIxMDgiLCJpYXQiOjE3NjQwOTMzMDEsImV4cCI6MTc2NDY5ODEwMSwiZW1haWwiOiJ0ZXNpbmFxYUBkYXRhbHlzaXNncm91cC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidGVzaW5hcWFAZGF0YWx5c2lzZ3JvdXAuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.H03cx5piauKpNlP16fBaSKiQEm_AfmocWLMQ4FvSnTOMu5-dG-BP0NvYdnjRdG8592ruLzZcWDIBeg81vxkDZxvh1Y82WropvuztOG4rdccmK553uEZw3KVNqKLWaLe38-bH0fP7EzksClhg2GA5lG7LqfWZmzqRPYNGtiWtj0Hi47J9O9tsy-63rKGIJMQ-iONJUnIVt9Pt67_NNHea-zZaBRbste9Eat3UgvvThnMvij4_eIRsRPsRxXJiqv5jfNcZ6v8SnVhNkUNsW9NTObfYu_SpcJ64dVVfUPg3StUp4Q3CUFxGAOISPVWSQkrDtvCM3KWcdqpFsg_FPw6EqQ",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1764698101.798965,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "_ga_XXXXXXXXX",
+      "value": "GS2.1.s1764093284$o1$g1$t1764093303$j41$l0$h0",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1798653303.461255,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

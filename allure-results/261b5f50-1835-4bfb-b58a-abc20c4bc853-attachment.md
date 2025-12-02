@@ -1,0 +1,47 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - banner [ref=e3]:
+        - navigation [ref=e5]:
+          - generic [ref=e6]:
+            - list [ref=e7]:
+              - link "Datalysis Brand" [ref=e9] [cursor=pointer]:
+                - /url: /inicio
+                - img "Datalysis Brand" [ref=e10]
+            - list [ref=e11]
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - button "Ayuda" [ref=e14] [cursor=pointer]:
+                  - img [ref=e15]
+                  - text: Ayuda
+              - listitem [ref=e27]:
+                - button "Notificaciones" [ref=e28] [cursor=pointer]:
+                  - img [ref=e30]
+              - listitem [ref=e43]:
+                - button "avatar" [ref=e45] [cursor=pointer]:
+                  - img "avatar" [ref=e47]
+      - generic [ref=e48]:
+        - button "open drawer" [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+        - list [ref=e54]:
+          - listitem [ref=e55]:
+            - button "Inicio" [ref=e56] [cursor=pointer]:
+              - img [ref=e58]
+              - generic [ref=e67]: Inicio
+    - generic [ref=e69]:
+      - banner [ref=e70]:
+        - heading "Listado de roles" [level=1] [ref=e71]
+        - paragraph [ref=e72]: Consulta los roles registrados y sus permisos.
+      - generic [ref=e73]:
+        - banner [ref=e74]:
+          - generic [ref=e75]:
+            - generic:
+              - img
+            - textbox "Buscar..." [ref=e76]
+        - status [ref=e77]:
+          - generic [ref=e103]: Loading...
+  - alert [ref=e104]
+```

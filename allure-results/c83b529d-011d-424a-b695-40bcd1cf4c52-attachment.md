@@ -1,0 +1,118 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - banner [ref=e3]:
+        - navigation [ref=e5]:
+          - generic [ref=e6]:
+            - list [ref=e7]:
+              - link "Datalysis Brand" [ref=e9] [cursor=pointer]:
+                - /url: /inicio
+                - img "Datalysis Brand" [ref=e10]
+            - list [ref=e11]
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - button "Ayuda" [ref=e14] [cursor=pointer]:
+                  - img [ref=e15]
+                  - text: Ayuda
+              - listitem [ref=e27]:
+                - button "Notificaciones" [ref=e28] [cursor=pointer]:
+                  - img [ref=e30]
+              - listitem [ref=e43]:
+                - button "avatar Tesina QA Analista" [ref=e45] [cursor=pointer]:
+                  - img "avatar" [ref=e47]
+                  - generic [ref=e48]:
+                    - generic [ref=e49]: Tesina QA
+                    - generic [ref=e50]: Analista
+      - generic [ref=e51]:
+        - button "open drawer" [ref=e54] [cursor=pointer]:
+          - img [ref=e55]
+        - list [ref=e57]:
+          - listitem [ref=e58]:
+            - button "Inicio" [ref=e59] [cursor=pointer]:
+              - img [ref=e61]
+              - generic [ref=e70]: Inicio
+          - listitem [ref=e71]:
+            - button "Dashboards" [ref=e72] [cursor=pointer]:
+              - img [ref=e74]
+              - generic [ref=e80]: Dashboards
+          - listitem [ref=e81]:
+            - button "Reportes" [ref=e82] [cursor=pointer]:
+              - img [ref=e84]
+              - generic [ref=e89]: Reportes
+          - listitem [ref=e90]:
+            - button "Configuración" [ref=e91] [cursor=pointer]:
+              - img [ref=e93]
+              - generic [ref=e97]: Configuración
+          - listitem [ref=e98]:
+            - button "Daisy" [ref=e99] [cursor=pointer]:
+              - img [ref=e101]
+              - generic [ref=e110]: Daisy
+    - generic [ref=e111]:
+      - banner [ref=e112]:
+        - link [ref=e113] [cursor=pointer]:
+          - /url: /usuarios
+          - img [ref=e114]
+        - generic [ref=e116]:
+          - heading "Agregar Usuario" [level=1] [ref=e117]
+          - paragraph [ref=e118]: Completa la información para crear un nuevo usuario en el sistema.
+      - generic [ref=e120]:
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - text: Nombre
+            - generic [ref=e123]: "*"
+          - textbox "Nombre" [ref=e124]: prueba
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - text: Nombre para mostrar
+            - generic [ref=e127]: "*"
+          - textbox "Nombre para mostrar *" [ref=e128]:
+            - /placeholder: Nombre para mostrar
+            - text: prueba
+        - generic [ref=e129]:
+          - generic [ref=e130]: Posición
+          - textbox "Posición" [ref=e131]:
+            - /placeholder: Cargo o posición
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - text: Departamento
+            - generic [ref=e134]: "*"
+          - combobox "Departamento *" [ref=e135]:
+            - option "Seleccione un departamento"
+            - option "Departamento 1" [selected]
+        - generic [ref=e136]:
+          - generic [ref=e137]: Teléfono
+          - textbox "Teléfono" [ref=e138]
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - text: Email
+            - generic [ref=e141]: "*"
+          - textbox "Email *" [ref=e142]:
+            - /placeholder: Email
+            - text: prueba_1764179551198@datalysisgroup.com
+        - generic [ref=e143]:
+          - generic [ref=e144]:
+            - text: Contraseña
+            - generic [ref=e145]: "*"
+          - textbox "Contraseña *" [ref=e146]:
+            - /placeholder: Contraseña
+            - text: prueba1234
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - text: Repetir Contraseña
+            - generic [ref=e149]: "*"
+          - textbox "Repetir Contraseña *" [active] [ref=e150]:
+            - /placeholder: Repetir Contraseña
+            - text: prueba1234
+        - generic [ref=e152]:
+          - generic [ref=e153]:
+            - text: Roles(s)
+            - generic [ref=e154]: "*"
+          - generic [ref=e158]: Cargando roles...
+        - contentinfo [ref=e159]:
+          - button "Crear usuario" [ref=e160] [cursor=pointer]
+          - button "Cancelar" [ref=e161] [cursor=pointer]
+  - alert [ref=e162]
+```

@@ -1,0 +1,264 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - banner [ref=e3]:
+        - navigation [ref=e5]:
+          - generic [ref=e6]:
+            - list [ref=e7]:
+              - link "Datalysis Brand" [ref=e9] [cursor=pointer]:
+                - /url: /inicio
+                - img "Datalysis Brand" [ref=e10]
+            - list [ref=e11]
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - button "Ayuda" [ref=e14] [cursor=pointer]:
+                  - img [ref=e15]
+                  - text: Ayuda
+              - listitem [ref=e27]:
+                - button "Notificaciones" [ref=e28] [cursor=pointer]:
+                  - img [ref=e30]
+              - listitem [ref=e43]:
+                - button "avatar Tesina QA Analista" [ref=e45] [cursor=pointer]:
+                  - img "avatar" [ref=e47]
+                  - generic [ref=e48]:
+                    - generic [ref=e49]: Tesina QA
+                    - generic [ref=e50]: Analista
+      - generic [ref=e51]:
+        - button "open drawer" [ref=e54] [cursor=pointer]:
+          - img [ref=e55]
+        - list [ref=e57]:
+          - listitem [ref=e58]:
+            - button "Inicio" [ref=e59] [cursor=pointer]:
+              - img [ref=e61]
+              - generic [ref=e70]: Inicio
+          - listitem [ref=e71]:
+            - button "Dashboards" [ref=e72] [cursor=pointer]:
+              - img [ref=e74]
+              - generic [ref=e80]: Dashboards
+          - listitem [ref=e81]:
+            - button "Reportes" [ref=e82] [cursor=pointer]:
+              - img [ref=e84]
+              - generic [ref=e89]: Reportes
+          - listitem [ref=e90]:
+            - button "Configuración" [ref=e91] [cursor=pointer]:
+              - img [ref=e93]
+              - generic [ref=e97]: Configuración
+          - listitem [ref=e98]:
+            - button "Daisy" [ref=e99] [cursor=pointer]:
+              - img [ref=e101]
+              - generic [ref=e110]: Daisy
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - navigation "Breadcrumbs" [ref=e115]:
+          - list [ref=e116]:
+            - listitem [ref=e117]:
+              - link "Inicio" [ref=e118] [cursor=pointer]:
+                - /url: /inicio
+              - img [ref=e120]
+            - listitem [ref=e122]:
+              - link "Dashboard" [disabled]:
+                - /url: /es
+              - img [ref=e124]
+            - listitem [ref=e126]:
+              - link "Resumen Ejecutivo" [ref=e127] [cursor=pointer]:
+                - /url: /es/dashboard
+        - generic [ref=e128]: Dashboard Resumen Ejecutivo
+      - generic [ref=e129]:
+        - generic [ref=e131]:
+          - generic [ref=e134]:
+            - group [ref=e138]:
+              - spinbutton "día," [ref=e139]: "01"
+              - generic [ref=e140]: /
+              - spinbutton "mes," [ref=e141]: "11"
+              - generic [ref=e142]: /
+              - spinbutton "año," [ref=e143]: "2025"
+            - generic [ref=e144]: "-"
+            - group [ref=e148]:
+              - spinbutton "día," [ref=e149]: "29"
+              - generic [ref=e150]: /
+              - spinbutton "mes," [ref=e151]: "11"
+              - generic [ref=e152]: /
+              - spinbutton "año," [ref=e153]: "2025"
+            - button [ref=e154] [cursor=pointer]:
+              - img [ref=e155]
+          - generic [ref=e159]:
+            - generic [ref=e160]: Empresa
+            - button [ref=e161] [cursor=pointer]:
+              - img [ref=e162]
+          - generic [ref=e166]:
+            - generic [ref=e167]: Categoria
+            - button [ref=e168] [cursor=pointer]:
+              - img [ref=e169]
+          - generic [ref=e173]:
+            - generic [ref=e174]: Producto
+            - button [ref=e175] [cursor=pointer]:
+              - img [ref=e176]
+          - generic [ref=e180]:
+            - generic [ref=e181]: Segmento
+            - button [ref=e182] [cursor=pointer]:
+              - img [ref=e183]
+          - generic [ref=e187]:
+            - generic [ref=e188]: Cliente
+            - button [ref=e189] [cursor=pointer]:
+              - img [ref=e190]
+          - button "Filtrar" [ref=e192] [cursor=pointer]:
+            - generic [ref=e193]: Filtrar
+            - img [ref=e194]
+          - button "Limpiar" [ref=e196] [cursor=pointer]:
+            - generic [ref=e197]: Limpiar
+            - img [ref=e198]
+        - generic [ref=e200]:
+          - generic [ref=e202]:
+            - generic [ref=e204]:
+              - generic [ref=e205]: VENTAS TOTALES
+              - generic [ref=e206]:
+                - generic [ref=e207]: Período Actual
+                - generic [ref=e208]:
+                  - generic [ref=e209]: $
+                  - generic [ref=e210]: 3,452,934
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - generic [ref=e213]: Período Anterior
+                - generic [ref=e215]: $3,652,685
+              - generic [ref=e216]:
+                - generic [ref=e217]: Período Año Pasado
+                - generic [ref=e219]: $3,240,466
+          - generic [ref=e221]:
+            - generic [ref=e223]:
+              - generic [ref=e224]: COSTOS TOTALES
+              - generic [ref=e225]:
+                - generic [ref=e226]: Período Actual
+                - generic [ref=e227]:
+                  - generic [ref=e228]: $
+                  - generic [ref=e229]: 2,713,110
+            - generic [ref=e230]:
+              - generic [ref=e231]:
+                - generic [ref=e232]: Período Anterior
+                - generic [ref=e234]: $2,868,587
+              - generic [ref=e235]:
+                - generic [ref=e236]: Período Año Pasado
+                - generic [ref=e238]: $2,537,313
+          - generic [ref=e243]: MARGEN TOTAL
+          - generic [ref=e260]: MARGEN %
+        - generic [ref=e275]:
+          - generic [ref=e276]: Ventas
+          - button "Día" [ref=e279] [cursor=pointer]:
+            - generic [ref=e280]: Día
+            - img [ref=e281]
+        - generic [ref=e291]:
+          - generic [ref=e292]:
+            - generic [ref=e296]: TICKET PROMEDIO
+            - generic [ref=e312]: TICKETS
+          - generic [ref=e325]:
+            - generic [ref=e328]: Condiciones de Pago
+            - generic [ref=e334]: Categorias
+        - generic [ref=e337]:
+          - generic [ref=e339]:
+            - generic [ref=e340]:
+              - generic [ref=e341]: Top Ventas a Clientes
+              - button "10" [ref=e344] [cursor=pointer]:
+                - generic [ref=e345]: "10"
+                - img [ref=e346]
+            - generic [ref=e350]:
+              - navigation "pagination navigation":
+                - list:
+                  - button "previous page button":
+                    - img
+                  - button "next page button":
+                    - img
+          - generic [ref=e352]:
+            - generic [ref=e353]:
+              - generic [ref=e354]: Top Productos Vendidos
+              - button "10" [ref=e357] [cursor=pointer]:
+                - generic [ref=e358]: "10"
+                - img [ref=e359]
+            - generic [ref=e363]:
+              - navigation "pagination navigation":
+                - list:
+                  - button "previous page button":
+                    - img
+                  - button "next page button":
+                    - img
+        - generic [ref=e365]:
+          - generic [ref=e366]:
+            - generic [ref=e367]: Tabla Resumen Financiero
+            - button "Empleado" [ref=e370] [cursor=pointer]:
+              - generic [ref=e371]: Empleado
+              - img [ref=e372]
+          - table [ref=e376]:
+            - rowgroup [ref=e377]:
+              - row "Ordenar por filtro Ordenar por filtro Ordenar por filtro Ordenar por filtro Ordenar por filtro" [ref=e378]:
+                - cell "Ordenar por filtro" [ref=e379]:
+                  - button "Ordenar por filtro" [ref=e380] [cursor=pointer]:
+                    - generic [ref=e381]: Empleado
+                    - img [ref=e382]
+                - cell "Ordenar por filtro" [ref=e384]:
+                  - button "Ordenar por filtro" [ref=e385] [cursor=pointer]:
+                    - generic [ref=e386]: Ventas (Q)
+                    - img [ref=e387]
+                - cell "Ordenar por filtro" [ref=e389]:
+                  - button "Ordenar por filtro" [ref=e390] [cursor=pointer]:
+                    - generic [ref=e391]: Costos (Q)
+                    - img [ref=e392]
+                - cell "Ordenar por filtro" [ref=e394]:
+                  - button "Ordenar por filtro" [ref=e395] [cursor=pointer]:
+                    - generic [ref=e396]: Margen (Q)
+                    - img [ref=e397]
+                - cell "Ordenar por filtro" [ref=e399]:
+                  - button "Ordenar por filtro" [ref=e400] [cursor=pointer]:
+                    - generic [ref=e401]: Margen %
+                    - img [ref=e402]
+            - rowgroup [ref=e404]:
+              - row [ref=e405]:
+                - cell [ref=e406]
+                - cell [ref=e408]
+                - cell [ref=e410]
+                - cell [ref=e412]
+                - cell [ref=e414]
+              - row [ref=e416]:
+                - cell [ref=e417]
+                - cell [ref=e419]
+                - cell [ref=e421]
+                - cell [ref=e423]
+                - cell [ref=e425]
+              - row [ref=e427]:
+                - cell [ref=e428]
+                - cell [ref=e430]
+                - cell [ref=e432]
+                - cell [ref=e437]
+                - cell [ref=e439]
+              - row [ref=e441]:
+                - cell [ref=e442]
+                - cell [ref=e444]
+                - cell [ref=e446]
+                - cell [ref=e448]
+                - cell [ref=e450]
+              - row [ref=e452]:
+                - cell [ref=e453]
+                - cell [ref=e455]
+                - cell [ref=e457]
+                - cell [ref=e459]
+                - cell [ref=e461]
+              - row [ref=e463]:
+                - cell [ref=e464]
+                - cell [ref=e466]
+                - cell [ref=e468]
+                - cell [ref=e470]
+                - cell [ref=e472]
+              - row [ref=e474]:
+                - cell [ref=e475]
+                - cell [ref=e477]
+                - cell [ref=e479]
+                - cell [ref=e481]
+                - cell [ref=e483]
+              - row [ref=e485]:
+                - cell [ref=e486]
+                - cell [ref=e488]
+                - cell [ref=e490]
+                - cell [ref=e492]
+                - cell [ref=e494]
+  - alert [ref=e496]
+```

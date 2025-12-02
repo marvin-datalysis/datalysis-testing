@@ -1,0 +1,621 @@
+{
+  "config": {
+    "configFile": "C:\\xampp\\htdocs\\datalysis-testing\\playwright.config.ts",
+    "rootDir": "C:/xampp/htdocs/datalysis-testing/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reporte-playwright.json"
+        }
+      ],
+      [
+        "C:\\xampp\\htdocs\\datalysis-testing\\node_modules\\allure-playwright\\dist\\cjs\\index.js",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/xampp/htdocs/datalysis-testing/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/xampp/htdocs/datalysis-testing/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "front-end\\resumen-ejecutivo\\resumen-ejecutivo.spec.ts",
+      "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Dashboard Resumen Ejecutivo (E2E)",
+          "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+          "line": 60,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: VENTAS TOTALES",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 835,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:26:51.999Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-8e6897c0b1c4f28491d9",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: COSTOS TOTALES",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1186,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:27:06.050Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-a7f316427c063e07fde4",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: MARGEN TOTAL",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2014,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:27:07.306Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-7743cb4fca31f6912b5b",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: MARGEN %",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1424,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:27:09.362Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-cc2ea29aba7a69fd1831",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: TICKET PROMEDIO",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2767,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:27:10.808Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-fb7f545dae019b554701",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: TICKETS",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 754,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:27:13.602Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-625040351bcaf96893e8",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-63 — Filtros secundarios",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 838,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:27:25.802Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-33d6cd2e3fd3c61a2bd7",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 166,
+              "column": 7
+            },
+            {
+              "title": "Fecha fin menor que inicio no debe romper UI",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2437,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:27:28.820Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-54e9d8e2bac561276ed3",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 192,
+              "column": 7
+            },
+            {
+              "title": "Esquema API del gráfico es válido",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 645,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-30T03:27:31.280Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-f4a1423cc7629494db13",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 210,
+              "column": 7
+            }
+          ],
+          "suites": [
+            {
+              "title": "CP-62 — Filtros combinados",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 140,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Debe aplicar todos los filtros y actualizar KPIs",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 11399,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-30T03:27:14.377Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-0e2f4659f85ffd68c6c1",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 142,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Filtros de periodo",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 180,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Filtro Día",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 550,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-30T03:27:26.671Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-0051daa57f9da58ffa61",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                },
+                {
+                  "title": "Filtro Semana",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 479,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-30T03:27:27.257Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-97866e975f765922cc02",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                },
+                {
+                  "title": "Filtro Mes",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 290,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-30T03:27:27.761Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-47e23941698462d46166",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                },
+                {
+                  "title": "Filtro Trimestre",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 321,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-30T03:27:28.075Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-cbd65013ef267efadca5",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                },
+                {
+                  "title": "Filtro Año",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 383,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-11-30T03:27:28.418Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-9996315cab0b075a32a8",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-30T03:26:50.594Z",
+    "duration": 41972.918,
+    "expected": 15,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
