@@ -2,7 +2,7 @@
 import { test, expect, chromium } from "@playwright/test";
 import DashboardClientesPage from "../pages/DashboardClientesPage";
 
-// IMPORTANTE: App muy lenta, timeouts generosos
+// app lenta, timeouts largos
 test.setTimeout(240_000);
 
 const BASE_URL = process.env.BASE_URL ?? process.env.APP_URL ?? "";
@@ -18,7 +18,7 @@ test.describe("Dashboard Clientes - Pruebas E2E Frontend", () => {
   let dashboard: DashboardClientesPage;
 
   // ============================================================
-  // BEFORE ALL — Login UNA SOLA VEZ (patrón de resumen-ejecutivo)
+  // BEFORE ALL — Login UNA SOLA VEZ
   // ============================================================
   test.beforeAll(async ({}, testInfo) => {
     testInfo.setTimeout(120_000);
@@ -47,7 +47,7 @@ test.describe("Dashboard Clientes - Pruebas E2E Frontend", () => {
     await dashboard.clickFiltrar();
     await dashboard.esperarCarga();
     
-    // CLAVE: Espera adicional larga para que cargue TODO el dashboard (app muy lenta)
+    // CLAVE: Espera adicional larga para que cargue TODO el dashboard 
     console.log(`  Esperando 10 segundos adicionales para carga completa del dashboard...`);
     await page.waitForTimeout(10000);
     

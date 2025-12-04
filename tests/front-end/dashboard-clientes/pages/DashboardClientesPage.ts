@@ -16,7 +16,6 @@ export default class DashboardClientesPage {
 
   /** 
    * Espera a que la página esté cargada.
-   * Versión simple y tolerante para app muy lenta.
    */
   async esperarCarga() {
     // Esperar a que desaparezca el loader
@@ -25,7 +24,7 @@ export default class DashboardClientesPage {
       await loader.waitFor({ state: 'detached', timeout: 120000 });
     }
     
-    // Espera fija para que termine de renderizar (app muy lenta)
+    // Espera fija para que termine de renderizar
     await this.page.waitForTimeout(3000);
   }
 
@@ -51,7 +50,6 @@ export default class DashboardClientesPage {
   }
 
   async setNombreCliente(nombre: string) {
-    // Patrón robusto basado en resumen-ejecutivo
     // 1. Buscar el trigger del filtro de cliente
     const trigger = this.page
       .locator('div.flex:has(div.text-sm:has-text("Cliente"))')
