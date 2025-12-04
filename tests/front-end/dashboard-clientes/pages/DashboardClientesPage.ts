@@ -14,30 +14,19 @@ export default class DashboardClientesPage {
     await this.page.goto(url, { waitUntil: "domcontentloaded" }).catch(() => {});
   }
 
-  /** Espera a que la página esté cargada */
-  async esperarCarga(timeoutMs = 120_000) {
-    const deadline = Date.now() + timeoutMs;
-    // Esperar a que aparezcan elementos clave de la página
-    const indicators = [
-      this.page.locator('[data-testid*="client-info"]'),
-      this.page.locator('text=/información.*cliente/i'),
-      this.page.locator('.tabulator'),
-    ];
-
-    while (Date.now() < deadline) {
-      for (const indicator of indicators) {
-        if ((await indicator.count()) > 0) {
-          try {
-            if (await indicator.first().isVisible({ timeout: 5_000 }).catch(() => false)) {
-              return;
-            }
-          } catch {
-            // continuar
-          }
-        }
-      }
-      await this.page.waitForTimeout(500);
+  /** 
+   * Espera a que la página esté cargada.
+   * Versión simple y tolerante para app muy lenta.
+   */
+  async esperarCarga() {
+    // Esperar a que desaparezca el loader
+    const loader = this.page.locator('.animacion-carga');
+    if (await loader.isVisible({ timeout: 2000 }).catch(() => false)) {
+      await loader.waitFor({ state: 'detached', timeout: 120000 });
     }
+    
+    // Espera fija para que termine de renderizar (app muy lenta)
+    await this.page.waitForTimeout(3000);
   }
 
   // ========================= Filtros =========================
@@ -62,18 +51,47 @@ export default class DashboardClientesPage {
   }
 
   async setNombreCliente(nombre: string) {
-    // Buscar input o selector de cliente
-    const clienteInput = this.page
-      .getByLabel(/cliente|nombre.*cliente/i)
-      .or(this.page.locator('input[placeholder*="cliente" i], input[name*="cliente" i]'))
+    // Patrón robusto basado en resumen-ejecutivo
+    // 1. Buscar el trigger del filtro de cliente
+    const trigger = this.page
+      .locator('div.flex:has(div.text-sm:has-text("Cliente"))')
+      .or(this.page.getByText(/^Cliente$/i).locator('..').locator('..'))
       .first();
 
-    if (await clienteInput.count()) {
-      await clienteInput.fill(nombre);
-      // Esperar a que aparezcan opciones y seleccionar
-      const option = this.page.getByRole("option", { name: new RegExp(nombre, "i") }).first();
-      if (await option.count()) {
-        await option.click({ timeout: 10_000 }).catch(() => {});
+    if (await trigger.count() > 0) {
+      await trigger.click({ timeout: 10_000 }).catch(() => {});
+      
+      // 2. Buscar el dropdown que aparece
+      const dropdown = this.page.locator('div[id^="dropdown-"]:visible').first();
+      
+      // 3. Usar el buscador si existe
+      const buscador = dropdown.getByPlaceholder(/buscar|search/i);
+      if (await buscador.isVisible({ timeout: 2000 }).catch(() => false)) {
+        await buscador.fill(nombre);
+        await this.page.waitForTimeout(500);
+      }
+      
+      // 4. Seleccionar la opción
+      await dropdown.getByText(nombre, { exact: false }).first().click({ timeout: 10_000 }).catch(() => {});
+      
+      // 5. Confirmar con OK si existe
+      const okBtn = dropdown.getByRole('button', { name: /^Ok$/i });
+      if (await okBtn.count() > 0) {
+        await okBtn.click().catch(() => {});
+      }
+    } else {
+      // Fallback: buscar input directo
+      const clienteInput = this.page
+        .getByLabel(/cliente|nombre.*cliente/i)
+        .or(this.page.locator('input[placeholder*="cliente" i], input[name*="cliente" i]'))
+        .first();
+
+      if (await clienteInput.count()) {
+        await clienteInput.fill(nombre);
+        const option = this.page.getByRole("option", { name: new RegExp(nombre, "i") }).first();
+        if (await option.count()) {
+          await option.click({ timeout: 10_000 }).catch(() => {});
+        }
       }
     }
   }
@@ -225,7 +243,7 @@ export default class DashboardClientesPage {
   // ========================= Gráficos =========================
   
   /** Verifica que el gráfico de cartera crédito/contado esté visible */
-  async graficoCarteraCreditoContado(): Locator {
+  graficoCarteraCreditoContado(): Locator {
     return this.page
       .locator('[data-testid*="cartera"], [data-testid*="credito-contado"]')
       .or(this.page.locator('text=/crédito.*contado|contado.*crédito/i').locator('..').locator('..'))
@@ -233,7 +251,7 @@ export default class DashboardClientesPage {
   }
 
   /** Verifica que el gráfico de límite crediticio esté visible */
-  async graficoLimiteCrediticio(): Locator {
+  graficoLimiteCrediticio(): Locator {
     return this.page
       .locator('[data-testid*="limite-credito"], [data-testid*="credit-limit"]')
       .or(this.page.locator('text=/límite.*crédito|limite.*credito/i').locator('..').locator('..'))
@@ -243,7 +261,7 @@ export default class DashboardClientesPage {
   // ========================= Tablas =========================
   
   /** Obtiene la tabla de clasificación por volumen */
-  async getTablaClasificacionVolumen(): Locator {
+  getTablaClasificacionVolumen(): Locator {
     return this.page
       .locator('[data-testid*="clasificacion-volumen"], [data-testid*="volume-classification"]')
       .or(this.page.locator('text=/clasificación.*volumen|volumen.*ventas/i').locator('..').locator('.tabulator'))
@@ -251,7 +269,7 @@ export default class DashboardClientesPage {
   }
 
   /** Obtiene la tabla de recomendación de productos */
-  async getTablaRecomendacionProductos(): Locator {
+  getTablaRecomendacionProductos(): Locator {
     return this.page
       .locator('[data-testid*="recomendacion"], [data-testid*="recommendation"]')
       .or(this.page.locator('text=/recomendación.*producto|producto.*recomendado/i').locator('..').locator('.tabulator'))
@@ -259,7 +277,7 @@ export default class DashboardClientesPage {
   }
 
   /** Obtiene la tabla de estado de cuenta */
-  async getTablaEstadoCuenta(): Locator {
+  getTablaEstadoCuenta(): Locator {
     return this.page
       .locator('[data-testid*="estado-cuenta"], [data-testid*="account-statement"]')
       .or(this.page.locator('text=/estado.*cuenta|cuenta.*cliente/i').locator('..').locator('.tabulator'))
