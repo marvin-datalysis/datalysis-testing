@@ -295,5 +295,96 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
     await browser.close();
   });
 
+
+  test('CP-117 - Permisos insuficientes: pantalla 401 y tarjetas bloqueadas en Inicio', async () => {
+  const browser = await chromium.launch({ headless: false });
+  const page = await browser.newPage();
+
+  const login = new LoginPage(page);
+  const email = "prueba_1764036152849@datalysisgroup.com";
+  const pass = "prueba1234";
+
+  await login.goto();
+  await login.login(email, pass);
+  await expect(page).not.toHaveURL(/sign-in/);
+
+  // =====================================================
+  // Escenario 1: acceso restringido
+  // =====================================================
+  await page.goto(`${process.env.APP_URL}/usuarios`);
+  await expect(page.getByText("Acceso Denegado")).toBeVisible();
+  await expect(page.getByText("No tienes permiso")).toBeVisible();
+  await expect(page.getByText("401")).toBeVisible();
+
+  await expect(page.locator("table")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /agregar/i })).toHaveCount(0);
+
+  // =====================================================
+  // Escenario 2: inicio con tarjetas bloqueadas
+  // =====================================================
+  await page.goto(`${process.env.APP_URL}/inicio`);
+
+  // Esperar estado final antes de validar
+  await page.getByText("No tienes acceso a estos datos").first().waitFor({
+    state: "visible",
+    timeout: 15000
+  });
+
+  // Mapa de texto visible → ID real
+  const ID_MAP: Record<string, string> = {
+    "VENTAS": "VENTAS",
+    "CLIENTES": "CLIENTES",
+    "MARGEN %": "MARGEN%"  // ID real NO tiene espacio y contiene %
+  };
+
+  const tarjetas = ["VENTAS", "CLIENTES", "MARGEN %"];
+
+  for (const nombre of tarjetas) {
+
+    // -------------------------------------------------------
+    // 1. Título exacto de la tarjeta
+    // -------------------------------------------------------
+    const cardTitle = page.getByText(nombre, { exact: true });
+    await expect(cardTitle).toBeVisible();
+
+    // Contenedor de la tarjeta
+    const card = cardTitle.locator("..").locator("..");
+
+    await expect(
+      card.getByText("No tienes acceso a estos datos")
+    ).toBeVisible();
+
+    // -------------------------------------------------------
+    // 2. Selección segura de IDs con caracteres especiales (%)
+    // -------------------------------------------------------
+    const idBase = ID_MAP[nombre];
+
+    const idActual = `${idBase}-periodo-actual-monto`;
+    const idAnterior = `${idBase}-periodo-anterior-monto`;
+    const idComparativo = `${idBase}-comparativo`;
+
+    // -------------------------------------------------------
+    // 3. Validar montos en cero usando selectores seguros
+    // -------------------------------------------------------
+    await expect(page.locator(`[id="${idActual}"]`)).toHaveText(/0/);
+    await expect(page.locator(`[id="${idAnterior}"]`)).toHaveText(/0/);
+    await expect(page.locator(`[id="${idComparativo}"]`)).toContainText("0");
+
+    // -------------------------------------------------------
+    // 4. Validar íconos deshabilitados
+    // -------------------------------------------------------
+    await expect(card.locator("svg")).toHaveAttribute(
+      "class",
+      /Disabled|stone-400|MuiSvgIcon-colorDisabled/i
+    );
+  }
+
+  await browser.close();
+});
+
+
+
+
+
 });
 
