@@ -1,33 +1,19 @@
 import { test, expect } from '@playwright/test';
 import { getAccessToken } from '../../../utils/getToken';
 import { queryDB } from '../../../utils/db';
-import { getNuevoPedidoQuery, getPedidoExistenteQuery } from './queries/getPedidosQueries';
-
-export interface DataPedidosObtenidos {
-  data: {
-    fechaEncargo: string;
-    sucursalId: number;
-    pedidoId: number | null;
-    pedidos: [
-      {
-        pedidoId: number | null;
-        productoCodigo: string;
-        fechaEntrega: string;
-        existencia: number;
-        cantidadOriginal: number
-      }
-    ]
-  }
-}
+import { getNuevoPedidoQuery, getPedidoExistenteQuery } from './utils/getPedidosQueries';
+import { DataPedidosObtenidos } from './utils/DataPedidosObtenidosInterface';
 
 test.describe('Guardar pedido - API + DB SIN POM', () => {
 
-  test.only('Debe guardar pedido correctamente y generar pedidoId cuando viene null', async ({ request }) => {
+  test('Debe guardar pedido correctamente y generar pedidoId cuando viene null', async ({ request }) => {
 
-    const sucursalId = 1;
-    //const fechaEncargo = new Date().toISOString().split('T')[0];
-    const fechaEncargo = '2025-12-07';
-    console.log('fecha de encargo: ', fechaEncargo);
+    const numeroDeSucursales=await queryDB('select count(*) from sucursal',[]);
+    //const sucursalId = getRandomIntInRange(1,Number(numeroDeSucursales[0].count));
+    const sucursalId=1;
+    const fechaEncargo = new Date().toISOString().split('T')[0];
+    console.log('fecha de encargo: ',fechaEncargo);
+    console.log('sucursal: ', sucursalId);
 
     // TOKEN
     const accessToken = await getAccessToken();

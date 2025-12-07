@@ -8,46 +8,39 @@ test.describe('Guardar pedido - API + DB SIN POM', () => {
 
   test('Debe guardar pedido correctamente y generar pedidoId cuando viene null', async ({ request }) => {
 
-    const numeroDeSucursales=await queryDB('select count(*) from sucursal',[]);
-    //const sucursalId = getRandomIntInRange(1,Number(numeroDeSucursales[0].count));
-    const sucursalId=1;
-    const fechaEncargo = new Date().toISOString().split('T')[0];
-    console.log('fecha de encargo: ',fechaEncargo);
-    console.log('sucursal: ', sucursalId);
+    const fechaEntrega = '2025-12-10';
 
     // TOKEN
     const accessToken = await getAccessToken();
 
     let response = await request.post(
-      `${process.env.API_URL}/api/bom_bom/pedidos/pedido`,
+      `${process.env.API_URL}/api/bom_bom/pedidos/consolidado`,
       {
         headers: {
           accessToken,
           'Content-Type': 'application/json',
         },
-        data: {sucursalId,fechaEncargo},
+        data: {fechaEntrega},
       }
     );
     const responseWithType:DataPedidosObtenidos= await response.json();
     const pedidos = responseWithType.data.pedidos.map(p=>({
         ...p,
-        existencia: getRandomIntInRange(1,50),
-        cantidadOriginal: getRandomIntInRange(1,50)
+        cantidadFinal: getRandomIntInRange(1,50)
     }))
+    
 
     // BODY DEL REQUEST
     const body = {
       data: {
-        sucursalId: 1,
-        fechaEncargo: fechaEncargo,
         pedidos
       }
     };
 
-    body.data.pedidos.map(p=>console.log(p.productoCodigo,p.existencia,p.cantidadOriginal));
+    body.data.pedidos.map(p=>console.log(p.fechaEncargo,p.productoCodigo,p.sucursalId,p.cantidadFinal));
 
     response = await request.post(
-      `${process.env.API_URL}/api/bom_bom/pedidos/pedido/save`,
+      `${process.env.API_URL}/api/bom_bom/pedidos/consolidado/save`,
       {
         headers: {
           accessToken,
@@ -74,16 +67,16 @@ test.describe('Guardar pedido - API + DB SIN POM', () => {
         pp."pedidoId",
         pp."fechaEntrega"::date::varchar as "fechaEntrega",
         pp."existencia",
-        pp."cantidadOriginal"
+        pp."cantidadOriginal",
+        pp."cantidadFinal"
       from producto_pedido pp
       join pedido p on p."pedidoId" = pp."pedidoId"
       where 
-        p."sucursalId" = $1
-        and p."fechaEncargo"::date = $2
-        and pp."productoCodigo" in (${productosCodigos.map((_, idx) => `$${idx + 3}`).join(',')})
+        "fechaEntrega"::date = $1
+        and pp."productoCodigo" in (${productosCodigos.map((_, idx) => `$${idx + 2}`).join(',')})
     `;
 
-    const values = [sucursalId, fechaEncargo, ...productosCodigos];
+    const values = [fechaEntrega, ...productosCodigos];
 
     // EJECUTAR QUERY
     const dataBD: any[] = await queryDB(query, values);
@@ -92,21 +85,22 @@ test.describe('Guardar pedido - API + DB SIN POM', () => {
     expect(dataBD.length).toBe(body.data.pedidos.length);
 
     for (const pedido of body.data.pedidos) {
-      const row = dataBD.find(d => d.productoCodigo === pedido.productoCodigo);
+      const rowBD = dataBD.find(d => (d.fechaEncargo === pedido.fechaEncargo) && (d.sucursalId === pedido.sucursalId) && (d.productoCodigo === pedido.productoCodigo));
 
-      expect(row).toBeTruthy();
+      expect(rowBD).toBeTruthy();
 
-      expect(row.sucursalId).toBe(sucursalId);
-      expect(row.fechaEncargo).toBe(fechaEncargo);
-      expect(row.fechaEntrega).toBe(pedido.fechaEntrega);
-      expect(row.existencia).toBe(pedido.existencia);
-      expect(row.cantidadOriginal).toBe(pedido.cantidadOriginal);
+      expect(rowBD.sucursalId).toBe(pedido.sucursalId);
+      expect(rowBD.fechaEncargo).toBe(pedido.fechaEncargo);
+      expect(rowBD.fechaEntrega).toBe(pedido.fechaEntrega);
+      expect(rowBD.existencia).toBe(pedido.existencia);
+      expect(rowBD.cantidadOriginal).toBe(pedido.cantidadOriginal);
+      expect(rowBD.cantidadFinal).toBe(pedido.cantidadFinal);
 
       // VALIDACIÓN CLAVE: EL BACKEND DEBE HABER GENERADO EL ID
-      expect(row.pedidoId).not.toBeNull();
+      expect(rowBD.pedidoId).not.toBeNull();
 
       if(pedido.pedidoId !== null) {
-        expect(row.pedidoId).toBe(pedido.pedidoId);
+        expect(rowBD.pedidoId).toBe(pedido.pedidoId);
       }
     }
 
