@@ -1,11 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../../../../utils/login';
 import { queryDB } from '../../../../utils/db';
-
-function convertirFecha(fechaDDMMYYYY: string) {
-  const [dd, mm, yyyy] = fechaDDMMYYYY.split('/');
-  return `${yyyy}-${mm}-${dd}`;
-}
+import { convertirFecha } from '../../../../utils/convertirFecha';
 
 test.only('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
   await test.setTimeout(60000);
@@ -13,7 +9,7 @@ test.only('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
   await page.goto(`${process.env.APP_URL}/es/pedidos`);
 
   if (page.url().includes('sign-in')) {
-    login(page);
+    login(page,false);
     await page.waitForURL('**/pedidos');
     await page.waitForTimeout(500);
   }

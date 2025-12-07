@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../../../utils/login';
 import { queryDB } from '../../../utils/db';
+import { getRandomIntInRange } from '../../../utils/getRandomIntInRange';
+import { convertirFecha } from '../../../utils/convertirFecha';
 
 interface PedidoConsolidado {
   fechaEncargo: string;
@@ -9,24 +11,13 @@ interface PedidoConsolidado {
   cantidadFinal: number;
 }
 
-function getRandomIntInRange(min: number, max: number) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function convertirFecha(fechaDDMMYYYY: string) {
-  const [dd, mm, yyyy] = fechaDDMMYYYY.split('/');
-  return `${yyyy}-${mm}-${dd}`;
-}
-
 test('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
   await test.setTimeout(60000);
 
   await page.goto(`${process.env.APP_URL}/es//consolidado-pedidos`);
 
   if (page.url().includes('sign-in')) {
-    login(page);
+    login(page,false);
     await page.waitForURL('**/consolidado-pedidos');
     await page.waitForTimeout(500);
   }

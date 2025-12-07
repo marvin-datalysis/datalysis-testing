@@ -2,21 +2,16 @@ import { test, expect } from '@playwright/test';
 import { login } from '../../../utils/login';
 import { queryDB } from '../../../utils/db';
 import { Pedido, RequisicionPage } from './pages/requisicionPage';
+import { convertirFecha } from '../../../utils/convertirFecha';
 
-
-function convertirFecha(fechaDDMMYYYY: string) {
-  const [dd, mm, yyyy] = fechaDDMMYYYY.split('/');
-  return `${yyyy}-${mm}-${dd}`;
-}
-
-test.only('Validar datos solo lectura en Tabulator vs BD (POM)', async ({ page }) => {
+test('Validar datos solo lectura en Tabulator vs BD (POM)', async ({ page }) => {
   const pedidosPage = new RequisicionPage(page);
 
   await test.setTimeout(60000);
   await pedidosPage.goto();
 
   if (page.url().includes('sign-in')) {
-    await login(page);
+    await login(page,false);
     await page.waitForURL('**/pedidos');
   }
 

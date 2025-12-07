@@ -1,17 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../../../../utils/login';
 import { queryDB } from '../../../../utils/db';
-
-function getRandomIntInRange(min: number, max: number) {
-  min = Math.ceil(min); // Ensure min is an integer
-  max = Math.floor(max); // Ensure max is an integer
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function convertirFecha(fechaDDMMYYYY: string) {
-  const [dd, mm, yyyy] = fechaDDMMYYYY.split('/');
-  return `${yyyy}-${mm}-${dd}`;
-}
+import { convertirFecha } from '../../../../utils/convertirFecha';
+import { getRandomIntInRange } from '../../../../utils/getRandomIntInRange';
 
 test('Editar todas las celdas de existencia y pedido en Tabulator', async ({ page }) => {
   await test.setTimeout(60000);
@@ -19,7 +10,7 @@ test('Editar todas las celdas de existencia y pedido en Tabulator', async ({ pag
   await page.goto(`${process.env.APP_URL}/es/pedidos`);
 
   if (page.url().includes('sign-in')) {
-    login(page);
+    login(page,false);
     await page.waitForURL('**/pedidos');
     await page.waitForTimeout(500);
   }
