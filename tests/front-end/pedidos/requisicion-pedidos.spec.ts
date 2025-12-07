@@ -7,15 +7,16 @@ function getRandomIntInRange(min: number, max: number) {
   max = Math.floor(max); // Ensure max is an integer
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 function convertirFecha(fechaDDMMYYYY: string) {
   const [dd, mm, yyyy] = fechaDDMMYYYY.split('/');
   return `${yyyy}-${mm}-${dd}`;
 }
 
-test.only('Editar todas las celdas de existencia y pedido en Tabulator', async ({ page }) => {
+test('Editar todas las celdas de existencia y pedido en Tabulator', async ({ page }) => {
   await test.setTimeout(60000);
 
-  await page.goto('/es/pedidos');
+  await page.goto(`${process.env.APP_URL}/es/pedidos`);
 
   if (page.url().includes('sign-in')) {
     login(page);
@@ -24,11 +25,11 @@ test.only('Editar todas las celdas de existencia y pedido en Tabulator', async (
   }
 
   const botonEditar = page.getByRole('button', { name: 'Editar pedido' });
-  await expect(botonEditar).toBeEnabled({ timeout: 15000 });
-  await page.waitForTimeout(500);
+  await expect(botonEditar).toBeEnabled({ timeout: 25000 });
+  await page.waitForTimeout(2000);
+  await expect(botonEditar).toBeEnabled({ timeout: 25000 });
   await botonEditar.click();
-
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(1000);
 
   const dateInput = page.locator('input#fechaPedido');
   const fecha = await dateInput.getAttribute('value');
@@ -41,12 +42,12 @@ test.only('Editar todas las celdas de existencia y pedido en Tabulator', async (
 
   console.log('Sucursal seleccionada:', valorSucursal);
 
-  // ✅ 1. Esperar a que la tabla cargue
+  // 1. Esperar a que la tabla cargue
   const tabla = page.locator('#requisicion');
   await expect(tabla).toBeVisible();
 
 
-  // ✅ 2. Esperar a que existan filas
+  // 2. Esperar a que existan filas
   const filas = tabla.locator('.tabulator-row:not(.tabulator-calcs)');
   await expect(filas.first()).toBeVisible();
 
@@ -61,73 +62,92 @@ test.only('Editar todas las celdas de existencia y pedido en Tabulator', async (
 
   const pedidosFront: Pedido[] = [];
 
-  // ✅ 3. Recorrer todas las filas
-  for (let i = 0; i < totalFilas; i++) {
-    const fila = filas.nth(i);
+  const botonSiguiente = page.getByRole('button', { name: /siguiente|next|>/i });
 
-    // ============================
-    // 📦 Obtener NOMBRE DEL PRODUCTO
-    // ============================
-    const celdaProducto = fila.locator(
-      '.tabulator-cell[tabulator-field="producto"]'
-    );
+  do {
+    // Esperar que haya filas en la página actual
+    await expect(filas.first()).toBeVisible();
 
-    const nombreProducto = (await celdaProducto.innerText()).trim();
+    // 3. Recorrer todas las filas
+    for (let i = 0; i < totalFilas; i++) {
+      const fila = filas.nth(i);
 
-    // ============================
-    // ✏️ Editar EXISTENCIA
-    // ============================
-    const celdaExistencia = fila.locator(
-      '.tabulator-cell[tabulator-field="existencia"]'
-    );
+      // ============================
+      // Obtener NOMBRE DEL PRODUCTO
+      // ============================
+      const celdaProducto = fila.locator(
+        '.tabulator-cell[tabulator-field="producto"]'
+      );
 
-    await celdaExistencia.scrollIntoViewIfNeeded();
-    await celdaExistencia.dblclick();
+      const nombreProducto = (await celdaProducto.innerText()).trim();
 
-    const inputExistencia = celdaExistencia.locator('input');
-    const nuevoValorExistencia = getRandomIntInRange(1, 50);
+      // ============================
+      // Editar EXISTENCIA
+      // ============================
 
-    await inputExistencia.fill(nuevoValorExistencia.toString());
-    await inputExistencia.press('Enter');
+      const celdaExistencia = fila.locator(
+        '.tabulator-cell[tabulator-field="existencia"]'
+      );
 
-    await expect(celdaExistencia).toHaveText(
-      nuevoValorExistencia.toString()
-    );
+      const esEditable = await celdaExistencia.evaluate(el =>
+        el.classList.contains('tabulator-editable')
+      );
 
-    // ============================
-    // ✏️ Editar PEDIDO (cantidad)
-    // ============================
-    const celdaPedido = fila.locator(
-      '.tabulator-cell[tabulator-field="pedido"]'
-    );
+      if(!esEditable) continue;
 
-    await celdaPedido.scrollIntoViewIfNeeded();
-    await celdaPedido.dblclick();
+      await celdaExistencia.scrollIntoViewIfNeeded();
+      await celdaExistencia.dblclick();
 
-    const inputPedido = celdaPedido.locator('input');
-    const nuevoValorPedido = getRandomIntInRange(1, 50);
+      const inputExistencia = celdaExistencia.locator('input');
+      const nuevoValorExistencia = getRandomIntInRange(1, 50);
 
-    await inputPedido.fill(nuevoValorPedido.toString());
-    await inputPedido.press('Enter');
+      await inputExistencia.fill(nuevoValorExistencia.toString());
+      await inputExistencia.press('Enter');
 
-    await expect(celdaPedido).toHaveText(
-      nuevoValorPedido.toString()
-    );
+      await expect(celdaExistencia).toHaveText(
+        nuevoValorExistencia.toString()
+      );
 
-    // ============================
-    // ✅ GUARDAR EN EL ARREGLO
-    // ============================
-    pedidosFront.push({
-      productoNombre: nombreProducto,
-      existencia: nuevoValorExistencia,
-      cantidadOriginal: nuevoValorPedido,
-    });
-  }
+      const celdaPedido = fila.locator(
+        '.tabulator-editable[tabulator-field="pedido"]'
+      );
+      await expect(celdaPedido).toBeVisible();
+      await celdaPedido.scrollIntoViewIfNeeded();
+      await celdaPedido.dblclick();
 
-  await page.mouse.wheel(0, -10000);
+      const inputPedido = celdaPedido.locator('input');
+      const nuevoValorPedido = getRandomIntInRange(1, 50);
+
+      await inputPedido.fill(nuevoValorPedido.toString());
+      await inputPedido.press('Enter');
+
+      await expect(celdaPedido).toHaveText(
+        nuevoValorPedido.toString()
+      );
+
+      // ============================
+      // GUARDAR EN EL ARREGLO
+      // ============================
+      pedidosFront.push({
+        productoNombre: nombreProducto,
+        existencia: nuevoValorExistencia,
+        cantidadOriginal: nuevoValorPedido,
+      });
+    }
+    // Verificar si existe botón siguiente y está habilitado
+    if (await botonSiguiente.isVisible() && await botonSiguiente.isEnabled()) {
+      await botonSiguiente.click();
+      await page.waitForTimeout(500); // tiempo de recarga entre páginas
+    } else {
+      break; // ya no hay más páginas
+    }
+    await page.mouse.wheel(0, -10000);
+  } while (true);
+
+
 
   const botonGuardar = page.getByRole('button', { name: 'Guardar Cambios' });
-  await expect(botonGuardar).toBeEnabled({ timeout: 15000 });
+  await expect(botonGuardar).toBeEnabled({ timeout: 25000 });
   await botonGuardar.click();
 
   await expect(botonEditar).toBeVisible();

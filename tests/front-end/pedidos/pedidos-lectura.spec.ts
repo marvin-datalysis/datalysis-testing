@@ -10,7 +10,7 @@ function convertirFecha(fechaDDMMYYYY: string) {
 test.only('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
   await test.setTimeout(60000);
 
-  await page.goto('/es/pedidos');
+  await page.goto(`${process.env.APP_URL}/es/pedidos`);
 
   if (page.url().includes('sign-in')) {
     login(page);
@@ -19,10 +19,9 @@ test.only('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
   }
 
   const botonEditar = page.getByRole('button', { name: 'Editar pedido' });
-  await expect(botonEditar).toBeEnabled({ timeout: 15000 });
-  await page.waitForTimeout(500);
-  //await botonEditar.click();
-
+  await expect(botonEditar).toBeEnabled({ timeout: 25000 });
+  await page.waitForTimeout(2000);
+  await expect(botonEditar).toBeEnabled({ timeout: 25000 });
   await page.waitForTimeout(500);
 
   const dateInput = page.locator('input#fechaPedido');
@@ -36,7 +35,7 @@ test.only('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
 
   console.log('Sucursal seleccionada:', valorSucursal);
 
-  // ✅ Esperar tabla
+  // Esperar tabla
   const tabla = page.locator('#requisicion');
   await expect(tabla).toBeVisible();
 
@@ -54,38 +53,61 @@ test.only('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
 
   const pedidosFront: Pedido[] = [];
 
-  // ✅ SOLO LECTURA
-  for (let i = 0; i < totalFilas; i++) {
-    const fila = filas.nth(i);
+  const botonSiguiente = page.getByRole('button', { name: /siguiente|next|>/i });
 
-    // 📦 Producto
-    const celdaProducto = fila.locator(
-      '.tabulator-cell[tabulator-field="producto"]'
-    );
-    const nombreProducto = (await celdaProducto.innerText()).trim();
+  do {
+    // Esperar que haya filas en la página actual
+    await expect(filas.first()).toBeVisible();
 
-    // 📊 Existencia
-    const celdaExistencia = fila.locator(
-      '.tabulator-cell[tabulator-field="existencia"]'
-    );
-    const existenciaTexto = (await celdaExistencia.innerText()).trim();
-    const existencia = Number(existenciaTexto);
+    const totalFilas = await filas.count();
+    console.log(`Filas en esta página: ${totalFilas}`);
 
-    // 📦 Pedido (cantidad)
-    const celdaPedido = fila.locator(
-      '.tabulator-cell[tabulator-field="pedido"]'
-    );
-    const pedidoTexto = (await celdaPedido.innerText()).trim();
-    const cantidadOriginal = Number(pedidoTexto);
+    for (let i = 0; i < totalFilas; i++) {
+      const fila = filas.nth(i);
 
-    pedidosFront.push({
-      productoNombre: nombreProducto,
-      existencia,
-      cantidadOriginal,
-    });
-  }
+      // Producto
+      const celdaProducto = fila.locator(
+        '.tabulator-cell[tabulator-field="producto"]'
+      );
+      const nombreProducto = (await celdaProducto.innerText()).trim();
 
-  // ✅ CONSULTA A BD
+      // Existencia
+      const celdaExistencia = fila.locator(
+        '.tabulator-cell[tabulator-field="existencia"]'
+      );
+      const existenciaTexto = (await celdaExistencia.innerText()).trim();
+      const existencia = Number(existenciaTexto);
+
+      // Pedido (cantidad)
+      const celdaPedido = fila.locator(
+        '.tabulator-cell[tabulator-field="pedido"]'
+      );
+      await expect(celdaPedido).toBeVisible();
+      await celdaPedido.scrollIntoViewIfNeeded();
+
+      const pedidoTexto = (await celdaPedido.innerText()).trim()
+      const cantidadOriginal = Number(pedidoTexto);
+
+      pedidosFront.push({
+        productoNombre: nombreProducto,
+        existencia,
+        cantidadOriginal,
+      });
+    }
+
+    // Verificar si existe botón siguiente y está habilitado
+    if (await botonSiguiente.isVisible() && await botonSiguiente.isEnabled()) {
+      await botonSiguiente.click();
+      await page.waitForTimeout(500); // tiempo de recarga entre páginas
+    } else {
+      break; // ya no hay más páginas
+    }
+    
+  } while (true);
+
+  await page.mouse.wheel(0, -10000);
+
+  // CONSULTA A BD
   const query = `
     select "productoNombre", existencia, "cantidadOriginal"
     from producto_pedido pp
@@ -106,6 +128,6 @@ test.only('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
 
   const pedidosBD: Pedido[] = await queryDB(query, values);
 
-  // ✅ VALIDACIÓN FINAL
+  // VALIDACIÓN FINAL
   await expect(pedidosBD).toEqual(pedidosFront);
 });

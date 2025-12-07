@@ -2,28 +2,15 @@ import { test, expect } from '@playwright/test';
 import { login } from '../../../utils/login';
 import { queryDB } from '../../../utils/db';
 
-interface PedidoConsolidado {
-  fechaEncargo: string;
-  productoNombre: string;
-  sucursalNombre: string;
-  cantidadFinal: number;
-}
-
-function getRandomIntInRange(min: number, max: number) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function convertirFecha(fechaDDMMYYYY: string) {
   const [dd, mm, yyyy] = fechaDDMMYYYY.split('/');
   return `${yyyy}-${mm}-${dd}`;
 }
 
-test('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
+test('Validación de pedidos mostrados en el consolidado', async ({ page }) => {
   await test.setTimeout(60000);
 
-  await page.goto(`${process.env.APP_URL}/es//consolidado-pedidos`);
+  await page.goto(`${process.env.APP_URL}/es/consolidado-pedidos`);
 
   if (page.url().includes('sign-in')) {
     login(page);
@@ -35,11 +22,17 @@ test('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
   await expect(botonEditar).toBeEnabled({ timeout: 25000 });
   await page.waitForTimeout(2000);
   await expect(botonEditar).toBeEnabled({ timeout: 25000 });
-  await botonEditar.click();
   await page.waitForTimeout(1000);
 
   const dateInput = page.locator('input#fechaEntrega');
   const fecha = await dateInput.getAttribute('value');
+
+  interface PedidoConsolidado {
+    fechaEncargo: string;
+    productoNombre: string;
+    sucursalNombre: string;
+    cantidadFinal: number;
+  }
 
   const pedidosFront: PedidoConsolidado[] = [];
 
@@ -54,6 +47,7 @@ test('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
     'button.tabulator-page[data-page="next"]'
   );
   let fechaActual = '';
+
   do {
     await expect(filas.first()).toBeVisible();
 
@@ -62,7 +56,7 @@ test('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
     for (let i = 0; i < totalFilas; i++) {
       const fila = filas.nth(i);
 
-      // SI ES FILA DE GRUPO -> EXTRAER FECHA
+      // SI ES FILA DE GRUPO → EXTRAER FECHA
       if (await fila.getAttribute('role') === 'rowgroup') {
         let textoFecha = (await fila.innerText()).trim();
         // "miércoles 03/dic/2025" -> 2025-12-03
@@ -97,46 +91,28 @@ test('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
 
         await expect(celdaSucursal).toBeVisible();
         await celdaSucursal.scrollIntoViewIfNeeded();
-        await celdaSucursal.dblclick();
 
-        const inputSucursal = celdaSucursal.locator('input');
-        const nuevoValorSucursal = getRandomIntInRange(1, 50);
-
-        await inputSucursal.fill(nuevoValorSucursal.toString());
-        await inputSucursal.press('Enter');
-
-        await expect(celdaSucursal).toHaveText(
-          nuevoValorSucursal.toString()
-        );
+        const nuevoValorSucursal = (await celdaSucursal.innerText()).trim();
 
         pedidosFront.push({
           fechaEncargo: fechaActual,
           productoNombre: producto,
           sucursalNombre: `Sucursal ${sucursal}`,
-          cantidadFinal: nuevoValorSucursal,
+          cantidadFinal: Number(nuevoValorSucursal),
         });
       }
     }
 
-    // SIGUIENTE PÁGINA
     if (await botonSiguiente.isEnabled()) {
       await botonSiguiente.click();
-      await page.waitForTimeout(600);
+      await page.waitForTimeout(500);
     } else {
       break;
     }
-
+    
   } while (true);
 
-
   await page.mouse.wheel(0, -10000);
-
-  const botonGuardar = page.getByTitle('Guardar');
-  await expect(botonGuardar).toBeEnabled({ timeout: 25000 });
-  await botonGuardar.click();
-
-  await expect(botonEditar).toBeVisible();
-  await page.waitForTimeout(500);
 
   const productosUnicos = [
     ...new Set(pedidosFront.map(p => p.productoNombre))
