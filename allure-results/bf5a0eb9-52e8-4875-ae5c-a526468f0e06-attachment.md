@@ -1,0 +1,157 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - banner [ref=e3]:
+        - navigation [ref=e5]:
+          - generic [ref=e6]:
+            - list [ref=e7]:
+              - link "Datalysis Brand" [ref=e9] [cursor=pointer]:
+                - /url: /inicio
+                - img "Datalysis Brand" [ref=e10]
+            - list [ref=e11]
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - button "Ayuda" [ref=e14] [cursor=pointer]:
+                  - img [ref=e15]
+                  - text: Ayuda
+              - listitem [ref=e27]:
+                - button "Notificaciones" [ref=e28] [cursor=pointer]:
+                  - img [ref=e30]
+              - listitem [ref=e43]:
+                - button "avatar prueba Vendedor" [ref=e45] [cursor=pointer]:
+                  - img "avatar" [ref=e47]
+                  - generic [ref=e48]:
+                    - generic [ref=e49]: prueba
+                    - generic [ref=e50]: Vendedor
+      - generic [ref=e51]:
+        - button "open drawer" [ref=e54] [cursor=pointer]:
+          - img [ref=e55]
+        - list [ref=e57]:
+          - listitem [ref=e58]:
+            - button "Inicio" [ref=e59] [cursor=pointer]:
+              - img [ref=e61]
+              - generic [ref=e70]: Inicio
+          - listitem [ref=e71]:
+            - button "Dashboards" [ref=e72] [cursor=pointer]:
+              - img [ref=e74]
+              - generic [ref=e80]: Dashboards
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - navigation "Breadcrumbs" [ref=e88]:
+                - list [ref=e89]:
+                  - listitem [ref=e90]:
+                    - link "Inicio" [ref=e91] [cursor=pointer]:
+                      - /url: /inicio
+                    - img [ref=e93]
+                  - listitem:
+                    - link [disabled]:
+                      - /url: /es
+              - generic [ref=e95]: Inicio
+            - heading "¡Hola, prueba!" [level=4] [ref=e96]
+          - generic [ref=e97]:
+            - generic [ref=e98]:
+              - generic [ref=e99]: Período
+              - button "Semana" [ref=e101] [cursor=pointer]:
+                - generic [ref=e102]: Semana
+                - img [ref=e103]
+            - generic [ref=e105]:
+              - generic [ref=e106]: Comparación
+              - button "Período anterior" [ref=e108] [cursor=pointer]:
+                - generic [ref=e109]: Período anterior
+                - img [ref=e110]
+        - generic [ref=e112]:
+          - generic [ref=e115]:
+            - generic [ref=e116]: VENTAS
+            - generic [ref=e117]:
+              - generic [ref=e118]:
+                - heading "Semana Actual" [level=6] [ref=e119]
+                - generic [ref=e120]: Q0
+              - generic [ref=e121]:
+                - generic [ref=e122]: Semana Anterior
+                - generic [ref=e123]: Q0
+              - generic [ref=e124]:
+                - generic [ref=e125]: Comparativo
+                - generic [ref=e126]:
+                  - img [ref=e128]
+                  - generic [ref=e130]: +0 %
+            - generic [ref=e132]: No tienes acceso a estos datos
+          - generic [ref=e135]:
+            - generic [ref=e136]: CLIENTES
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - heading "Semana Actual" [level=6] [ref=e139]
+                - generic [ref=e140]: "0"
+              - generic [ref=e141]:
+                - generic [ref=e142]: Semana Anterior
+                - generic [ref=e143]: "0"
+              - generic [ref=e144]:
+                - generic [ref=e145]: Comparativo
+                - generic [ref=e146]:
+                  - img [ref=e148]
+                  - generic [ref=e150]: +0 %
+            - generic [ref=e152]: No tienes acceso a estos datos
+          - generic [ref=e155]:
+            - generic [ref=e156]: MARGEN %
+            - generic [ref=e157]:
+              - generic [ref=e158]:
+                - heading "Semana Actual" [level=6] [ref=e159]
+                - generic [ref=e160]: "%0"
+              - generic [ref=e161]:
+                - generic [ref=e162]: Semana Anterior
+                - generic [ref=e163]: "%0"
+              - generic [ref=e164]:
+                - generic [ref=e165]: Comparativo
+                - generic [ref=e166]:
+                  - img [ref=e168]
+                  - generic [ref=e170]: "+0"
+            - generic [ref=e172]: No tienes acceso a estos datos
+      - generic [ref=e174]:
+        - link "Ver Más" [ref=e176] [cursor=pointer]:
+          - /url: /favoritos
+          - text: Ver Más
+          - img [ref=e177]
+        - generic "Options" [ref=e179]:
+          - tablist "Options" [ref=e180]:
+            - tab "Favoritos" [selected] [ref=e181] [cursor=pointer]:
+              - generic [ref=e184]:
+                - img [ref=e185]
+                - heading "Favoritos" [level=6] [ref=e187]
+            - tab "Recientes" [ref=e188] [cursor=pointer]:
+              - generic [ref=e190]:
+                - img [ref=e191]
+                - heading "Recientes" [level=6] [ref=e193]
+        - tabpanel "Favoritos" [ref=e194]:
+          - generic [ref=e195]:
+            - generic [ref=e198]:
+              - img [ref=e200] [cursor=pointer]
+              - link "Resumen Ejecutivo" [ref=e202] [cursor=pointer]:
+                - /url: /dashboard/resumen-ejecutivo
+            - generic [ref=e203]:
+              - img "Reportes de suministros y evaluaciones de proveedores" [ref=e205]
+              - generic [ref=e206]:
+                - img [ref=e208] [cursor=pointer]
+                - link "Proveedores" [ref=e210] [cursor=pointer]:
+                  - /url: /dashboard/proveedores
+                - generic [ref=e211]: Próximamente
+            - generic [ref=e212]:
+              - img "Análisis de inventario y tendencias de stock" [ref=e214]
+              - generic [ref=e215]:
+                - img [ref=e217] [cursor=pointer]
+                - link "Inventario" [ref=e219] [cursor=pointer]:
+                  - /url: /dashboard/inventario
+                - generic [ref=e220]: Próximamente
+            - generic [ref=e221]:
+              - img "Métricas de campañas y análisis de mercado" [ref=e223]
+              - generic [ref=e224]:
+                - img [ref=e226] [cursor=pointer]
+                - link "Marketing" [ref=e228] [cursor=pointer]:
+                  - /url: /dashboard/marketing
+                - generic [ref=e229]: Próximamente
+  - alert [ref=e230]
+```

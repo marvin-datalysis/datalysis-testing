@@ -1,0 +1,48 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - img [ref=e7]
+      - generic [ref=e93]: Transformando datos en Acción
+    - generic [ref=e94]:
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - text: ¡Bienvenido!
+          - paragraph [ref=e98]: Inicia sesión para continuar
+        - generic [ref=e99]:
+          - generic [ref=e100]:
+            - generic [ref=e103]:
+              - generic [ref=e104]: Correo electrónico
+              - generic [ref=e105]:
+                - textbox "Correo electrónico Correo electrónico" [ref=e106]:
+                  - /placeholder: Ingresa tu correo electrónico
+                  - text: prueba_1764036152849@datalysisgroup.com
+                - button "clear input" [ref=e107] [cursor=pointer]:
+                  - img [ref=e108]
+            - generic [ref=e112]:
+              - generic [ref=e113]: Contraseña
+              - generic [ref=e114]:
+                - textbox "Contraseña Contraseña" [ref=e115]:
+                  - /placeholder: Ingresa tu contraseña
+                  - text: prueba1234
+                - button [ref=e116] [cursor=pointer]:
+                  - img
+          - generic [ref=e117]:
+            - generic:
+              - checkbox "Recuérdame" [checked] [disabled]
+              - generic:
+                - img
+              - generic: Recuérdame
+            - link "¿Olvidaste tu contraseña?" [ref=e118] [cursor=pointer]:
+              - /url: /auth/forgot-password
+          - button "iniciar Sesión" [ref=e119] [cursor=pointer]
+      - generic [ref=e120]:
+        - link "EULA" [ref=e121] [cursor=pointer]:
+          - /url: /es/eula
+        - text: ·
+        - link "Política de Privacidad" [ref=e122] [cursor=pointer]:
+          - /url: /es/privacy-policy
+  - alert [ref=e123]
+```

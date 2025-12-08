@@ -1,0 +1,271 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - banner [ref=e3]:
+        - navigation [ref=e5]:
+          - generic [ref=e6]:
+            - list [ref=e7]:
+              - link "Datalysis Brand" [ref=e9] [cursor=pointer]:
+                - /url: /inicio
+                - img "Datalysis Brand" [ref=e10]
+            - list [ref=e11]
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - button "Ayuda" [ref=e14] [cursor=pointer]:
+                  - img [ref=e15]
+                  - text: Ayuda
+              - listitem [ref=e27]:
+                - button "Notificaciones" [ref=e28] [cursor=pointer]:
+                  - img [ref=e30]
+              - listitem [ref=e43]:
+                - button "avatar Tesina QA Analista" [ref=e45] [cursor=pointer]:
+                  - img "avatar" [ref=e47]
+                  - generic [ref=e48]:
+                    - generic [ref=e49]: Tesina QA
+                    - generic [ref=e50]: Analista
+      - generic [ref=e51]:
+        - button "open drawer" [ref=e54] [cursor=pointer]:
+          - img [ref=e55]
+        - list [ref=e57]:
+          - listitem [ref=e58]:
+            - button "Inicio" [ref=e59] [cursor=pointer]:
+              - img [ref=e61]
+              - generic [ref=e70]: Inicio
+          - listitem [ref=e71]:
+            - button "Dashboards" [ref=e72] [cursor=pointer]:
+              - img [ref=e74]
+              - generic [ref=e80]: Dashboards
+          - listitem [ref=e81]:
+            - button "Reportes" [ref=e82] [cursor=pointer]:
+              - img [ref=e84]
+              - generic [ref=e89]: Reportes
+          - listitem [ref=e90]:
+            - button "Configuración" [ref=e91] [cursor=pointer]:
+              - img [ref=e93]
+              - generic [ref=e97]: Configuración
+          - listitem [ref=e98]:
+            - button "Daisy" [ref=e99] [cursor=pointer]:
+              - img [ref=e101]
+              - generic [ref=e110]: Daisy
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - navigation "Breadcrumbs" [ref=e115]:
+          - list [ref=e116]:
+            - listitem [ref=e117]:
+              - link "Inicio" [ref=e118] [cursor=pointer]:
+                - /url: /inicio
+              - img [ref=e120]
+            - listitem [ref=e122]:
+              - link "Reportes" [disabled]:
+                - /url: /es
+              - img [ref=e124]
+            - listitem [ref=e126]:
+              - link "Ventas" [ref=e127] [cursor=pointer]:
+                - /url: /es/reportes
+        - generic [ref=e128]: Reporte de Ventas
+      - generic [ref=e129]:
+        - generic [ref=e131]:
+          - button [ref=e132] [cursor=pointer]:
+            - img [ref=e133]
+          - generic [ref=e135]:
+            - generic [ref=e138]:
+              - group [ref=e142]:
+                - spinbutton "día," [ref=e143]: "01"
+                - generic [ref=e144]: /
+                - spinbutton "mes," [ref=e145]: "12"
+                - generic [ref=e146]: /
+                - spinbutton "año," [ref=e147]: "2025"
+              - generic [ref=e148]: "-"
+              - group [ref=e152]:
+                - spinbutton "día," [ref=e153]: "06"
+                - generic [ref=e154]: /
+                - spinbutton "mes," [ref=e155]: "12"
+                - generic [ref=e156]: /
+                - spinbutton "año," [ref=e157]: "2025"
+              - button [ref=e158] [cursor=pointer]:
+                - img [ref=e159]
+            - button "Agregar" [ref=e162] [cursor=pointer]:
+              - text: Agregar
+              - img [ref=e163]
+            - generic [ref=e167]:
+              - generic [ref=e168]: Empresa
+              - button [ref=e169] [cursor=pointer]:
+                - img [ref=e170]
+            - generic [ref=e174]:
+              - generic [ref=e175]: Segmento
+              - button [ref=e176] [cursor=pointer]:
+                - img [ref=e177]
+            - generic [ref=e181]:
+              - generic [ref=e182]: Cliente
+              - button [ref=e183] [cursor=pointer]:
+                - img [ref=e184]
+            - generic [ref=e188] [cursor=pointer]:
+              - generic [ref=e189]: ID de Empleado
+              - button [ref=e190]:
+                - img [ref=e191]
+            - button "Filtrar" [ref=e193] [cursor=pointer]:
+              - generic [ref=e194]: Filtrar
+              - img [ref=e195]
+            - button "Limpiar" [ref=e197] [cursor=pointer]:
+              - generic [ref=e198]: Limpiar
+              - img [ref=e199]
+        - generic [ref=e201]:
+          - generic [ref=e202]:
+            - button [ref=e203] [cursor=pointer]:
+              - img [ref=e204]
+            - generic [ref=e207]:
+              - listbox [ref=e210]:
+                - option [ref=e211]
+                - option [selected] [ref=e212]: Fecha de Emisión de Factura
+                - option [selected] [ref=e213]: ID de Factura
+                - option [selected] [ref=e214]: Empresa
+                - option [selected] [ref=e215]: Segmento de Cliente
+                - option [selected] [ref=e216]: ID de Cliente
+                - option [selected] [ref=e217]: Cliente
+                - option [selected] [ref=e218]: Producto
+                - option [selected] [ref=e219]: Categoria de Producto
+                - option [selected] [ref=e220]: Condición de Pago
+                - option [selected] [ref=e221]: ID de Producto
+                - option [selected] [ref=e222]: Precio
+                - option [selected] [ref=e223]: Costo
+                - option [selected] [ref=e224]: Cantidad
+                - option [selected] [ref=e225]: ID de Empleado
+                - option [selected] [ref=e226]: Empleado
+                - option [selected] [ref=e227]: Descuento
+                - option [selected] [ref=e228]: "% Descuento"
+                - option [selected] [ref=e229]: Margen
+                - option [selected] [ref=e230]: Total
+              - button "Mostrar / Ocultar Columnas Visibilidad de Columnas" [ref=e232] [cursor=pointer]:
+                - generic [ref=e234]: Mostrar / Ocultar Columnas
+                - img [ref=e235]
+            - generic [ref=e237]:
+              - button [ref=e238] [cursor=pointer]:
+                - img [ref=e239]
+              - button [ref=e242] [cursor=pointer]:
+                - img [ref=e243]
+          - grid [ref=e246]:
+            - rowgroup [ref=e247]:
+              - rowgroup [ref=e248]:
+                - row "Fecha de Emisión de Factura ID de Factura Empresa Segmento de Cliente ID de Cliente Cliente Producto Categoria de Producto Condición de Pago ID de Producto Precio Costo Cantidad ID de Empleado Empleado Descuento % Descuento Margen Total" [ref=e249]:
+                  - columnheader "Fecha de Emisión de Factura" [ref=e250]:
+                    - generic [ref=e253]: Fecha de Emisión de Factura
+                  - columnheader "ID de Factura" [ref=e257]:
+                    - generic [ref=e260]: ID de Factura
+                  - columnheader "Empresa" [ref=e264]:
+                    - generic [ref=e267]: Empresa
+                  - columnheader "Segmento de Cliente" [ref=e271]:
+                    - generic [ref=e274]: Segmento de Cliente
+                  - columnheader "ID de Cliente" [ref=e278]:
+                    - generic [ref=e281]: ID de Cliente
+                  - columnheader "Cliente" [ref=e285]:
+                    - generic [ref=e288]: Cliente
+                  - columnheader "Producto" [ref=e292]:
+                    - generic [ref=e295]: Producto
+                  - columnheader "Categoria de Producto" [ref=e299]:
+                    - generic [ref=e302]: Categoria de Producto
+                  - columnheader "Condición de Pago" [ref=e306]:
+                    - generic [ref=e309]: Condición de Pago
+                  - columnheader "ID de Producto" [ref=e313]:
+                    - generic [ref=e316]: ID de Producto
+                  - columnheader "Precio" [ref=e320]:
+                    - generic [ref=e323]: Precio
+                  - columnheader "Costo" [ref=e327]:
+                    - generic [ref=e330]: Costo
+                  - columnheader "Cantidad" [ref=e334]:
+                    - generic [ref=e337]: Cantidad
+                  - columnheader "ID de Empleado" [ref=e341]:
+                    - generic [ref=e344]: ID de Empleado
+                  - columnheader "Empleado" [ref=e348]:
+                    - generic [ref=e351]: Empleado
+                  - columnheader "Descuento" [ref=e355]:
+                    - generic [ref=e358]: Descuento
+                  - columnheader "% Descuento" [ref=e362]:
+                    - generic [ref=e365]: "% Descuento"
+                  - columnheader "Margen" [ref=e369]:
+                    - generic [ref=e372]: Margen
+                  - columnheader "Total" [ref=e376]:
+                    - generic [ref=e379]: Total
+            - rowgroup [ref=e384]:
+              - row "2025-12-06 57825 HogarTech Prácticos funcionales 5235 Oscar Ortega Mesa de café Muebles A 30 días 21 150 100 2 16 Paula Ramírez $ 0.0 % 0.0 $ 100.0 $ 300.0" [ref=e385]:
+                - gridcell "2025-12-06" [ref=e386]
+                - gridcell "57825" [ref=e388]
+                - gridcell "HogarTech" [ref=e390]
+                - gridcell "Prácticos funcionales" [ref=e392]
+                - gridcell "5235" [ref=e394]
+                - gridcell "Oscar Ortega" [ref=e396]
+                - gridcell "Mesa de café" [ref=e398]
+                - gridcell "Muebles" [ref=e400]
+                - gridcell "A 30 días" [ref=e402]
+                - gridcell "21" [ref=e404]
+                - gridcell "150" [ref=e406]
+                - gridcell "100" [ref=e408]
+                - gridcell "2" [ref=e410]
+                - gridcell "16" [ref=e412]
+                - gridcell "Paula Ramírez" [ref=e414]
+                - gridcell "$ 0.0" [ref=e416]
+                - gridcell "% 0.0" [ref=e418]
+                - gridcell "$ 100.0" [ref=e420]
+                - gridcell "$ 300.0" [ref=e422]
+              - row "2025-12-06 57825 HogarTech Prácticos funcionales 5235 Oscar Ortega Tostadora de pan Electrodomésticos A 45 días 52 55 35 1 16 Paula Ramírez $ 1.1 % 2.0 $ 18.9 $ 53.9" [ref=e424]:
+                - gridcell "2025-12-06" [ref=e425]
+                - gridcell "57825" [ref=e427]
+                - gridcell "HogarTech" [ref=e429]
+                - gridcell "Prácticos funcionales" [ref=e431]
+                - gridcell "5235" [ref=e433]
+                - gridcell "Oscar Ortega" [ref=e435]
+                - gridcell "Tostadora de pan" [ref=e437]
+                - gridcell "Electrodomésticos" [ref=e439]
+                - gridcell "A 45 días" [ref=e441]
+                - gridcell "52" [ref=e443]
+                - gridcell "55" [ref=e445]
+                - gridcell "35" [ref=e447]
+                - gridcell "1" [ref=e449]
+                - gridcell "16" [ref=e451]
+                - gridcell "Paula Ramírez" [ref=e453]
+                - gridcell "$ 1.1" [ref=e455]
+                - gridcell "% 2.0" [ref=e457]
+                - gridcell "$ 18.9" [ref=e459]
+                - gridcell "$ 53.9" [ref=e461]
+            - generic [ref=e463]:
+              - row "3 $ 1.1 $ 118.9 $ 353.9" [ref=e465]:
+                - gridcell [ref=e466]
+                - gridcell [ref=e467]
+                - gridcell [ref=e468]
+                - gridcell [ref=e469]
+                - gridcell [ref=e470]
+                - gridcell [ref=e471]
+                - gridcell [ref=e472]
+                - gridcell [ref=e473]
+                - gridcell [ref=e474]
+                - gridcell [ref=e475]
+                - gridcell [ref=e476]
+                - gridcell [ref=e477]
+                - gridcell "3" [ref=e478]
+                - gridcell [ref=e479]
+                - gridcell [ref=e480]
+                - gridcell "$ 1.1" [ref=e481]
+                - gridcell [ref=e482]
+                - gridcell "$ 118.9" [ref=e483]
+                - gridcell "$ 353.9" [ref=e484]
+              - generic [ref=e485]:
+                - generic [ref=e487]: Mostrando 1 de 1 páginas
+                - generic [ref=e488]:
+                  - text: Tamaño de página
+                  - combobox "Tamaño de página" [ref=e489]:
+                    - option "20" [selected]
+                    - option "50"
+                    - option "100"
+                    - option "200"
+                    - option "300"
+                    - option "500"
+                    - option "1000"
+                  - button "Primera Página" [disabled] [ref=e490]: Primero
+                  - button "Página Anterior" [disabled] [ref=e491]: Anterior
+                  - button "Show Page 1" [ref=e493] [cursor=pointer]: "1"
+                  - button "Página Siguiente" [disabled] [ref=e494]: Siguiente
+                  - button "Última Página" [disabled] [ref=e495]: Último
+  - alert [ref=e496]
+```
