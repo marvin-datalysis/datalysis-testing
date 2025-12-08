@@ -64,61 +64,52 @@
   },
   "suites": [
     {
-      "title": "front-end\\Seguridad\\Usuario\\usuarios.spec.ts",
-      "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+      "title": "front-end\\clientes\\dashboard-clientes.spec.ts",
+      "file": "front-end/clientes/dashboard-clientes.spec.ts",
       "column": 0,
       "line": 0,
-      "specs": [],
-      "suites": [
+      "specs": [
         {
-          "title": "SEGURIDAD - CRUD Usuarios",
-          "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
-          "line": 9,
-          "column": 6,
-          "specs": [
+          "title": "CP-82 - Validar tabla de estado de cuenta",
+          "ok": true,
+          "tags": [],
+          "tests": [
             {
-              "title": "CP-117 - Permisos insuficientes: pantalla 401 y tarjetas bloqueadas en Inicio",
-              "ok": true,
-              "tags": [],
-              "tests": [
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
                 {
-                  "timeout": 60000,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 31276,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:15:06.540Z",
                   "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 17598,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-12-07T06:55:41.523Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "attachments": []
                 }
               ],
-              "id": "594ca076d3f40942a1e2-ee4c9d3a95ec4dbec3ef",
-              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
-              "line": 299,
-              "column": 8
+              "status": "expected"
             }
-          ]
+          ],
+          "id": "3743e3b5f9179fcd7848-dca950fd863cdc6f7db1",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 1236,
+          "column": 6
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-12-07T06:55:39.696Z",
-    "duration": 19519.578999999998,
+    "startTime": "2025-12-08T05:15:04.812Z",
+    "duration": 33160.237,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,
