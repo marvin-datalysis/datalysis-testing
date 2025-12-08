@@ -64,11 +64,1358 @@
   },
   "suites": [
     {
+      "title": "api\\db-connection.spec.ts",
+      "file": "api/db-connection.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Conexión a DB funcionando",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 72,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[ { test: \u001b[33m1\u001b[39m } ]\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:57:07.784Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "58ba36efe9ad6c340de8-24ceeced9cecc963f7df",
+          "file": "api/db-connection.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "api\\pedidos\\consolidado-lectura.spec.ts",
+      "file": "api/pedidos/consolidado-lectura.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Guardar pedido - API + DB SIN POM",
+          "file": "api/pedidos/consolidado-lectura.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Debe guardar pedido correctamente y generar pedidoId cuando viene null",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 289,
+                      "error": {
+                        "message": "TypeError: Cannot read properties of undefined (reading 'pedidos')",
+                        "stack": "TypeError: Cannot read properties of undefined (reading 'pedidos')\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-lectura.spec.ts:27:41",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-lectura.spec.ts",
+                          "column": 41,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m     )\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m responseWithType\u001b[33m:\u001b[39m\u001b[33mDataPedidosObtenidos\u001b[39m\u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m pedidos\u001b[33m=\u001b[39mresponseWithType\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mpedidos\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m productosCodigos \u001b[33m=\u001b[39m pedidos\u001b[33m.\u001b[39mmap(p \u001b[33m=>\u001b[39m p\u001b[33m.\u001b[39mproductoCodigo)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-lectura.spec.ts",
+                            "column": 41,
+                            "line": 27
+                          },
+                          "message": "TypeError: Cannot read properties of undefined (reading 'pedidos')\n\n\u001b[0m \u001b[90m 25 |\u001b[39m     )\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m responseWithType\u001b[33m:\u001b[39m\u001b[33mDataPedidosObtenidos\u001b[39m\u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m pedidos\u001b[33m=\u001b[39mresponseWithType\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mpedidos\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m productosCodigos \u001b[33m=\u001b[39m pedidos\u001b[33m.\u001b[39mmap(p \u001b[33m=>\u001b[39m p\u001b[33m.\u001b[39mproductoCodigo)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-lectura.spec.ts:27:41\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:07.952Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\api-pedidos-consolidado-le-c32a9--pedidoId-cuando-viene-null-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-lectura.spec.ts",
+                        "column": 41,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d4060530f8768e066aa7-8a02cd6d3a0cd1a70315",
+              "file": "api/pedidos/consolidado-lectura.spec.ts",
+              "line": 9,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "api\\pedidos\\consolidado-save.spec.ts",
+      "file": "api/pedidos/consolidado-save.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Guardar pedido - API + DB SIN POM",
+          "file": "api/pedidos/consolidado-save.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Debe guardar pedido correctamente y generar pedidoId cuando viene null",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 179,
+                      "error": {
+                        "message": "TypeError: Cannot read properties of undefined (reading 'pedidos')",
+                        "stack": "TypeError: Cannot read properties of undefined (reading 'pedidos')\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-save.spec.ts:27:43",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-save.spec.ts",
+                          "column": 43,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m     )\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m responseWithType\u001b[33m:\u001b[39m\u001b[33mDataPedidosObtenidos\u001b[39m\u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m pedidos \u001b[33m=\u001b[39m responseWithType\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mpedidos\u001b[33m.\u001b[39mmap(p\u001b[33m=>\u001b[39m({\n \u001b[90m    |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m         \u001b[33m...\u001b[39mp\u001b[33m,\u001b[39m\n \u001b[90m 29 |\u001b[39m         cantidadFinal\u001b[33m:\u001b[39m getRandomIntInRange(\u001b[35m1\u001b[39m\u001b[33m,\u001b[39m\u001b[35m50\u001b[39m)\n \u001b[90m 30 |\u001b[39m     }))\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-save.spec.ts",
+                            "column": 43,
+                            "line": 27
+                          },
+                          "message": "TypeError: Cannot read properties of undefined (reading 'pedidos')\n\n\u001b[0m \u001b[90m 25 |\u001b[39m     )\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m responseWithType\u001b[33m:\u001b[39m\u001b[33mDataPedidosObtenidos\u001b[39m\u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m pedidos \u001b[33m=\u001b[39m responseWithType\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mpedidos\u001b[33m.\u001b[39mmap(p\u001b[33m=>\u001b[39m({\n \u001b[90m    |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m         \u001b[33m...\u001b[39mp\u001b[33m,\u001b[39m\n \u001b[90m 29 |\u001b[39m         cantidadFinal\u001b[33m:\u001b[39m getRandomIntInRange(\u001b[35m1\u001b[39m\u001b[33m,\u001b[39m\u001b[35m50\u001b[39m)\n \u001b[90m 30 |\u001b[39m     }))\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-save.spec.ts:27:43\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:09.466Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\api-pedidos-consolidado-sa-1daa8--pedidoId-cuando-viene-null-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\consolidado-save.spec.ts",
+                        "column": 43,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "75c30e23836098c2bc02-1847cbf96a019eef9ad4",
+              "file": "api/pedidos/consolidado-save.spec.ts",
+              "line": 9,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "api\\pedidos\\requisicion-lectura.spec.ts",
+      "file": "api/pedidos/requisicion-lectura.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Guardar pedido - API + DB SIN POM",
+          "file": "api/pedidos/requisicion-lectura.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Debe guardar pedido correctamente y generar pedidoId cuando viene null",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 118,
+                      "error": {
+                        "message": "error: no existe la relación «sucursal»",
+                        "stack": "error: no existe la relación «sucursal»\n    at C:\\xampp\\htdocs\\datalysis-testing\\node_modules\\pg\\lib\\client.js:545:17\n    at queryDB (C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts:15:20)\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\requisicion-lectura.spec.ts:11:30",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts",
+                          "column": 20,
+                          "line": 15
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\db.ts:15\n\n\u001b[0m \u001b[90m 13 |\u001b[39m   \u001b[36mtry\u001b[39m{\n \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mconnect()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mquery(sql\u001b[33m,\u001b[39m params)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mreturn\u001b[39m result\u001b[33m.\u001b[39mrows\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error) {\n \u001b[90m 18 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m'Error executing query:'\u001b[39m\u001b[33m,\u001b[39m error)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts",
+                            "column": 20,
+                            "line": 15
+                          },
+                          "message": "error: no existe la relación «sucursal»\n\n\u001b[90m   at \u001b[39m..\\utils\\db.ts:15\n\n\u001b[0m \u001b[90m 13 |\u001b[39m   \u001b[36mtry\u001b[39m{\n \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mconnect()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mquery(sql\u001b[33m,\u001b[39m params)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mreturn\u001b[39m result\u001b[33m.\u001b[39mrows\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error) {\n \u001b[90m 18 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m'Error executing query:'\u001b[39m\u001b[33m,\u001b[39m error)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\node_modules\\pg\\lib\\client.js:545:17\u001b[22m\n\u001b[2m    at queryDB (C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts:15:20)\u001b[22m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\requisicion-lectura.spec.ts:11:30\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Error executing query: error: no existe la relación «sucursal»\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mpg\u001b[24m\\lib\\client.js:545:17\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at queryDB \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mutils\\db.ts:15:20\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mtests\\api\\pedidos\\requisicion-lectura.spec.ts:11:30\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:310:9\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:305:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\timeoutManager.js:67:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:303:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:308:7\n    at WorkerMain._runTest \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:283:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:198:11\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\process.js:65:22\u001b[90m)\u001b[39m {\n  length: \u001b[33m108\u001b[39m,\n  severity: \u001b[32m'ERROR'\u001b[39m,\n  code: \u001b[32m'42P01'\u001b[39m,\n  detail: \u001b[90mundefined\u001b[39m,\n  hint: \u001b[90mundefined\u001b[39m,\n  position: \u001b[32m'22'\u001b[39m,\n  internalPosition: \u001b[90mundefined\u001b[39m,\n  internalQuery: \u001b[90mundefined\u001b[39m,\n  where: \u001b[90mundefined\u001b[39m,\n  schema: \u001b[90mundefined\u001b[39m,\n  table: \u001b[90mundefined\u001b[39m,\n  column: \u001b[90mundefined\u001b[39m,\n  dataType: \u001b[90mundefined\u001b[39m,\n  constraint: \u001b[90mundefined\u001b[39m,\n  file: \u001b[32m'parse_relation.c'\u001b[39m,\n  line: \u001b[32m'1452'\u001b[39m,\n  routine: \u001b[32m'parserOpenTable'\u001b[39m\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:10.829Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\api-pedidos-requisicion-le-1fe4c--pedidoId-cuando-viene-null-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts",
+                        "column": 20,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a193750b6e6804df19a0-f524d6092f914dfd7fc1",
+              "file": "api/pedidos/requisicion-lectura.spec.ts",
+              "line": 9,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "api\\pedidos\\requisicion-save.spec.ts",
+      "file": "api/pedidos/requisicion-save.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Guardar pedido - API + DB SIN POM",
+          "file": "api/pedidos/requisicion-save.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Debe guardar pedido correctamente y generar pedidoId cuando viene null",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 272,
+                      "error": {
+                        "message": "error: no existe la relación «sucursal»",
+                        "stack": "error: no existe la relación «sucursal»\n    at C:\\xampp\\htdocs\\datalysis-testing\\node_modules\\pg\\lib\\client.js:545:17\n    at queryDB (C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts:15:20)\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\requisicion-save.spec.ts:11:30",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts",
+                          "column": 20,
+                          "line": 15
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\db.ts:15\n\n\u001b[0m \u001b[90m 13 |\u001b[39m   \u001b[36mtry\u001b[39m{\n \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mconnect()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mquery(sql\u001b[33m,\u001b[39m params)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mreturn\u001b[39m result\u001b[33m.\u001b[39mrows\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error) {\n \u001b[90m 18 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m'Error executing query:'\u001b[39m\u001b[33m,\u001b[39m error)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts",
+                            "column": 20,
+                            "line": 15
+                          },
+                          "message": "error: no existe la relación «sucursal»\n\n\u001b[90m   at \u001b[39m..\\utils\\db.ts:15\n\n\u001b[0m \u001b[90m 13 |\u001b[39m   \u001b[36mtry\u001b[39m{\n \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mconnect()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mquery(sql\u001b[33m,\u001b[39m params)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mreturn\u001b[39m result\u001b[33m.\u001b[39mrows\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error) {\n \u001b[90m 18 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m'Error executing query:'\u001b[39m\u001b[33m,\u001b[39m error)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\node_modules\\pg\\lib\\client.js:545:17\u001b[22m\n\u001b[2m    at queryDB (C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts:15:20)\u001b[22m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\api\\pedidos\\requisicion-save.spec.ts:11:30\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Error executing query: error: no existe la relación «sucursal»\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mpg\u001b[24m\\lib\\client.js:545:17\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at queryDB \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mutils\\db.ts:15:20\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mtests\\api\\pedidos\\requisicion-save.spec.ts:11:30\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:310:9\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:305:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\timeoutManager.js:67:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:303:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:308:7\n    at WorkerMain._runTest \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:283:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:198:11\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\process.js:65:22\u001b[90m)\u001b[39m {\n  length: \u001b[33m108\u001b[39m,\n  severity: \u001b[32m'ERROR'\u001b[39m,\n  code: \u001b[32m'42P01'\u001b[39m,\n  detail: \u001b[90mundefined\u001b[39m,\n  hint: \u001b[90mundefined\u001b[39m,\n  position: \u001b[32m'22'\u001b[39m,\n  internalPosition: \u001b[90mundefined\u001b[39m,\n  internalQuery: \u001b[90mundefined\u001b[39m,\n  where: \u001b[90mundefined\u001b[39m,\n  schema: \u001b[90mundefined\u001b[39m,\n  table: \u001b[90mundefined\u001b[39m,\n  column: \u001b[90mundefined\u001b[39m,\n  dataType: \u001b[90mundefined\u001b[39m,\n  constraint: \u001b[90mundefined\u001b[39m,\n  file: \u001b[32m'parse_relation.c'\u001b[39m,\n  line: \u001b[32m'1452'\u001b[39m,\n  routine: \u001b[32m'parserOpenTable'\u001b[39m\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:12.160Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\api-pedidos-requisicion-sa-77671--pedidoId-cuando-viene-null-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\db.ts",
+                        "column": 20,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a58b4d7dc105f43fd71e-b6aead98fcf3fdf1a2ae",
+              "file": "api/pedidos/requisicion-save.spec.ts",
+              "line": 9,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "api\\seguridad\\seguridad.spec.ts",
+      "file": "api/seguridad/seguridad.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SEGURIDAD - API Funcional (CP-01 al CP-13)",
+          "file": "api/seguridad/seguridad.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-01 - Login correcto debe devolver token",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 536,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:13.564Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-72a03de2d896da91b28a",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 26,
+              "column": 9
+            },
+            {
+              "title": "CP-02 - Login incorrecto debe ser rechazado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 105,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:14.189Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-a19f7fffa2cd7bc4c017",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 50,
+              "column": 9
+            },
+            {
+              "title": "CP-03 - Password inválido debe fallar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 113,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:14.309Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-33d427698984e637dd05",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 84,
+              "column": 9
+            },
+            {
+              "title": "CP-04 - Token expirado debe rechazar acceso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:14.441Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-31f5007e1e9d58887f5c",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 112,
+              "column": 7
+            },
+            {
+              "title": "CP-05 - Crear usuario válido",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 621,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:14.468Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-e97559321623803e98dc",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 121,
+              "column": 9
+            },
+            {
+              "title": "CP-06 - Crear usuario incompleto debe fallar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 107,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:15.104Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-4bef6f9720509b79ff4b",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 146,
+              "column": 7
+            },
+            {
+              "title": "CP-07 - Email duplicado debe ser rechazado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 117,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:15.224Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-445bfdb180e464a63f3f",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 161,
+              "column": 7
+            },
+            {
+              "title": "CP-08 - Contraseña débil debe ser permitida (según comportamiento real)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 663,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:15.355Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-2f52a858723943a9d4df",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 178,
+              "column": 9
+            },
+            {
+              "title": "CP-09 - Inactivar usuario debe ser exitoso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 126,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:16.035Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-9f606701ba6ec501bc98",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 201,
+              "column": 9
+            },
+            {
+              "title": "CP-10 - Crear rol válido",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 157,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:16.175Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-0fc71826fa13ba1314ec",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 213,
+              "column": 7
+            },
+            {
+              "title": "CP-11 - Crear rol sin nombre debe fallar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 111,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:16.347Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-3f85f56c2efd410a947d",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 223,
+              "column": 7
+            },
+            {
+              "title": "CP-12 - Eliminar rol existente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 230,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:16.470Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-bb0fd717293ebbedc51d",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 232,
+              "column": 7
+            },
+            {
+              "title": "CP-13 - API de métricas debe devolver datos válidos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 866,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T05:57:16.715Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d97d9435490f88611611-4af0362504ef54225d6a",
+              "file": "api/seguridad/seguridad.spec.ts",
+              "line": 245,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "front-end\\clientes\\dashboard-clientes.spec.ts",
       "file": "front-end/clientes/dashboard-clientes.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
+        {
+          "title": "CP-22 - API devuelve información general correcta del cliente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 558,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:57:17.664Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-5cbb13c775765a04a764",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "CP-23 - API devuelve información de contacto correcta del cliente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 502,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:57:18.232Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-ef3f50ac4e25abc4feca",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 77,
+          "column": 5
+        },
+        {
+          "title": "CP-69 - La tarjeta de contacto muestra la información correcta",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16167,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:57:18.748Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-fd9d7d1378f504e60471",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 132,
+          "column": 5
+        },
+        {
+          "title": "CP-70 - La tarjeta de notas del cliente muestra la información correcta",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16850,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:57:34.932Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-97c508d26e79e156a0cc",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 250,
+          "column": 5
+        },
+        {
+          "title": "CP-71 - La tarjeta de ventas totales muestra el valor correcto y responde a filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18987,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:57:51.802Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-9bfdd6745c4dd1c75392",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 332,
+          "column": 5
+        },
+        {
+          "title": "CP-72 - La tarjeta de período medio de pago muestra el valor correcto y responde a filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19099,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:58:10.810Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-68b96ed239cc469e341f",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 382,
+          "column": 5
+        },
+        {
+          "title": "CP-73 - La tarjeta de monto de pago pendiente muestra el valor correcto y responde a filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19466,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:58:29.926Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-3dc9bdaeed7775e18f75",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 435,
+          "column": 5
+        },
+        {
+          "title": "CP-74 - La tarjeta de morosidad muestra valores correctos y responde a filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20016,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:58:49.412Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-b121847d953756bb4772",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 484,
+          "column": 5
+        },
+        {
+          "title": "CP-75 - La tarjeta de clasificación crediticia muestra la información correcta",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19878,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:59:09.448Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-89fd8c43b17f26564603",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 562,
+          "column": 5
+        },
+        {
+          "title": "CP-76 - La tabla de clasificación por volumen de ventas refleja correctamente la información del cliente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22162,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:59:29.357Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-b068d81f613a844d3f31",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 625,
+          "column": 5
+        },
+        {
+          "title": "CP-77 - El gráfico de cartera crédito/contado refleja valores correctos y responde a filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22225,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T05:59:51.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-a0804facdd1fcc4a578c",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 744,
+          "column": 5
+        },
+        {
+          "title": "CP-78 - El gráfico de límite crediticio refleja correctamente el límite, saldo actual y saldo disponible",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22865,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:00:13.789Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-19e1b5bb2d3daa085fb6",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 853,
+          "column": 5
+        },
+        {
+          "title": "CP-79 - Validar ticket promedio del cliente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24385,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:00:36.677Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-7184bcdd37d7a29fcefb",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 984,
+          "column": 5
+        },
+        {
+          "title": "CP-80 - Validar frecuencia de compra del cliente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24426,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:01:01.088Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-a5919fd777df263b4c1c",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 1048,
+          "column": 5
+        },
+        {
+          "title": "CP-81 - Validar tabla de recomendación de productos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27134,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:01:25.539Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3743e3b5f9179fcd7848-5158c930800e62f64ffa",
+          "file": "front-end/clientes/dashboard-clientes.spec.ts",
+          "line": 1132,
+          "column": 5
+        },
         {
           "title": "CP-82 - Validar tabla de estado de cuenta",
           "ok": true,
@@ -82,15 +1429,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 4,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 31276,
+                  "duration": 29604,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-08T05:15:06.540Z",
+                  "startTime": "2025-12-08T06:01:52.687Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -101,18 +1448,1792 @@
           "id": "3743e3b5f9179fcd7848-dca950fd863cdc6f7db1",
           "file": "front-end/clientes/dashboard-clientes.spec.ts",
           "line": 1236,
-          "column": 6
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "front-end\\dashboard-clientes\\reporte-ventas.spec.ts",
+      "file": "front-end/dashboard-clientes/reporte-ventas.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reporte de ventas",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13176,
+                  "error": {
+                    "message": "error: no existe la relación «clean.fct_accounts_receivable»",
+                    "stack": "error: no existe la relación «clean.fct_accounts_receivable»\n    at C:\\xampp\\htdocs\\datalysis-testing\\node_modules\\pg\\lib\\client.js:545:17\n    at queryDBAnalytic (C:\\xampp\\htdocs\\datalysis-testing\\utils\\dbAnalytic.ts:15:20)\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\dashboard-clientes\\reporte-ventas.spec.ts:48:29",
+                    "location": {
+                      "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\dbAnalytic.ts",
+                      "column": 20,
+                      "line": 15
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\utils\\dbAnalytic.ts:15\n\n\u001b[0m \u001b[90m 13 |\u001b[39m   \u001b[36mtry\u001b[39m{\n \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mconnect()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mquery(sql\u001b[33m,\u001b[39m params)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mreturn\u001b[39m result\u001b[33m.\u001b[39mrows\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error) {\n \u001b[90m 18 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m'Error executing query:'\u001b[39m\u001b[33m,\u001b[39m error)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\dbAnalytic.ts",
+                        "column": 20,
+                        "line": 15
+                      },
+                      "message": "error: no existe la relación «clean.fct_accounts_receivable»\n\n\u001b[90m   at \u001b[39m..\\utils\\dbAnalytic.ts:15\n\n\u001b[0m \u001b[90m 13 |\u001b[39m   \u001b[36mtry\u001b[39m{\n \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mconnect()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m result \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m client\u001b[33m.\u001b[39mquery(sql\u001b[33m,\u001b[39m params)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mreturn\u001b[39m result\u001b[33m.\u001b[39mrows\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error) {\n \u001b[90m 18 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m'Error executing query:'\u001b[39m\u001b[33m,\u001b[39m error)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\node_modules\\pg\\lib\\client.js:545:17\u001b[22m\n\u001b[2m    at queryDBAnalytic (C:\\xampp\\htdocs\\datalysis-testing\\utils\\dbAnalytic.ts:15:20)\u001b[22m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\dashboard-clientes\\reporte-ventas.spec.ts:48:29\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "Error executing query: error: no existe la relación «clean.fct_accounts_receivable»\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mpg\u001b[24m\\lib\\client.js:545:17\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at queryDBAnalytic \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mutils\\dbAnalytic.ts:15:20\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mtests\\front-end\\dashboard-clientes\\reporte-ventas.spec.ts:48:29\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:310:9\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:305:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\timeoutManager.js:67:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:303:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:308:7\n    at WorkerMain._runTest \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:283:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:198:11\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\xampp\\htdocs\\datalysis-testing\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\process.js:65:22\u001b[90m)\u001b[39m {\n  length: \u001b[33m129\u001b[39m,\n  severity: \u001b[32m'ERROR'\u001b[39m,\n  code: \u001b[32m'42P01'\u001b[39m,\n  detail: \u001b[90mundefined\u001b[39m,\n  hint: \u001b[90mundefined\u001b[39m,\n  position: \u001b[32m'72'\u001b[39m,\n  internalPosition: \u001b[90mundefined\u001b[39m,\n  internalQuery: \u001b[90mundefined\u001b[39m,\n  where: \u001b[90mundefined\u001b[39m,\n  schema: \u001b[90mundefined\u001b[39m,\n  table: \u001b[90mundefined\u001b[39m,\n  column: \u001b[90mundefined\u001b[39m,\n  dataType: \u001b[90mundefined\u001b[39m,\n  constraint: \u001b[90mundefined\u001b[39m,\n  file: \u001b[32m'parse_relation.c'\u001b[39m,\n  line: \u001b[32m'1431'\u001b[39m,\n  routine: \u001b[32m'parserOpenTable'\u001b[39m\n}\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:02:22.315Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-dashboard-client-932d6-te-ventas-reporte-de-ventas-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-dashboard-client-932d6-te-ventas-reporte-de-ventas-chromium\\test-failed-2.png"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-dashboard-client-932d6-te-ventas-reporte-de-ventas-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\xampp\\htdocs\\datalysis-testing\\utils\\dbAnalytic.ts",
+                    "column": 20,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "24f467ce3a82705f50fd-569ee6c52e9291e6c238",
+          "file": "front-end/dashboard-clientes/reporte-ventas.spec.ts",
+          "line": 7,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "front-end\\inicio\\inicio.spec.ts",
+      "file": "front-end/inicio/inicio.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "tarjetas de inicio",
+          "file": "front-end/inicio/inicio.spec.ts",
+          "line": 11,
+          "column": 6,
+          "specs": [
+            {
+              "title": "",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 75000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 41750,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: week, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: week, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: week, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: month, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: month, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: month, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: quarter, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: quarter, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: quarter, timeComparison: same_period_last_year\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: year, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: year, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: year, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: week, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: week, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: week, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: month, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: month, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: month, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: MARGEN\\%, datePeriod: quarter, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: VENTAS, datePeriod: quarter, timeComparison: prior_period\n"
+                        },
+                        {
+                          "text": "Probando. Tarjeta: CLIENTES, datePeriod: quarter, timeComparison: prior_period\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:02:38.626Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5033338a7789e02dd8f4-5dbebd8dba5d2d66efca",
+              "file": "front-end/inicio/inicio.spec.ts",
+              "line": 12,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\pedidos\\consolidado-lectura.spec.ts",
+      "file": "front-end/pedidos/consolidado-lectura.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Validación de pedidos mostrados en el consolidado",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 30758,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTitle('Editar')\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByTitle('Editar')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTitle('Editar')\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByTitle('Editar')\u001b[22m\n\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-lectura.spec.ts:18:29",
+                    "location": {
+                      "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-lectura.spec.ts",
+                      "column": 29,
+                      "line": 18
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 16 |\u001b[39m\n \u001b[90m 17 |\u001b[39m   \u001b[36mconst\u001b[39m botonEditar \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByTitle(\u001b[32m'Editar'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(botonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect(botonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m1000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-lectura.spec.ts",
+                        "column": 29,
+                        "line": 18
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTitle('Editar')\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByTitle('Editar')\u001b[22m\n\n\n\u001b[0m \u001b[90m 16 |\u001b[39m\n \u001b[90m 17 |\u001b[39m   \u001b[36mconst\u001b[39m botonEditar \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByTitle(\u001b[32m'Editar'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(botonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect(botonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m1000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-lectura.spec.ts:18:29\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:03:20.460Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-75a40-mostrados-en-el-consolidado-chromium\\test-failed-3.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-75a40-mostrados-en-el-consolidado-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-75a40-mostrados-en-el-consolidado-chromium\\test-failed-2.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-75a40-mostrados-en-el-consolidado-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-75a40-mostrados-en-el-consolidado-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-75a40-mostrados-en-el-consolidado-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-lectura.spec.ts",
+                    "column": 29,
+                    "line": 18
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8ebbaa1ddc34204e3367-4fe56e0462aa293fb2af",
+          "file": "front-end/pedidos/consolidado-lectura.spec.ts",
+          "line": 6,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "front-end\\pedidos\\consolidado-pedidos.spec.ts",
+      "file": "front-end/pedidos/consolidado-pedidos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Editar todas las celdas de pedido en Tabulator",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 30122,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTitle('Editar')\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByTitle('Editar')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTitle('Editar')\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByTitle('Editar')\u001b[22m\n\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-pedidos.spec.ts:26:29",
+                    "location": {
+                      "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-pedidos.spec.ts",
+                      "column": 29,
+                      "line": 26
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36mconst\u001b[39m botonEditar \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByTitle(\u001b[32m'Editar'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m   \u001b[36mawait\u001b[39m expect(botonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m   \u001b[36mawait\u001b[39m expect(botonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   \u001b[36mawait\u001b[39m botonEditar\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-pedidos.spec.ts",
+                        "column": 29,
+                        "line": 26
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTitle('Editar')\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByTitle('Editar')\u001b[22m\n\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36mconst\u001b[39m botonEditar \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByTitle(\u001b[32m'Editar'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m   \u001b[36mawait\u001b[39m expect(botonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m   \u001b[36mawait\u001b[39m expect(botonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   \u001b[36mawait\u001b[39m botonEditar\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-pedidos.spec.ts:26:29\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:03:54.583Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-fce49-ldas-de-pedido-en-Tabulator-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-fce49-ldas-de-pedido-en-Tabulator-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-fce49-ldas-de-pedido-en-Tabulator-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-consolid-fce49-ldas-de-pedido-en-Tabulator-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\consolidado-pedidos.spec.ts",
+                    "column": 29,
+                    "line": 26
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a097e7de5add3090f26e-753e5193ad0a7d4992cc",
+          "file": "front-end/pedidos/consolidado-pedidos.spec.ts",
+          "line": 14,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "front-end\\pedidos\\pedidos-lectura.spec.ts",
+      "file": "front-end/pedidos/pedidos-lectura.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Validar datos solo lectura en Tabulator vs BD (POM)",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 29784,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Editar pedido' })\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Editar pedido' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Editar pedido' })\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Editar pedido' })\u001b[22m\n\n    at RequisicionPage.esperarBotonEditarHabilitado (C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts:37:36)\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pedidos-lectura.spec.ts:18:21",
+                    "location": {
+                      "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts",
+                      "column": 36,
+                      "line": 37
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mfront-end\\pedidos\\pages\\requisicionPage.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m\n \u001b[90m 36 |\u001b[39m   \u001b[36masync\u001b[39m esperarBotonEditarHabilitado() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mbotonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   }\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36masync\u001b[39m hacerClickEditar() {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts",
+                        "column": 36,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Editar pedido' })\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Editar pedido' })\u001b[22m\n\n\n\u001b[90m   at \u001b[39mfront-end\\pedidos\\pages\\requisicionPage.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m\n \u001b[90m 36 |\u001b[39m   \u001b[36masync\u001b[39m esperarBotonEditarHabilitado() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mbotonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   }\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36masync\u001b[39m hacerClickEditar() {\u001b[0m\n\u001b[2m    at RequisicionPage.esperarBotonEditarHabilitado (C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts:37:36)\u001b[22m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pedidos-lectura.spec.ts:18:21\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:04:26.914Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-pedidos--b1caa-ura-en-Tabulator-vs-BD-POM--chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-pedidos--b1caa-ura-en-Tabulator-vs-BD-POM--chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-pedidos--b1caa-ura-en-Tabulator-vs-BD-POM--chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-pedidos--b1caa-ura-en-Tabulator-vs-BD-POM--chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts",
+                    "column": 36,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0f03921caa5576c2b995-8a4bcb2bf84d32083ea0",
+          "file": "front-end/pedidos/pedidos-lectura.spec.ts",
+          "line": 7,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "front-end\\pedidos\\requisicion-pedidos.spec.ts",
+      "file": "front-end/pedidos/requisicion-pedidos.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Editar todas las celdas de existencia y pedido en Tabulator (POM)",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 29493,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Editar pedido' })\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Editar pedido' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Editar pedido' })\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Editar pedido' })\u001b[22m\n\n    at RequisicionPage.esperarBotonEditarHabilitado (C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts:37:36)\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\requisicion-pedidos.spec.ts:19:25",
+                    "location": {
+                      "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts",
+                      "column": 36,
+                      "line": 37
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mfront-end\\pedidos\\pages\\requisicionPage.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m\n \u001b[90m 36 |\u001b[39m   \u001b[36masync\u001b[39m esperarBotonEditarHabilitado() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mbotonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   }\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36masync\u001b[39m hacerClickEditar() {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts",
+                        "column": 36,
+                        "line": 37
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Editar pedido' })\nExpected: enabled\nTimeout: 25000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 25000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Editar pedido' })\u001b[22m\n\n\n\u001b[90m   at \u001b[39mfront-end\\pedidos\\pages\\requisicionPage.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m\n \u001b[90m 36 |\u001b[39m   \u001b[36masync\u001b[39m esperarBotonEditarHabilitado() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mbotonEditar)\u001b[33m.\u001b[39mtoBeEnabled({ timeout\u001b[33m:\u001b[39m \u001b[35m25000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   }\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36masync\u001b[39m hacerClickEditar() {\u001b[0m\n\u001b[2m    at RequisicionPage.esperarBotonEditarHabilitado (C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts:37:36)\u001b[22m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\requisicion-pedidos.spec.ts:19:25\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:04:58.870Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-requisic-0fb8a--y-pedido-en-Tabulator-POM--chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-requisic-0fb8a--y-pedido-en-Tabulator-POM--chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-requisic-0fb8a--y-pedido-en-Tabulator-POM--chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-pedidos-requisic-0fb8a--y-pedido-en-Tabulator-POM--chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\pedidos\\pages\\requisicionPage.ts",
+                    "column": 36,
+                    "line": 37
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c1cbf2a46e641c5bce6d-6be95edec89fd25df631",
+          "file": "front-end/pedidos/requisicion-pedidos.spec.ts",
+          "line": 8,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "front-end\\reporte-ventas\\reporte-ventas.spec.ts",
+      "file": "front-end/reporte-ventas/reporte-ventas.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "CP-20 - Filtro por defecto: UI coincide con API y BD",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 41219,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:05:30.653Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c4f16f35b06e8d6d1533-a9469d4d4ad1734d36e8",
+          "file": "front-end/reporte-ventas/reporte-ventas.spec.ts",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "title": "CP-21 - Filtro por nombreCliente + segmento: UI coincide con API y BD",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18470,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-08T06:06:11.895Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c4f16f35b06e8d6d1533-eb868205653eeb171203",
+          "file": "front-end/reporte-ventas/reporte-ventas.spec.ts",
+          "line": 133,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "front-end\\resumen-ejecutivo\\resumen-ejecutivo.spec.ts",
+      "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Dashboard Resumen Ejecutivo (E2E)",
+          "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+          "line": 60,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: VENTAS TOTALES",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 523,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:06:30.397Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-8e6897c0b1c4f28491d9",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: COSTOS TOTALES",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 668,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:06:44.118Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-a7f316427c063e07fde4",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: MARGEN TOTAL",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2053,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:06:44.813Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-7743cb4fca31f6912b5b",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: MARGEN %",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1522,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:06:46.899Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-cc2ea29aba7a69fd1831",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: TICKET PROMEDIO",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2383,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:06:48.446Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-fb7f545dae019b554701",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-57 / CP-14 - Validar tarjeta: TICKETS",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 844,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:06:50.862Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-625040351bcaf96893e8",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 96,
+              "column": 9
+            },
+            {
+              "title": "CP-63 — Filtros secundarios",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 892,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:07:02.628Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-33d6cd2e3fd3c61a2bd7",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 166,
+              "column": 7
+            },
+            {
+              "title": "Fecha fin menor que inicio no debe romper UI",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2173,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:07:05.124Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-54e9d8e2bac561276ed3",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 192,
+              "column": 7
+            },
+            {
+              "title": "Esquema API del gráfico es válido",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 500,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:07:07.318Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b5300ff6d009557a235d-f4a1423cc7629494db13",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 210,
+              "column": 7
+            }
+          ],
+          "suites": [
+            {
+              "title": "CP-62 — Filtros combinados",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 140,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Debe aplicar todos los filtros y actualizar KPIs",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 10855,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-12-08T06:06:51.747Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-0e2f4659f85ffd68c6c1",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 142,
+                  "column": 9
+                }
+              ]
+            },
+            {
+              "title": "Filtros de periodo",
+              "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+              "line": 180,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "Filtro Día",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 285,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-12-08T06:07:03.576Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-0051daa57f9da58ffa61",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                },
+                {
+                  "title": "Filtro Semana",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 246,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-12-08T06:07:03.883Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-97866e975f765922cc02",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                },
+                {
+                  "title": "Filtro Mes",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 269,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-12-08T06:07:04.152Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-47e23941698462d46166",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                },
+                {
+                  "title": "Filtro Trimestre",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 332,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-12-08T06:07:04.463Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-cbd65013ef267efadca5",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                },
+                {
+                  "title": "Filtro Año",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 9,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 284,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2025-12-08T06:07:04.817Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "b5300ff6d009557a235d-9996315cab0b075a32a8",
+                  "file": "front-end/resumen-ejecutivo/resumen-ejecutivo.spec.ts",
+                  "line": 182,
+                  "column": 11
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\Seguridad\\Login\\seguridad-login.spec.ts",
+      "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Pruebas de Login (CP-44 y CP-45)",
+          "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-44 - El usuario debe ingresar exitosamente al sistema",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8146,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).not.\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: not \u001b[32m/sign-in/\u001b[39m\nReceived string: \u001b[31m\"http://localhost:3000/es/auth/\u001b[7msign-in\u001b[27m\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:3000/es/auth/sign-in\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).not.\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: not \u001b[32m/sign-in/\u001b[39m\nReceived string: \u001b[31m\"http://localhost:3000/es/auth/\u001b[7msign-in\u001b[27m\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:3000/es/auth/sign-in\"\u001b[22m\n\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Login\\seguridad-login.spec.ts:23:28",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Login\\seguridad-login.spec.ts",
+                          "column": 28,
+                          "line": 23
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 21 |\u001b[39m\n \u001b[90m 22 |\u001b[39m     \u001b[90m// 1. Debe navegar fuera de la pantalla de login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/sign-in/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m     \u001b[90m// 2. Validar que el Home/Inicio es visible (inglés o español)\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Login\\seguridad-login.spec.ts",
+                            "column": 28,
+                            "line": 23
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).not.\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: not \u001b[32m/sign-in/\u001b[39m\nReceived string: \u001b[31m\"http://localhost:3000/es/auth/\u001b[7msign-in\u001b[27m\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:3000/es/auth/sign-in\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 21 |\u001b[39m\n \u001b[90m 22 |\u001b[39m     \u001b[90m// 1. Debe navegar fuera de la pantalla de login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/sign-in/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m     \u001b[90m// 2. Validar que el Home/Inicio es visible (inglés o español)\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Login\\seguridad-login.spec.ts:23:28\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:07:07.860Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Login--992cf-sar-exitosamente-al-sistema-chromium\\test-failed-2.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Login--992cf-sar-exitosamente-al-sistema-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Login--992cf-sar-exitosamente-al-sistema-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Login--992cf-sar-exitosamente-al-sistema-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Login\\seguridad-login.spec.ts",
+                        "column": 28,
+                        "line": 23
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "34de9c37e369b45bd5da-3bb2ae4f99c8a7a3b89f",
+              "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+              "line": 9,
+              "column": 7
+            },
+            {
+              "title": "CP-45 - Login incorrecto debe mostrar mensaje de error",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4157,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:07:21.106Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "34de9c37e369b45bd5da-70b477c7e2449be61871",
+              "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+              "line": 36,
+              "column": 7
+            },
+            {
+              "title": "CP-46 - Bloqueo tras múltiples intentos fallidos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 14234,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:07:25.301Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "34de9c37e369b45bd5da-47e3cfd000dd0aaeb363",
+              "file": "front-end/Seguridad/Login/seguridad-login.spec.ts",
+              "line": 63,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\Seguridad\\Roles\\roles.spec.ts",
+      "file": "front-end/Seguridad/Roles/roles.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SEGURIDAD - CRUD Roles",
+          "file": "front-end/Seguridad/Roles/roles.spec.ts",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-53 - Crear rol correctamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 18956,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:07:39.595Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d960874b23110db711e2-1f7bd9a7d0713c76473f",
+              "file": "front-end/Seguridad/Roles/roles.spec.ts",
+              "line": 11,
+              "column": 9
+            },
+            {
+              "title": "CP-54 - Validación de campos requeridos al crear rol",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 25892,
+                      "error": {
+                        "message": "TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event \"response\"",
+                        "stack": "TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event \"response\"\n    at RolesPage.guardar (C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\pages\\roles.page.ts:77:23)\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts:88:21",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\pages\\roles.page.ts",
+                          "column": 23,
+                          "line": 77
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mfront-end\\Seguridad\\Roles\\pages\\roles.page.ts:77\n\n\u001b[0m \u001b[90m 75 |\u001b[39m\n \u001b[90m 76 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m.\u001b[39mall([\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 77 |\u001b[39m             \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mwaitForResponse(res \u001b[33m=>\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 78 |\u001b[39m             res\u001b[33m.\u001b[39mrequest()\u001b[33m.\u001b[39mmethod() \u001b[33m===\u001b[39m \u001b[32m'POST'\u001b[39m \u001b[33m&&\u001b[39m\n \u001b[90m 79 |\u001b[39m             res\u001b[33m.\u001b[39murl()\u001b[33m.\u001b[39mincludes(\u001b[32m'/rol'\u001b[39m) \u001b[33m&&\u001b[39m\n \u001b[90m 80 |\u001b[39m             res\u001b[33m.\u001b[39mstatus() \u001b[33m===\u001b[39m \u001b[35m200\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\pages\\roles.page.ts",
+                            "column": 23,
+                            "line": 77
+                          },
+                          "message": "TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event \"response\"\n\n\u001b[90m   at \u001b[39mfront-end\\Seguridad\\Roles\\pages\\roles.page.ts:77\n\n\u001b[0m \u001b[90m 75 |\u001b[39m\n \u001b[90m 76 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m.\u001b[39mall([\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 77 |\u001b[39m             \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mwaitForResponse(res \u001b[33m=>\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 78 |\u001b[39m             res\u001b[33m.\u001b[39mrequest()\u001b[33m.\u001b[39mmethod() \u001b[33m===\u001b[39m \u001b[32m'POST'\u001b[39m \u001b[33m&&\u001b[39m\n \u001b[90m 79 |\u001b[39m             res\u001b[33m.\u001b[39murl()\u001b[33m.\u001b[39mincludes(\u001b[32m'/rol'\u001b[39m) \u001b[33m&&\u001b[39m\n \u001b[90m 80 |\u001b[39m             res\u001b[33m.\u001b[39mstatus() \u001b[33m===\u001b[39m \u001b[35m200\u001b[39m\u001b[0m\n\u001b[2m    at RolesPage.guardar (C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\pages\\roles.page.ts:77:23)\u001b[22m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts:88:21\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:07:58.565Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--4daa6-pos-requeridos-al-crear-rol-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--4daa6-pos-requeridos-al-crear-rol-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--4daa6-pos-requeridos-al-crear-rol-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\pages\\roles.page.ts",
+                        "column": 23,
+                        "line": 77
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d960874b23110db711e2-42d0487c0620efdb206b",
+              "file": "front-end/Seguridad/Roles/roles.spec.ts",
+              "line": 69,
+              "column": 9
+            },
+            {
+              "title": "CP-55 - Eliminar rol correctamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "fail",
+                      "description": "El backend devolvió un error 500 al eliminar.",
+                      "location": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                        "line": 163,
+                        "column": 18
+                      }
+                    }
+                  ],
+                  "expectedStatus": "failed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10469,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/eliminado|éxito|correctamente/\u001b[39m\nReceived string:  \u001b[31m\"error interno del servidor\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/eliminado|éxito|correctamente/\u001b[39m\nReceived string:  \u001b[31m\"error interno del servidor\"\u001b[39m\n    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts:166:27",
+                        "location": {
+                          "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                          "column": 27,
+                          "line": 166
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 164 |\u001b[39m         }\n \u001b[90m 165 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 166 |\u001b[39m         expect(textToast)\u001b[33m.\u001b[39mtoMatch(\u001b[35m/eliminado|éxito|correctamente/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 167 |\u001b[39m\n \u001b[90m 168 |\u001b[39m         \u001b[90m// Validar en UI que ya no se muestra\u001b[39m\n \u001b[90m 169 |\u001b[39m         \u001b[36mawait\u001b[39m roles\u001b[33m.\u001b[39mvalidarRolEliminado(nombreRol)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                            "column": 27,
+                            "line": 166
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/eliminado|éxito|correctamente/\u001b[39m\nReceived string:  \u001b[31m\"error interno del servidor\"\u001b[39m\n\n\u001b[0m \u001b[90m 164 |\u001b[39m         }\n \u001b[90m 165 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 166 |\u001b[39m         expect(textToast)\u001b[33m.\u001b[39mtoMatch(\u001b[35m/eliminado|éxito|correctamente/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 167 |\u001b[39m\n \u001b[90m 168 |\u001b[39m         \u001b[90m// Validar en UI que ya no se muestra\u001b[39m\n \u001b[90m 169 |\u001b[39m         \u001b[36mawait\u001b[39m roles\u001b[33m.\u001b[39mvalidarRolEliminado(nombreRol)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts:166:27\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:08:26.969Z",
+                      "annotations": [
+                        {
+                          "type": "fail",
+                          "description": "El backend devolvió un error 500 al eliminar.",
+                          "location": {
+                            "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                            "line": 163,
+                            "column": 18
+                          }
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\xampp\\htdocs\\datalysis-testing\\test-results\\front-end-Seguridad-Roles--61224--Eliminar-rol-correctamente-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\xampp\\htdocs\\datalysis-testing\\tests\\front-end\\Seguridad\\Roles\\roles.spec.ts",
+                        "column": 27,
+                        "line": 166
+                      }
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d960874b23110db711e2-6efa061c8d55a6e140d7",
+              "file": "front-end/Seguridad/Roles/roles.spec.ts",
+              "line": 114,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "front-end\\Seguridad\\Usuario\\usuarios.spec.ts",
+      "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SEGURIDAD - CRUD Usuarios",
+          "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CP-48 - Crear usuario exitosamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 17662,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:08:37.533Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-9bc6f362ab35e2c36ce1",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "CP-49 - Campos obligatorios faltantes deben mostrar error y no guardar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 16087,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:08:55.224Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-7efabdb3058d08254b69",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "CP-50 - Crear usuario con email ya registrado debe mostrar error y no guardar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 17293,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:09:11.335Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-c1bde4c88fe3f623bfc0",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 123,
+              "column": 7
+            },
+            {
+              "title": "CP-51 - Validación de contraseña debe mostrarse y no permitir guardar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 17701,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:09:28.650Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-34b772de486f8d7bc7fa",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 196,
+              "column": 7
+            },
+            {
+              "title": "CP-52 - Inactivar/eliminar usuario correctamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 14609,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:09:46.381Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-aca97d5c1f77c6e34e9d",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 252,
+              "column": 7
+            },
+            {
+              "title": "CP-117 - Permisos insuficientes: pantalla 401 y tarjetas bloqueadas en Inicio",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13991,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-08T06:10:01.013Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "594ca076d3f40942a1e2-ee4c9d3a95ec4dbec3ef",
+              "file": "front-end/Seguridad/Usuario/usuarios.spec.ts",
+              "line": 299,
+              "column": 7
+            }
+          ]
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-12-08T05:15:04.812Z",
-    "duration": 33160.237,
-    "expected": 1,
+    "startTime": "2025-12-08T05:57:06.347Z",
+    "duration": 789423.596,
+    "expected": 58,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 11,
     "flaky": 0
   }
 }
