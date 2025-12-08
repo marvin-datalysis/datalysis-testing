@@ -4,7 +4,7 @@ import { getAccessToken } from '../../../utils/getToken';
 import { queryDBAnalytic } from '../../../utils/dbAnalytic';
 import { reporteCuentasPorCobrarQuery } from './queries/reporteCuentasPorCobrarQuery';
 
-test.only('reporte de ventas', async ({ request }) => {
+test('reporte de ventas', async ({ request }) => {
     test.setTimeout(60000)
     const userDataDir = './context/chromium';
     const context = await chromium.launchPersistentContext(userDataDir, {

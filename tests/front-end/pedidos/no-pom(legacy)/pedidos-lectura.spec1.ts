@@ -3,7 +3,7 @@ import { login } from '../../../../utils/login';
 import { queryDB } from '../../../../utils/db';
 import { convertirFecha } from '../../../../utils/convertirFecha';
 
-test.only('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
+test('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
   await test.setTimeout(60000);
 
   await page.goto(`${process.env.APP_URL}/es/pedidos`);
