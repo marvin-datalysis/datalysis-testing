@@ -93,7 +93,7 @@ test.describe('Dashboard Resumen Ejecutivo (E2E)', () => {
 
   for (const tarjeta of tarjetas) {
 
-    test.only(`CP-57 / CP-14 - Validar tarjeta: ${tarjeta.title}`, async () => {
+    test(`CP-57 / CP-14 - Validar tarjeta: ${tarjeta.title}`, async () => {
 
       // 1. Extraer fechas reales del UI
       const rango = await resumen.getRangoFechasParaAPI();
@@ -189,7 +189,7 @@ Fechas usadas:
   // ------------------------------------------------------------
   // Fecha inválida (parte del CP-62)
   // ------------------------------------------------------------
-  test('Fecha fin menor que inicio no debe romper UI', async () => {
+  test.only('Fecha fin menor que inicio no debe romper UI', async () => {
 
     await resumen.setDatePicker('(//div[@data-slot="input-wrapper"])[1]', {
       d: '20', m: '11', y: '2025'

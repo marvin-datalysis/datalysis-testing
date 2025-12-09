@@ -6,7 +6,7 @@ test.describe('Pruebas de Login (CP-44 y CP-45)', () => {
   // ============================================================
   // CP-44 — Login Correcto
   // ============================================================
-  test('CP-44 - El usuario debe ingresar exitosamente al sistema', async () => {
+  test.only('CP-44 - El usuario debe ingresar exitosamente al sistema', async () => {
     const browser = await chromium.launch({ headless: false });
     const page = await browser.newPage();
 
@@ -60,7 +60,7 @@ test.describe('Pruebas de Login (CP-44 y CP-45)', () => {
     await browser.close();
   });
 
-  test('CP-46 - Bloqueo tras múltiples intentos fallidos', async () => {
+  test.only('CP-46 - Bloqueo tras múltiples intentos fallidos', async () => {
     const browser = await chromium.launch({ headless: false });
     const page = await browser.newPage();
 

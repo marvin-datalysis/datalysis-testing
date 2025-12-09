@@ -8,7 +8,7 @@ test.setTimeout(60000);
 
 test.describe('SEGURIDAD - CRUD Roles', () => {
 
-    test('CP-53 - Crear rol correctamente', async () => {
+    test.only('CP-53 - Crear rol correctamente', async () => {
         const browser = await chromium.launch({ headless: false });
         const page = await browser.newPage();
 

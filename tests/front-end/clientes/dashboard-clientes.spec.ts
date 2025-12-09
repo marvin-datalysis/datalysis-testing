@@ -741,7 +741,7 @@ test("CP-76 - La tabla de clasificación por volumen de ventas refleja correctam
   await browser.close();
 });
 
-test.only("CP-77 - El gráfico de cartera crédito/contado refleja valores correctos y responde a filtros", async () => {
+test("CP-77 - El gráfico de cartera crédito/contado refleja valores correctos y responde a filtros", async () => {
 
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();
@@ -981,7 +981,7 @@ const saldoActualUI = Number(textoActual.replace(/[^0-9]/g, ""));
   await browser.close();
 });
 
-test("CP-79 - Validar ticket promedio del cliente", async () => {
+test.only("CP-79 - Validar ticket promedio del cliente", async () => {
 
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();

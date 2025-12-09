@@ -41,7 +41,7 @@ test.describe('Guardar pedido - API + DB SIN POM', () => {
     const query = body.data.pedidoId ? getPedidoExistenteQuery : getNuevoPedidoQuery;
 
     // EJECUTAR QUERY
-    const dataBD: any[] = await queryDBTransaccional(query, [fechaEncargo, sucursalId]);
+    const dataBD: any[] = await queryDBTransaccional(query, [fechaEncargo, sucursalId], "pedidos_dummy");
 
     // VALIDACIONES DE DB
     expect(dataBD.length).toBe(body.data.pedidos.length);
