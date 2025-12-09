@@ -161,8 +161,8 @@ test.describe('SEGURIDAD - API Funcional (CP-01 al CP-13)', () => {
   test('CP-07 - Email duplicado debe ser rechazado', async () => {
     const usuarioDuplicado = {
       nombreCompleto: "Tesina QA",
-      email: "tesinaQA6@datalysisgroup.com",
-      password: "Tesina#2025",
+      email: "prueba117@gmail.com",
+      password: "prueba1234",
       empresaId: "3",
       displayName: "Tesina QA"
     };

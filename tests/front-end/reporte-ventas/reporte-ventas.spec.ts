@@ -130,7 +130,7 @@ test.only("CP-20 - Filtro por defecto: UI coincide con API y BD", async ({}, tes
 });
 
 
-test.only("CP-21 - Filtro por nombreCliente + segmento: UI coincide con API y BD", async () => {
+test("CP-21 - Filtro por nombreCliente + segmento: UI coincide con API y BD", async () => {
 
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();

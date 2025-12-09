@@ -296,12 +296,12 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
   });
 
 
-  test('CP-117 - Permisos insuficientes: pantalla 401 y tarjetas bloqueadas en Inicio', async () => {
+  test.only('CP-117 - Permisos insuficientes: pantalla 401 y tarjetas bloqueadas en Inicio', async () => {
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();
 
   const login = new LoginPage(page);
-  const email = "prueba_1764036152849@datalysisgroup.com";
+  const email = "prueba117@gmail.com";
   const pass = "prueba1234";
 
   await login.goto();

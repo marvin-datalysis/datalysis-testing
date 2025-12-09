@@ -4,7 +4,7 @@ import { queryDBTransaccional } from '../../../utils/db';
 import { Pedido, RequisicionPage } from './pages/requisicionPage';
 import { convertirFecha } from '../../../utils/convertirFecha';
 
-test('Validar datos solo lectura en Tabulator vs BD (POM)', async ({ page }) => {
+test.only('Validar datos solo lectura en Tabulator vs BD (POM)', async ({ page }) => {
   const pedidosPage = new RequisicionPage(page);
 
   await test.setTimeout(60000);
