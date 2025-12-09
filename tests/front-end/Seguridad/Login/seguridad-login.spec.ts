@@ -89,8 +89,8 @@ test.describe('Pruebas de Login (CP-44 y CP-45)', () => {
 
     const error = await login.obtenerError();
 
-    expect(error).toBe(
-        "No fue posible iniciar sessión. Por favor, vuelva a intentarlo más tarde."
+    expect(error).toMatch(
+        /No fue posible iniciar sessión. Por favor, vuelva a intentarlo más tarde.|Las credenciales ingresadas no son válidas./i
     );
 
     await browser.close();

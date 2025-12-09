@@ -5,7 +5,7 @@ import { Pedido, RequisicionPage } from './pages/requisicionPage';
 import { getRandomIntInRange } from '../../../utils/getRandomIntInRange';
 import { convertirFecha } from '../../../utils/convertirFecha';
 
-test.only('Los pedidos editados desde la requisición deben coincidir con los de la BD', async ({ page }) => {
+test('Los pedidos editados desde la requisición deben coincidir con los de la BD', async ({ page }) => {
   const requisicionPage = new RequisicionPage(page);
   await test.setTimeout(60000);
 
