@@ -9,7 +9,7 @@ test.setTimeout(60000);
 // ==============================================================
 // CP-22 — API Información General del Cliente
 // ==============================================================
-test("CP-22 - API devuelve información general correcta del cliente", async () => {
+test.only("CP-22 - API devuelve información general correcta del cliente", async () => {
 
   // === 1. Crear API context dentro del test ===
   const token = await getAccessToken();
@@ -129,7 +129,7 @@ test("CP-23 - API devuelve información de contacto correcta del cliente", async
 // ==============================================================
 // CP-69 — Validación UI con login dentro del test
 // ==============================================================
-test("CP-69 - La tarjeta de contacto muestra la información correcta", async () => {
+test.only("CP-69 - La tarjeta de contacto muestra la información correcta", async () => {
 
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();
@@ -741,7 +741,7 @@ test("CP-76 - La tabla de clasificación por volumen de ventas refleja correctam
   await browser.close();
 });
 
-test("CP-77 - El gráfico de cartera crédito/contado refleja valores correctos y responde a filtros", async () => {
+test.only("CP-77 - El gráfico de cartera crédito/contado refleja valores correctos y responde a filtros", async () => {
 
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();

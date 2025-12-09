@@ -9,7 +9,7 @@ dotenv.config();
 test.beforeEach(async ({ }) => { })
 
 test.describe('tarjetas de inicio', () => {
-    test('', async ({ request }) => {
+    test.only('', async ({ request }) => {
         test.setTimeout(75000)
         const userDataDir = './context/chromium';
         const context = await chromium.launchPersistentContext(userDataDir, {

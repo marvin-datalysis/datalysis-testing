@@ -86,7 +86,7 @@ test.describe('Guardar pedido - API + DB SIN POM', () => {
     const values = [sucursalId, fechaEncargo, ...productosCodigos];
 
     // EJECUTAR QUERY
-    const dataBD: any[] = await queryDB(query, values);
+    const dataBD: any[] = await queryDB(query, values,"pedidos_dummy");
 
     // VALIDACIONES DE DB
     expect(dataBD.length).toBe(body.data.pedidos.length);

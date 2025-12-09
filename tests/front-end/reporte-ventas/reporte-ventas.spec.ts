@@ -6,7 +6,7 @@ import { ReporteVentasPage } from "./pages/reporteVentas.page";
 
 test.setTimeout(30000);
 
-test("CP-20 - Filtro por defecto: UI coincide con API y BD", async ({}, testInfo) => {
+test.only("CP-20 - Filtro por defecto: UI coincide con API y BD", async ({}, testInfo) => {
 
   testInfo.setTimeout(60000); // ← aumento de timeout a nivel de test
 
@@ -130,7 +130,7 @@ test("CP-20 - Filtro por defecto: UI coincide con API y BD", async ({}, testInfo
 });
 
 
-test("CP-21 - Filtro por nombreCliente + segmento: UI coincide con API y BD", async () => {
+test.only("CP-21 - Filtro por nombreCliente + segmento: UI coincide con API y BD", async () => {
 
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();

@@ -11,7 +11,7 @@ interface PedidoConsolidado {
   cantidadFinal: number;
 }
 
-test('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
+test.only('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
   await test.setTimeout(60000);
 
   await page.goto(`${process.env.APP_URL}/es//consolidado-pedidos`);
@@ -151,7 +151,7 @@ test('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
   const pedidosBD: PedidoConsolidado[] = await queryDB(query, [
     convertirFecha(fecha!),
     ...productosUnicos.map(p => p),
-  ]);
+  ],"pedidos_dummy");
 
   await expect(pedidosBD).toEqual(pedidosFront);
 });

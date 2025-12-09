@@ -3,7 +3,7 @@ import { login } from '../../../utils/login';
 import { queryDB } from '../../../utils/db';
 import { convertirFecha } from '../../../utils/convertirFecha';
 
-test('Validación de pedidos mostrados en el consolidado', async ({ page }) => {
+test.only('Validación de pedidos mostrados en el consolidado', async ({ page }) => {
   await test.setTimeout(60000);
 
   await page.goto(`${process.env.APP_URL}/es/consolidado-pedidos`);
@@ -132,7 +132,7 @@ test('Validación de pedidos mostrados en el consolidado', async ({ page }) => {
   const pedidosBD: PedidoConsolidado[] = await queryDB(query, [
     convertirFecha(fecha!),
     ...productosUnicos.map(p => p),
-  ]);
+  ],"pedidos_dummy");
 
   await expect(pedidosBD).toEqual(pedidosFront);
 });

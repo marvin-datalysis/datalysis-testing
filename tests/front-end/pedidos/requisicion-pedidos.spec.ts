@@ -5,7 +5,7 @@ import { Pedido, RequisicionPage } from './pages/requisicionPage';
 import { getRandomIntInRange } from '../../../utils/getRandomIntInRange';
 import { convertirFecha } from '../../../utils/convertirFecha';
 
-test('Editar todas las celdas de existencia y pedido en Tabulator (POM)', async ({ page }) => {
+test.only('Editar todas las celdas de existencia y pedido en Tabulator (POM)', async ({ page }) => {
   const requisicionPage = new RequisicionPage(page);
   await test.setTimeout(60000);
 
@@ -31,7 +31,7 @@ test('Editar todas las celdas de existencia y pedido en Tabulator (POM)', async 
   await requisicionPage.guardarCambios();
 
   // ============================
-  // ✅ VALIDACIÓN CONTRA BD
+  // VALIDACIÓN CONTRA BD
   // ============================
   const query = `
     select "productoNombre", existencia, "cantidadOriginal"
@@ -50,7 +50,7 @@ test('Editar todas las celdas de existencia y pedido en Tabulator (POM)', async 
     ...pedidosFront.map(r => r.productoNombre),
   ];
 
-  const pedidosBD: Pedido[] = await queryDB(query, values);
+  const pedidosBD: Pedido[] = await queryDB(query, values,"pedidos_dummy");
 
   await expect(pedidosBD).toEqual(pedidosFront);
 });

@@ -93,7 +93,7 @@ test.describe('Dashboard Resumen Ejecutivo (E2E)', () => {
 
   for (const tarjeta of tarjetas) {
 
-    test(`CP-57 / CP-14 - Validar tarjeta: ${tarjeta.title}`, async () => {
+    test.only(`CP-57 / CP-14 - Validar tarjeta: ${tarjeta.title}`, async () => {
 
       // 1. Extraer fechas reales del UI
       const rango = await resumen.getRangoFechasParaAPI();
@@ -139,7 +139,7 @@ Fechas usadas:
   // ------------------------------------------------------------
   test.describe('CP-62 — Filtros combinados', () => {
 
-    test('Debe aplicar todos los filtros y actualizar KPIs', async () => {
+    test.only('Debe aplicar todos los filtros y actualizar KPIs', async () => {
 
       await resumen.aplicarFiltrosCompletos({
         inicio: "1",

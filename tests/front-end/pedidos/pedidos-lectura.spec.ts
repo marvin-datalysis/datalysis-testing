@@ -44,7 +44,7 @@ test('Validar datos solo lectura en Tabulator vs BD (POM)', async ({ page }) => 
     ...pedidosFront.map(r => r.productoNombre),
   ];
 
-  const pedidosBD: Pedido[] = await queryDB(query, values);
+  const pedidosBD: Pedido[] = await queryDB(query, values,"pedidos_dummy");
 
   // ============================
   // VALIDACIÓN FINAL
