@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../../../utils/login';
-import { queryDB } from '../../../utils/db';
+import { queryDBTransaccional } from '../../../utils/db';
 import { getRandomIntInRange } from '../../../utils/getRandomIntInRange';
 import { convertirFecha } from '../../../utils/convertirFecha';
 
@@ -148,7 +148,7 @@ test.only('Editar todas las celdas de pedido en Tabulator', async ({ page }) => 
   order by 1,2,3
 `;
 
-  const pedidosBD: PedidoConsolidado[] = await queryDB(query, [
+  const pedidosBD: PedidoConsolidado[] = await queryDBTransaccional(query, [
     convertirFecha(fecha!),
     ...productosUnicos.map(p => p),
   ],"pedidos_dummy");

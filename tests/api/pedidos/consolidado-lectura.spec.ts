@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { getAccessToken } from '../../../utils/getToken';
-import { queryDB } from '../../../utils/db';
+import { queryDBTransaccional } from '../../../utils/db';
 import { getRandomIntInRange } from '../../../utils/getRandomIntInRange';
 import { DataPedidosObtenidos } from './utils/DataPedidosObtenidosInterface';
 
@@ -49,7 +49,7 @@ test.describe('Guardar pedido - API + DB SIN POM', () => {
     const values = [fechaEntrega, ...productosCodigos];
 
     // EJECUTAR QUERY
-    const dataBD: any[] = await queryDB(query, values,"pedidos_dummy");
+    const dataBD: any[] = await queryDBTransaccional(query, values,"pedidos_dummy");
 
     // VALIDACIONES DE DB
     expect(dataBD.length).toBe(pedidos.length);

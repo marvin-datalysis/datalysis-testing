@@ -1,7 +1,7 @@
 import { test, expect, chromium } from '@playwright/test';
 import { LoginPage } from '../Login/pages/login.page';
 import { RolesPage } from './pages/roles.page';
-import { queryDB } from '../../../../utils/db';
+import { queryDBTransaccional } from '../../../../utils/db';
 
 // Tiempo máximo para asegurar estabilidad en operaciones lentas
 test.setTimeout(60000);
@@ -34,7 +34,7 @@ test.describe('SEGURIDAD - CRUD Roles', () => {
         await roles.validarRolEnTabla(nombreRol);
 
         // 4. Validación en la base de datos: Rol creado
-        const dbRol = await queryDB(
+        const dbRol = await queryDBTransaccional(
             `SELECT * FROM public.rol WHERE "nombreRol" = $1;`,
             [nombreRol]
         );
@@ -47,7 +47,7 @@ test.describe('SEGURIDAD - CRUD Roles', () => {
         // 5. Validación de permisos asignados al rol (con polling por tardanza de insercion)
         let dbPermisos = [];
         for (let i = 0; i < 10; i++) {
-            dbPermisos = await queryDB(
+            dbPermisos = await queryDBTransaccional(
                 `SELECT * FROM public.rol_permiso 
                 WHERE "rolId" = $1 AND "tienePermiso" = true;`,
                 [rolId]
@@ -100,7 +100,7 @@ test.describe('SEGURIDAD - CRUD Roles', () => {
         await expect(page).toHaveURL(/roles/i);
 
         // Validación en BD: El rol no debe haberse creado
-        const dbRol = await queryDB(
+        const dbRol = await queryDBTransaccional(
             `SELECT * FROM public.rol WHERE "nombreRol" = $1;`,
             [""]
         );
@@ -169,7 +169,7 @@ test.describe('SEGURIDAD - CRUD Roles', () => {
         await roles.validarRolEliminado(nombreRol);
 
         // Validación en BD: Rol eliminado físicamente
-        const dbRol = await queryDB(
+        const dbRol = await queryDBTransaccional(
             `SELECT * FROM public.rol WHERE "rolId" = $1;`,
             [rolId]
         );
@@ -177,7 +177,7 @@ test.describe('SEGURIDAD - CRUD Roles', () => {
         expect(dbRol.length).toBe(0);
 
         // Validación en BD: Permisos eliminados
-        const dbPermisos = await queryDB(
+        const dbPermisos = await queryDBTransaccional(
             `SELECT * FROM public.rol_permiso WHERE "rolId" = $1;`,
             [rolId]
         );

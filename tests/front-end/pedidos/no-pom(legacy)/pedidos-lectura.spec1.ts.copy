@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../../../../utils/login';
-import { queryDB } from '../../../../utils/db';
+import { queryDBTransaccional } from '../../../../utils/db';
 import { convertirFecha } from '../../../../utils/convertirFecha';
 
 test('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
@@ -122,7 +122,7 @@ test('Validar datos solo lectura en Tabulator vs BD', async ({ page }) => {
     ...pedidosFront.map(r => r.productoNombre),
   ];
 
-  const pedidosBD: Pedido[] = await queryDB(query, values);
+  const pedidosBD: Pedido[] = await queryDBTransaccional(query, values);
 
   // VALIDACIÓN FINAL
   await expect(pedidosBD).toEqual(pedidosFront);

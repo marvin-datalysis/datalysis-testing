@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../../../utils/login';
-import { queryDB } from '../../../utils/db';
+import { queryDBTransaccional } from '../../../utils/db';
 import { Pedido, RequisicionPage } from './pages/requisicionPage';
 import { convertirFecha } from '../../../utils/convertirFecha';
 
@@ -44,7 +44,7 @@ test('Validar datos solo lectura en Tabulator vs BD (POM)', async ({ page }) => 
     ...pedidosFront.map(r => r.productoNombre),
   ];
 
-  const pedidosBD: Pedido[] = await queryDB(query, values,"pedidos_dummy");
+  const pedidosBD: Pedido[] = await queryDBTransaccional(query, values,"pedidos_dummy");
 
   // ============================
   // VALIDACIÓN FINAL

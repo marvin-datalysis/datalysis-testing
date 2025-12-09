@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../../../../utils/login';
-import { queryDB } from '../../../../utils/db';
+import { queryDBTransaccional } from '../../../../utils/db';
 import { convertirFecha } from '../../../../utils/convertirFecha';
 import { getRandomIntInRange } from '../../../../utils/getRandomIntInRange';
 
@@ -158,7 +158,7 @@ test('Editar todas las celdas de existencia y pedido en Tabulator', async ({ pag
     ...pedidosFront.map(r => r.productoNombre)
   ];
 
-  const pedidosBD: Pedido[] = await queryDB(query, values);
+  const pedidosBD: Pedido[] = await queryDBTransaccional(query, values);
 
   await expect(pedidosBD).toEqual(pedidosFront);
 });

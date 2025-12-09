@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { login } from '../../../utils/login';
-import { queryDB } from '../../../utils/db';
+import { queryDBTransaccional } from '../../../utils/db';
 import { Pedido, RequisicionPage } from './pages/requisicionPage';
 import { getRandomIntInRange } from '../../../utils/getRandomIntInRange';
 import { convertirFecha } from '../../../utils/convertirFecha';
@@ -50,7 +50,7 @@ test.only('Editar todas las celdas de existencia y pedido en Tabulator (POM)', a
     ...pedidosFront.map(r => r.productoNombre),
   ];
 
-  const pedidosBD: Pedido[] = await queryDB(query, values,"pedidos_dummy");
+  const pedidosBD: Pedido[] = await queryDBTransaccional(query, values,"pedidos_dummy");
 
   await expect(pedidosBD).toEqual(pedidosFront);
 });

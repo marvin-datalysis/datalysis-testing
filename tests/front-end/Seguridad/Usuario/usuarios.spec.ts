@@ -1,7 +1,7 @@
 import { test, expect, chromium } from '@playwright/test';
 import { LoginPage } from '../Login/pages/login.page';
 import { UsersPage } from './pages/users.page';
-import { queryDB } from '../../../../utils/db';
+import { queryDBTransaccional } from '../../../../utils/db';
 
 // Tiempo máximo para asegurar estabilidad en operaciones lentas
 test.setTimeout(60000);
@@ -53,7 +53,7 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
     await users.validarUsuarioEnTabla(nuevoUsuario.usuarioEmail);
 
     // Validar que el usuario existe en la base de datos
-    const dbRows = await queryDB(
+    const dbRows = await queryDBTransaccional(
       `SELECT * FROM public.usuario WHERE "usuarioEmail" = $1;`,
       [nuevoUsuario.usuarioEmail]
     );
@@ -63,7 +63,7 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
   });
 
 
-  test('CP-49 - Campos obligatorios faltantes deben mostrar error y no guardar', async () => {
+  test.only('CP-49 - Campos obligatorios faltantes deben mostrar error y no guardar', async () => {
     const browser = await chromium.launch({ headless: false });
     const page = await browser.newPage();
 
@@ -110,7 +110,7 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
     await expect(page.getByRole('row', { name: /prueba3@datalysisgroup\.com/i })).toHaveCount(0);
 
     // Validación en la base de datos
-    const result = await queryDB(
+    const result = await queryDBTransaccional(
       `SELECT * FROM public.usuario WHERE "usuarioEmail" = $1;`,
       [data.usuarioEmail]
     );
@@ -183,7 +183,7 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
     await expect(page.getByRole('row', { name: /prueba@datalysisgroup\.com/i })).toHaveCount(1);
 
     // Validación en base de datos
-    const dbRows = await queryDB(
+    const dbRows = await queryDBTransaccional(
       `SELECT * FROM public.usuario WHERE "usuarioEmail" = $1;`,
       [data.usuarioEmail]
     );
@@ -239,7 +239,7 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
     await expect(page.getByRole('row', { name: /pass_/i })).toHaveCount(0);
 
     // Validación en BD
-    const dbRows = await queryDB(
+    const dbRows = await queryDBTransaccional(
       `SELECT * FROM public.usuario WHERE "usuarioEmail" = $1;`,
       [data.usuarioEmail]
     );
@@ -278,7 +278,7 @@ test.describe('SEGURIDAD - CRUD Usuarios', () => {
     }
 
     // Validación en BD 
-    const dbRows = await queryDB(
+    const dbRows = await queryDBTransaccional(
     `SELECT "eliminado" FROM public.usuario WHERE "usuarioEmail" = $1;`,
     [emailAEliminar]
     );

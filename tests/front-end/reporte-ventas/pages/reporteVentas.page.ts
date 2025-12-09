@@ -90,47 +90,61 @@ export class ReporteVentasPage {
   }
 
   // ========================================
-  // LEER LOS DATOS DE LA TABLA (corregido)
-  // ========================================
-  async obtenerDatosNormalizados() {
-    const filas = this.page.locator('.tabulator-row');
-    const total = await filas.count();
-    const resultado = [];
+// LEER LOS DATOS DE LA TABLA (CORREGIDO)
+// ========================================
+async obtenerDatosNormalizados() {
 
-    for (let i = 0; i < total; i++) {
-      const celdas = filas.nth(i).locator('.tabulator-cell');
-      const count = await celdas.count();
+  // Limpieza universal — elimina NBSP y espacios invisibles
+  const clean = (txt: string) =>
+    txt
+      ?.replace(/\u00A0/g, "") // elimina NBSP
+      ?.replace(/\s+/g, " ")   // normaliza espacios
+      ?.trim() ?? "";
 
-      // Tabulator muestra totales/footer → ignorarlos
-      if (count < 19) continue;
+  const filas = this.page.locator(".tabulator-row");
+  const total = await filas.count();
+  const resultado = [];
 
-      const row = {
-        fechaEmisionFactura: await celdas.nth(0).innerText(),
-        idFactura: Number(await celdas.nth(1).innerText()),
-        nombreEmpresa: await celdas.nth(2).innerText(),
-        segmentoCliente: await celdas.nth(3).innerText(),
-        idCliente: Number(await celdas.nth(4).innerText()),
-        nombreCliente: await celdas.nth(5).innerText(),
-        nombreProducto: await celdas.nth(6).innerText(),
-        categoriaProducto: await celdas.nth(7).innerText(),
-        condicionPago: await celdas.nth(8).innerText(),
-        idProducto: Number(await celdas.nth(9).innerText()),
-        precio: Number(await celdas.nth(10).innerText()),
-        costo: Number(await celdas.nth(11).innerText()),
-        cantidad: Number(await celdas.nth(12).innerText()),
-        idEmpleado: Number(await celdas.nth(13).innerText()),
-        nombreEmpleado: await celdas.nth(14).innerText(),
-        descuento: Number((await celdas.nth(15).innerText()).replace("$", "")),
-        porcentajeDescuento: Number((await celdas.nth(16).innerText()).replace("%", "")),
-        margen: Number((await celdas.nth(17).innerText()).replace("$", "")),
-        venta: Number((await celdas.nth(18).innerText()).replace("$", "").replace(",", "")),
-      };
+  for (let i = 0; i < total; i++) {
+    const celdas = filas.nth(i).locator(".tabulator-cell");
+    const count = await celdas.count();
 
-      resultado.push(row);
-    }
+    // Ignorar filas totales/footer
+    if (count < 19) continue;
 
-    return resultado;
+    const getText = async (n: number) => clean(await celdas.nth(n).innerText());
+
+    const row = {
+      fechaEmisionFactura: await getText(0),
+
+      idFactura: Number(await getText(1)),
+      nombreEmpresa: await getText(2),
+      segmentoCliente: await getText(3),
+      idCliente: Number(await getText(4)),
+      nombreCliente: await getText(5),
+      nombreProducto: await getText(6),
+      categoriaProducto: await getText(7),
+      condicionPago: await getText(8),
+      idProducto: Number(await getText(9)),
+      precio: Number(await getText(10)),
+      costo: Number(await getText(11)),
+      cantidad: Number(await getText(12)),
+      idEmpleado: Number(await getText(13)),
+      nombreEmpleado: await getText(14),
+
+      descuento: Number((await getText(15)).replace("$", "")),
+      porcentajeDescuento: Number((await getText(16)).replace("%", "")),
+      margen: Number((await getText(17)).replace("$", "")),
+
+      venta: Number((await getText(18)).replace("$", "").replace(",", "")),
+    };
+
+    resultado.push(row);
   }
+
+  return resultado;
+}
+
 
   // Normalización de API
   normalizarBackend(rows: any[]) {

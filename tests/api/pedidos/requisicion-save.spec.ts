@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { getAccessToken } from '../../../utils/getToken';
-import { queryDB } from '../../../utils/db';
+import { queryDBTransaccional } from '../../../utils/db';
 import { getRandomIntInRange } from '../../../utils/getRandomIntInRange';
 import { DataPedidosObtenidos } from './utils/DataPedidosObtenidosInterface';
 
@@ -8,7 +8,7 @@ test.describe('Guardar pedido - API + DB SIN POM', () => {
 
   test('Debe guardar pedido correctamente y generar pedidoId cuando viene null', async ({ request }) => {
 
-    const numeroDeSucursales=await queryDB('select count(*) from sucursal',[]);
+    const numeroDeSucursales=await queryDBTransaccional('select count(*) from sucursal',[]);
     //const sucursalId = getRandomIntInRange(1,Number(numeroDeSucursales[0].count));
     const sucursalId=1;
     const fechaEncargo = new Date().toISOString().split('T')[0];
@@ -86,7 +86,7 @@ test.describe('Guardar pedido - API + DB SIN POM', () => {
     const values = [sucursalId, fechaEncargo, ...productosCodigos];
 
     // EJECUTAR QUERY
-    const dataBD: any[] = await queryDB(query, values,"pedidos_dummy");
+    const dataBD: any[] = await queryDBTransaccional(query, values,"pedidos_dummy");
 
     // VALIDACIONES DE DB
     expect(dataBD.length).toBe(body.data.pedidos.length);
