@@ -6,7 +6,7 @@ import { DataPedidosObtenidos } from './utils/DataPedidosObtenidosInterface';
 
 test.describe('Guardar pedido - API + DB SIN POM', () => {
 
-  test('Debe guardar pedido correctamente y generar pedidoId cuando viene null', async ({ request }) => {
+  test('Evalua que los pedidos de la api consolidado coincidan con la BD', async ({ request }) => {
 
     const fechaEntrega = '2025-12-10';
 

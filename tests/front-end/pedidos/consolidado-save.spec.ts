@@ -11,7 +11,7 @@ interface PedidoConsolidado {
   cantidadFinal: number;
 }
 
-test.only('Editar todas las celdas de pedido en Tabulator', async ({ page }) => {
+test.only('Los pedidos guardados desde la tabla de requisición deben coincidir con los de la BD', async ({ page }) => {
   await test.setTimeout(60000);
 
   await page.goto(`${process.env.APP_URL}/es//consolidado-pedidos`);

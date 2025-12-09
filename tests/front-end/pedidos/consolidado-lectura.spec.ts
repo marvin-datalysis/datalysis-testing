@@ -3,7 +3,7 @@ import { login } from '../../../utils/login';
 import { queryDBTransaccional } from '../../../utils/db';
 import { convertirFecha } from '../../../utils/convertirFecha';
 
-test.only('Validación de pedidos mostrados en el consolidado', async ({ page }) => {
+test.only('Los pedidos que aparecen en el consolidado deben coincidir con los de la BD', async ({ page }) => {
   await test.setTimeout(60000);
 
   await page.goto(`${process.env.APP_URL}/es/consolidado-pedidos`);

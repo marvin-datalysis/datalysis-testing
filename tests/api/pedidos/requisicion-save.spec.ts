@@ -6,7 +6,7 @@ import { DataPedidosObtenidos } from './utils/DataPedidosObtenidosInterface';
 
 test.describe('Guardar pedido - API + DB SIN POM', () => {
 
-  test('Debe guardar pedido correctamente y generar pedidoId cuando viene null', async ({ request }) => {
+  test('Los pedidos de la requisición guardados por la api deben coincidir con los de la BD', async ({ request }) => {
 
     const numeroDeSucursales=await queryDBTransaccional('select count(*) from sucursal',[]);
     //const sucursalId = getRandomIntInRange(1,Number(numeroDeSucursales[0].count));
